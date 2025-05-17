@@ -8,6 +8,7 @@ class Tree:
     def __init__(self):
         self.__nodes: list[Node] = list()
         self.__follow_pose: Dict[str, Set[str]] = dict()
+        self.__alphabet: Set[str] = set()
 
     @property
     def nodes(self):
@@ -23,6 +24,10 @@ class Tree:
     def follow_pose(self):
         return self.__follow_pose
     
+    @property
+    def alphabet(self):
+        return self.__alphabet
+    
     def update_follow_pose(self, value:str, follow_pose:set):
         self.follow_pose[value] = self.follow_pose[value].union(follow_pose)
     
@@ -35,6 +40,7 @@ class Tree:
             if node.left_node == None and node.right_node == None and node.token != "&":
                 node.first_pose.add(node.value)
                 node.last_pose.add(node.value)
+                self.alphabet.add(node.token)
 
             if node.token == "|":
                 node.nullable = node.left_node.nullable or node.right_node.nullable
@@ -75,6 +81,20 @@ class Tree:
         if node.token == ".":
             for value in node.left_node.last_pose:
                 self.update_follow_pose(value, node.right_node.first_pose)
+    
+    def generate_automata(self):
+        states = set()
+        initial_state_values = map(str, (list(self.nodes[-1].first_pose)))
+        initial_state = "".join(initial_state_values)
+        transitions = dict()
+
+        states.add(initial_state)
+
+        for character in self.alphabet:
+            for value in initial_state_values:
+                ...
+
+        
             
     def __str__(self):
         text = ""
