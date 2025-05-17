@@ -3,18 +3,24 @@
 class ExpressaoRegular:
 
     PRECEDENCIA = {
-        "*": 0,
-        "+": 0,
-        "?": 0,
+        "*": 2,
+        "+": 2,
+        "?": 2,
         ".": 1,
-        "|": 2
+        "|": 0
     }
 
     def __init__(self, value: str):
         self.__posfixa = []
         self.__infixa = []
-        self.gerar_infixa(value.replace(" ", "").replace("\n", "").replace("\t", "").replace(".", ""))
-        print(self.infixa)
+        value = self.tratar_caracteres(value)
+        self.gerar_infixa(value)
+        self.gerar_posfixa()
+        #print(self.infixa)
+        print(self.posfixa)
+
+    def tratar_caracteres(self, value: str):
+        return value.replace(" ", "").replace("\n", "").replace("\t", "").replace(".", "")
 
     def gerar_infixa(self, value: str):
         isGrupo = False
@@ -120,7 +126,27 @@ class ExpressaoRegular:
             return [chr(c) for c in range(ord(start), ord(end) + 1)]
         else:
             raise ValueError(f"Sequência inválida: [{sequencia}]")
+        
+    def gerar_posfixa(self):
+        pilha = []
 
+        for s in self.infixa:
+            if s == '(':
+                pilha.append(s)
+            elif s == ')':
+                while pilha and pilha[-1] != '(':
+                    self.posfixa.append(pilha.pop())
+                pilha.pop()
+            elif s in list(self.PRECEDENCIA.keys()):
+                while (pilha and pilha[-1] != '(' and
+                    self.PRECEDENCIA.get(s, 0) <= self.PRECEDENCIA.get(pilha[-1], 0)):
+                    self.posfixa.append(pilha.pop())
+                pilha.append(s)
+            else:
+                self.posfixa.append(s)
+
+        while pilha:
+            self.posfixa.append(pilha.pop())
 
     @property
     def posfixa(self):
@@ -139,4 +165,8 @@ class ExpressaoRegular:
         self.__infixa = value
 
 if __name__ == "__main__":
-    er = ExpressaoRegular("[a-c]\\[?f")
+    er = ExpressaoRegular("0*(a|b|c|J|K)1?(a | (x|y|z))t")
+    
+    #['0', 'J', 'c', '|', 'a', '|', 'K', '|', 'b', '|', '.', '1', '.', '*', 'a', 'x', '-', '.', 'z', '.', '|', '+', '.', 't', '.', '?']
+
+    #0 J|c|a|K|b
