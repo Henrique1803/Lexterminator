@@ -1,11 +1,11 @@
+from node import Node
+from tree import Tree
 
 
 class ExpressaoRegular:
 
     PRECEDENCIA = {
         "*": 2,
-        "+": 2,
-        "?": 2,
         ".": 1,
         "|": 0
     }
@@ -16,11 +16,70 @@ class ExpressaoRegular:
         value = self.tratar_caracteres(value)
         self.gerar_infixa(value)
         self.gerar_posfixa()
-        #print(self.infixa)
-        print(self.posfixa)
+        print(self.infixa)
+        #print(self.posfixa)
+        self.convert_to_finite_automata()
 
     def tratar_caracteres(self, value: str):
-        return value.replace(" ", "").replace("\n", "").replace("\t", "").replace(".", "")
+        value = value.replace(" ", "").replace("\n", "").replace("\t", "")
+        value = value.replace(".", "")
+        value = value.replace(")?", "|&)").replace("]?", "&]")
+
+        index = value.find("?")
+        while index != -1:
+            try:
+                left_simbol = value[index-1]
+            except:
+                raise ValueError("O símbolo '?' não pode estar no começo de uma ER!")
+
+            if left_simbol in ["*", "|", ".", "?", "+", "(", "["]:
+                raise ValueError("A sua ER não é uma expressão válida!")
+            
+            value = value.replace(f"{left_simbol}?", f"({left_simbol}|&)")
+
+            index = value.find("?")
+        
+        index = value.find("+")
+        while index != -1:
+            try:
+                left_simbol = value[index-1]
+            except:
+                raise ValueError("O símbolo '+' não pode estar no começo de uma ER!")
+
+            if left_simbol in ["*", "|", ".", "?", "+", "(", "["]:
+                raise ValueError("A sua ER não é uma expressão válida!")
+        
+            if left_simbol not in [")", "]"]:
+                value = value.replace(f"{left_simbol}+", f"{left_simbol}{left_simbol}*")
+            else:
+                stack = list(left_simbol)
+                string = list(left_simbol)
+                close_char = str()
+
+                if left_simbol == ")":
+                    close_char = "("
+
+                else:
+                    close_char = "["
+
+                for i in range(index-2, -1, -1):
+                    char = value[i]
+                    string.insert(0, char)
+
+                    if char == left_simbol:
+                        stack.append(char)
+                    elif char == close_char:
+                        stack.pop()
+                    
+                    if len(stack) == 0:
+                        break
+                
+                string = "".join(string)
+                value = value.replace(f"{string}+", f"{string}{string}*")
+            
+            index = value.find("+")
+        
+        return value
 
     def gerar_infixa(self, value: str):
         isGrupo = False
@@ -56,10 +115,14 @@ class ExpressaoRegular:
                         isGrupo = False
                         grupo = f"{grupo}]"
                         grupo_expandido = self.expandir_grupo(grupo)
-                        remove_concat_inicial = len(self.infixa) == 0
+                        remove_concat_empty = len(self.infixa) == 0
+                        remove_concat_parentheses = self.infixa[-1] == "("
                         self.infixa.extend(grupo_expandido)
-                        if remove_concat_inicial:
+
+                        if remove_concat_empty:
                             self.infixa.pop(0)
+                        if remove_concat_parentheses:
+                            self.infixa.pop(1)
 
                 case '(':
                     if isGrupo:
@@ -90,6 +153,10 @@ class ExpressaoRegular:
 
         if len(brackets) != 0:
             raise ValueError("Formação incorreta de '()'")
+        
+        self.infixa.append(".")
+        self.infixa.append("#")
+
 
     def expandir_grupo(self, grupo: str):
         grupo_expandido = []
@@ -147,6 +214,40 @@ class ExpressaoRegular:
 
         while pilha:
             self.posfixa.append(pilha.pop())
+        
+    def convert_regular_expression_to_tree(self) -> Tree:
+        stack = list()
+        counter = 0
+
+        tree = Tree()
+
+        for simbol in self.posfixa:
+            node = None
+            if simbol == "*":
+                son = stack.pop()
+                node = Node(simbol, son)
+
+            elif simbol in ["|", "."]:
+                right_son = stack.pop()
+                left_son = stack.pop()
+                node = Node(simbol, left_son, right_son)
+
+            elif simbol != "&":
+                counter += 1
+                node = Node(simbol, value=counter)
+            else:
+                node = Node(simbol)
+
+            stack.append(node)
+            tree.add_node(node)
+        
+        return tree
+    
+    def convert_to_finite_automata(self):
+        tree = self.convert_regular_expression_to_tree()
+        tree.calculate_nodes_data()
+        tree.generate_automata()
+
 
     @property
     def posfixa(self):
@@ -165,7 +266,9 @@ class ExpressaoRegular:
         self.__infixa = value
 
 if __name__ == "__main__":
-    er = ExpressaoRegular("0*(a|b|c|J|K)1?(a | (x|y|z))t")
+    er = ExpressaoRegular("(a|b)*abb")
+    #er = ExpressaoRegular("a;?bb")
+    
     
     #['0', 'J', 'c', '|', 'a', '|', 'K', '|', 'b', '|', '.', '1', '.', '*', 'a', 'x', '-', '.', 'z', '.', '|', '+', '.', 't', '.', '?']
 
