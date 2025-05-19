@@ -234,9 +234,15 @@ class ExpressaoRegular:
 
             elif simbol != "&":
                 counter += 1
-                node = Node(simbol, value=counter)
+                node = Node(simbol, value=str(counter))
+                tree.node_value_to_token[str(counter)] = simbol
+
+                if simbol == "#":
+                    tree.acceptance_node = node
+
             else:
                 node = Node(simbol)
+            
 
             stack.append(node)
             tree.add_node(node)
@@ -246,8 +252,9 @@ class ExpressaoRegular:
     def convert_to_finite_automata(self):
         tree = self.convert_regular_expression_to_tree()
         tree.calculate_nodes_data()
-        tree.generate_automata()
+        automata = tree.generate_automata()
 
+        automata.to_file("output_af/af_output.txt")
 
     @property
     def posfixa(self):

@@ -1,6 +1,8 @@
 from node import Node
+from af import AF
 
 from typing import Dict, Set
+from collections import defaultdict
 
 
 class Tree:
@@ -9,6 +11,8 @@ class Tree:
         self.__nodes: list[Node] = list()
         self.__follow_pose: Dict[str, Set[str]] = dict()
         self.__alphabet: Set[str] = set()
+        self.__node_value_to_token: Dict[str, str] = defaultdict(str)
+        self.__acceptance_node: Node = None
 
     @property
     def nodes(self):
@@ -28,6 +32,18 @@ class Tree:
     def alphabet(self):
         return self.__alphabet
     
+    @property
+    def node_value_to_token(self):
+        return self.__node_value_to_token
+    
+    @property
+    def acceptance_node(self):
+        return self.__acceptance_node
+    
+    @acceptance_node.setter
+    def acceptance_node(self, node: Node):
+        self.__acceptance_node = node
+    
     def update_follow_pose(self, value:str, follow_pose:set):
         self.follow_pose[value] = self.follow_pose[value].union(follow_pose)
     
@@ -40,7 +56,9 @@ class Tree:
             if node.left_node == None and node.right_node == None and node.token != "&":
                 node.first_pose.add(node.value)
                 node.last_pose.add(node.value)
-                self.alphabet.add(node.token)
+
+                if node.token != "#":
+                    self.alphabet.add(node.token)
 
             if node.token == "|":
                 node.nullable = node.left_node.nullable or node.right_node.nullable
@@ -70,9 +88,7 @@ class Tree:
 
             if node.token in ["*", "."]:
                 self.calculate_node_follow_pose(node)
-        
-        print(self.follow_pose)
-    
+            
     def calculate_node_follow_pose(self, node: Node):
         if node.token == "*":
             for value in node.last_pose:
@@ -82,19 +98,70 @@ class Tree:
             for value in node.left_node.last_pose:
                 self.update_follow_pose(value, node.right_node.first_pose)
     
-    def generate_automata(self):
+    def generate_automata(self) -> AF:
+        format_states_name = dict()
+        counter_state_name = 0
         states = set()
-        initial_state_values = map(str, (list(self.nodes[-1].first_pose)))
-        initial_state = "".join(initial_state_values)
+        initial_state = self.format_automata_state_name(self.nodes[-1].first_pose)
+        final_states = set()
         transitions = dict()
 
-        states.add(initial_state)
+        queue = [initial_state]
 
-        for character in self.alphabet:
-            for value in initial_state_values:
-                ...
+        while len(queue) != 0:
+            current_state = queue.pop(0)
+            states.add(current_state)
 
+            format_states_name[current_state] = "q" + str(counter_state_name)
+            counter_state_name += 1
+
+            for character in self.alphabet:
+
+                if self.acceptance_node.value in current_state:
+                    final_states.add(current_state)
+
+                next_state = set()
+                for node_value in current_state:
+                    node_token = self.node_value_to_token[node_value]
+
+                    if node_token == character:
+                        next_state = next_state.union(self.follow_pose[node_value])
+                                
+                next_state = self.format_automata_state_name(next_state)
+
+                if next_state == "":
+                    continue
+
+                if next_state not in states:
+                    queue.append(next_state)
+
+                transitions[(current_state, character)] = next_state
         
+
+        initial_state = format_states_name[initial_state]
+
+        states = list(states)
+        for state in states[:]:
+            states.remove(state)
+            states.append(format_states_name[state])
+        states = set(states)
+
+        final_states = list(final_states)
+        for state in final_states[:]:
+            final_states.remove(state)
+            final_states.append(format_states_name[state])
+        final_states = set(final_states)
+
+        new_transitions = dict()
+        for state, alphabet_character in transitions:
+            new_transitions[(format_states_name[state], alphabet_character)] = format_states_name[transitions[(state, alphabet_character)]]
+
+        return AF(states, self.alphabet, initial_state, final_states, new_transitions)
+        
+    def format_automata_state_name(self, name: set):
+        state = map(str, list(name))
+        state = sorted(state)
+        return "".join(state)
             
     def __str__(self):
         text = ""

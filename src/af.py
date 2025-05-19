@@ -78,8 +78,11 @@ class AF:
 
             # 5. Transições
             for (origin, symbol), destinations in self.transitions.items():
-                for dest in sorted(destinations):
-                    f.write(f"{origin},{symbol},{dest}\n")
+                if not isinstance(destinations, str): 
+                    for dest in sorted(destinations):
+                        f.write(f"{origin},{symbol},{dest}\n")
+                else:
+                    f.write(f"{origin},{symbol},{destinations}\n")
 
     def _epsilon_closure(self, states: Set[str]) -> Set[str]:
         """
