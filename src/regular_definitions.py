@@ -1,4 +1,4 @@
-from expressao_regular import ExpressaoRegular
+from regular_expression import RegularExpression
 
 from typing import Dict
 
@@ -7,7 +7,7 @@ class RegularDefinitions:
     
     def __init__(self):
         
-        self.__regular_definitions: Dict[str, str|ExpressaoRegular] = dict() #mapeia o nome da definição pra regex / grupo
+        self.__regular_definitions: Dict[str, str|RegularExpression] = dict() #mapeia o nome da definição pra regex / grupo
         self.__regular_definitions_file = "input_regular_definitions/regular_definitions.txt"
     
         self._read_regular_definitions()
@@ -43,7 +43,7 @@ class RegularDefinitions:
         print(self.regular_definitions)
         
         for lexeme, regular_expression in self.regular_definitions.items():
-            self.regular_definitions[lexeme] = ExpressaoRegular(regular_expression)
+            self.regular_definitions[lexeme] = RegularExpression(regular_expression)
         
         print(self.regular_definitions)
 
