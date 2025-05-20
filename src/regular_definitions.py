@@ -37,7 +37,7 @@ class RegularDefinitions:
             for lexeme_to_update, regular_expression_to_update in self.regular_definitions.items():
                 if lexeme in regular_expression_to_update:
                     regex_from_lexeme = self.regular_definitions[lexeme]
-                    new_regular_expression = regular_expression_to_update.replace(lexeme, regex_from_lexeme)
+                    new_regular_expression = regular_expression_to_update.replace(lexeme, f"({regex_from_lexeme})")
                     self.regular_definitions[lexeme_to_update] = new_regular_expression
         
         print(self.regular_definitions)
@@ -46,3 +46,6 @@ class RegularDefinitions:
             self.regular_definitions[lexeme] = ExpressaoRegular(regular_expression)
         
         print(self.regular_definitions)
+
+    def __str__(self):
+        return 

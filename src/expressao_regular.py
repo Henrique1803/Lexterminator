@@ -114,18 +114,15 @@ class ExpressaoRegular:
                         isGrupo = False
                         grupo = f"{grupo}]"
                         grupo_expandido = self.expandir_grupo(grupo)
-                        remove_concat_empty = len(self.infixa) == 0
-                        remove_concat_parentheses = False
+                        is_grupo_first = len(self.infixa) == 0
+                        is_parentheses_first = len(self.infixa) > 0 and self.infixa[-1] == "("
 
-                        if len(self.infixa) > 0:
-                            remove_concat_parentheses = self.infixa[-1] == "("
+                        if is_grupo_first or is_parentheses_first:
+                            grupo_expandido.pop(0) # remove a concatenação desnecessária
 
+                        print("infixa atual, no grupo: ", self.infixa)
+                        print("grupo a ser incluido: ", grupo_expandido)
                         self.infixa.extend(grupo_expandido)
-
-                        if remove_concat_empty:
-                            self.infixa.pop(0)
-                        if remove_concat_parentheses:
-                            self.infixa.pop(1)
 
                 case '(':
                     if isGrupo:
@@ -281,11 +278,8 @@ class ExpressaoRegular:
     def infixa(self, value):
         self.__infixa = value
 
-if __name__ == "__main__":
-    er = ExpressaoRegular("(a|b)*abb")
-    #er = ExpressaoRegular("a;?bb")
+    def __str__(self):
+        return "".join(self.infixa)
     
-    
-    #['0', 'J', 'c', '|', 'a', '|', 'K', '|', 'b', '|', '.', '1', '.', '*', 'a', 'x', '-', '.', 'z', '.', '|', '+', '.', 't', '.', '?']
-
-    #0 J|c|a|K|b
+    def __repr__(self):
+        return self.__str__()
