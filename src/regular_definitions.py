@@ -13,7 +13,6 @@ class RegularDefinitions:
     
         self._read_regular_definitions()
         self.convert_regular_definitions_to_regular_expressions()
-        self.convert_to_automata()
 
     @property
     def regular_definitions(self):
