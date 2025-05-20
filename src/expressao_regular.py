@@ -115,7 +115,11 @@ class ExpressaoRegular:
                         grupo = f"{grupo}]"
                         grupo_expandido = self.expandir_grupo(grupo)
                         remove_concat_empty = len(self.infixa) == 0
-                        remove_concat_parentheses = self.infixa[-1] == "("
+                        remove_concat_parentheses = False
+
+                        if len(self.infixa) > 0:
+                            remove_concat_parentheses = self.infixa[-1] == "("
+
                         self.infixa.extend(grupo_expandido)
 
                         if remove_concat_empty:
@@ -195,6 +199,7 @@ class ExpressaoRegular:
         
     def gerar_posfixa(self):
         pilha = []
+        print(f"infixa: {self.infixa}")
 
         for s in self.infixa:
             if s == '(':
@@ -219,6 +224,8 @@ class ExpressaoRegular:
         counter = 0
 
         tree = Tree()
+
+        print(self.posfixa)
 
         for simbol in self.posfixa:
             node = None
@@ -245,6 +252,9 @@ class ExpressaoRegular:
 
             stack.append(node)
             tree.add_node(node)
+
+            print(stack)
+
         
         return tree
     
