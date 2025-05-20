@@ -4,6 +4,7 @@ from regular_definitions import RegularDefinitions
 class LexicalAnalyzer:
 
     def __init__(self):
+        self.__words: str = list()
         self.__regular_definitions = RegularDefinitions()
 
 

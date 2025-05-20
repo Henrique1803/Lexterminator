@@ -9,9 +9,11 @@ class RegularDefinitions:
         
         self.__regular_definitions: Dict[str, str|RegularExpression] = dict() #mapeia o nome da definição pra regex / grupo
         self.__regular_definitions_file = "input_regular_definitions/regular_definitions.txt"
+        self.__automata = None
     
         self._read_regular_definitions()
         self.convert_regular_definitions_to_regular_expressions()
+        self.convert_to_automata()
 
     @property
     def regular_definitions(self):
@@ -39,13 +41,9 @@ class RegularDefinitions:
                     regex_from_lexeme = self.regular_definitions[lexeme]
                     new_regular_expression = regular_expression_to_update.replace(lexeme, f"({regex_from_lexeme})")
                     self.regular_definitions[lexeme_to_update] = new_regular_expression
-        
-        print(self.regular_definitions)
-        
+                
         for lexeme, regular_expression in self.regular_definitions.items():
             self.regular_definitions[lexeme] = RegularExpression(regular_expression)
         
-        print(self.regular_definitions)
-
     def __str__(self):
         return 

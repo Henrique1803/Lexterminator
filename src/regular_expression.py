@@ -14,6 +14,7 @@ class RegularExpression:
         self.__postfix = []
         self.__infix = []
         self.__token_name = token_name
+        self.__automata = None
         value = self.treat_characters(value)
         self.generate_infix(value)
         self.generate_postfix()
@@ -120,8 +121,6 @@ class RegularExpression:
                         if is_group_first or is_parentheses_first:
                             expanded_group.pop(0) # remove a concatenação desnecessária
 
-                        print("infix atual, no grupo: ", self.infix)
-                        print("grupo a ser incluido: ", expanded_group)
                         self.infix.extend(expanded_group)
 
                 case '(':
@@ -196,7 +195,6 @@ class RegularExpression:
         
     def generate_postfix(self):
         stack = []
-        print(f"infix: {self.infix}")
 
         for s in self.infix:
             if s == '(':
@@ -221,8 +219,6 @@ class RegularExpression:
         counter = 0
 
         tree = Tree()
-
-        print(self.postfix)
 
         for symbol in self.postfix:
             node = None
@@ -249,9 +245,6 @@ class RegularExpression:
 
             stack.append(node)
             tree.add_node(node)
-
-            print(stack)
-
         
         return tree
     

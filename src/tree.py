@@ -100,8 +100,9 @@ class Tree:
     
     def generate_automata(self) -> AF:
         format_states_name = dict()
-        states = set()
-        initial_state = self.format_automata_state_name(self.nodes[-1].first_pose)
+        initial_state = self.nodes[-1].first_pose
+        initial_state_name = self.format_automata_state_name(initial_state)
+        states = {initial_state_name}
         final_states = set()
         transitions = dict()
 
@@ -109,14 +110,13 @@ class Tree:
 
         while len(queue) != 0:
             current_state = queue.pop(0)
-            format_states_name[current_state] = "q" + str(len(states))
-
-            states.add(current_state)
+            current_state_name = self.format_automata_state_name(current_state)
+            format_states_name[current_state_name] = "q" + str(len(states)-1)
 
             for character in self.alphabet:
 
                 if self.acceptance_node.value in current_state: 
-                    final_states.add(current_state)
+                    final_states.add(current_state_name)
 
                 next_state = set()
                 for node_value in current_state:
@@ -124,18 +124,19 @@ class Tree:
 
                     if node_token == character:
                         next_state = next_state.union(self.follow_pose[node_value])
-                                
+
+                                                                        
                 if len(next_state) == 0:
                     continue
-
-                next_state = self.format_automata_state_name(next_state)
-
-                if next_state not in states:
+                
+                next_state_name = self.format_automata_state_name(next_state)
+                if next_state_name not in states:
+                    states.add(next_state_name)
                     queue.append(next_state)
+                
+                transitions[(current_state_name, character)] = next_state_name
 
-                transitions[(current_state, character)] = next_state
-
-        initial_state = format_states_name[initial_state]
+        initial_state = format_states_name[initial_state_name]
 
         states = list(states)
         for state in states[:]:
@@ -152,12 +153,13 @@ class Tree:
         new_transitions = dict()
         for state, alphabet_character in transitions:
             new_transitions[(format_states_name[state], alphabet_character)] = {format_states_name[transitions[(state, alphabet_character)]]}
-
+        
         return AF(states, self.alphabet, initial_state, final_states, new_transitions)
         
     def format_automata_state_name(self, name: set):
-        state = map(str, list(name))
+        state = map(int, list(name))
         state = sorted(state)
+        state = map(str, state)
         return "".join(state)
             
     def __str__(self):
