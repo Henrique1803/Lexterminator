@@ -100,7 +100,6 @@ class Tree:
     
     def generate_automata(self) -> AF:
         format_states_name = dict()
-        counter_state_name = 0
         states = set()
         initial_state = self.format_automata_state_name(self.nodes[-1].first_pose)
         final_states = set()
@@ -110,14 +109,13 @@ class Tree:
 
         while len(queue) != 0:
             current_state = queue.pop(0)
-            states.add(current_state)
+            format_states_name[current_state] = "q" + str(len(states))
 
-            format_states_name[current_state] = "q" + str(counter_state_name)
-            counter_state_name += 1
+            states.add(current_state)
 
             for character in self.alphabet:
 
-                if self.acceptance_node.value in current_state:
+                if self.acceptance_node.value in current_state: 
                     final_states.add(current_state)
 
                 next_state = set()
@@ -127,16 +125,15 @@ class Tree:
                     if node_token == character:
                         next_state = next_state.union(self.follow_pose[node_value])
                                 
-                next_state = self.format_automata_state_name(next_state)
-
-                if next_state == "":
+                if len(next_state) == 0:
                     continue
+
+                next_state = self.format_automata_state_name(next_state)
 
                 if next_state not in states:
                     queue.append(next_state)
 
                 transitions[(current_state, character)] = next_state
-        
 
         initial_state = format_states_name[initial_state]
 
@@ -154,7 +151,7 @@ class Tree:
 
         new_transitions = dict()
         for state, alphabet_character in transitions:
-            new_transitions[(format_states_name[state], alphabet_character)] = format_states_name[transitions[(state, alphabet_character)]]
+            new_transitions[(format_states_name[state], alphabet_character)] = {format_states_name[transitions[(state, alphabet_character)]]}
 
         return AF(states, self.alphabet, initial_state, final_states, new_transitions)
         

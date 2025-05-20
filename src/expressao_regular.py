@@ -10,14 +10,13 @@ class ExpressaoRegular:
         "|": 0
     }
 
-    def __init__(self, value: str):
+    def __init__(self, value: str, token_name:str = ""):
         self.__posfixa = []
         self.__infixa = []
+        self.__token_name = token_name
         value = self.tratar_caracteres(value)
         self.gerar_infixa(value)
         self.gerar_posfixa()
-        print(self.infixa)
-        #print(self.posfixa)
         self.convert_to_finite_automata()
 
     def tratar_caracteres(self, value: str):
@@ -252,7 +251,7 @@ class ExpressaoRegular:
     def convert_to_finite_automata(self):
         tree = self.convert_regular_expression_to_tree()
         tree.calculate_nodes_data()
-        automata = tree.generate_automata()
+        automata = tree.generate_automata() # passar o nome do token da regex aqui como parâmetro
 
         automata.to_file("output_af/af_output.txt")
 
