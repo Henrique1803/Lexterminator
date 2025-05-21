@@ -129,6 +129,10 @@ class FiniteAutomata:
         Usa como nomes de estados determinísticos a concatenação dos nomes dos estados originais.
         """
 
+        #print(self.states, self.final_states, self.initial_state)
+        #print("------------------------------------------------------------")
+
+
         def _name_from_set(state_set: Set[str]) -> str:
             """
             Gera um nome único para o novo estado determinístico
@@ -189,6 +193,8 @@ class FiniteAutomata:
 
                 # Adiciona a transição ao novo autômato
                 transitions[(current_name, symbol)] = {state_map[next_fset]}
+        
+        #print(state_map.values(), new_final_states, initial_name)
 
         # Retorna um novo autômato determinizado
         return FiniteAutomata(

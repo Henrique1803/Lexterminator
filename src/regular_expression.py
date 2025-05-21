@@ -154,9 +154,8 @@ class RegularExpression:
         if len(brackets) != 0:
             raise ValueError("Formação incorreta de '()'")
         
-        self.infix.append(".")
-        self.infix.append("#")
-
+        self.infix.insert(0, "(")
+        self.infix.extend([")", ".", "#"])
 
     def expand_group(self, group: str):
         expanded_group = []
