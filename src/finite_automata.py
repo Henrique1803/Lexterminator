@@ -2,7 +2,7 @@ from collections import deque
 from typing import Set, Dict, Tuple
 
 
-class AF:
+class FiniteAutomata:
     def __init__(
         self,
         states: Set[str],
@@ -123,7 +123,7 @@ class AF:
         else:
             return (False, set())
 
-    def determinize(self) -> 'AF':
+    def determinize(self) -> 'FiniteAutomata':
         """
         Determiniza o autômato (AFND → AFD) e retorna um novo objeto AF.
         Usa como nomes de estados determinísticos a concatenação dos nomes dos estados originais.
@@ -191,7 +191,7 @@ class AF:
                 transitions[(current_name, symbol)] = {state_map[next_fset]}
 
         # Retorna um novo autômato determinizado
-        return AF(
+        return FiniteAutomata(
             states=set(state_map.values()),
             alphabet=new_alphabet,
             initial_state=initial_name,
@@ -200,7 +200,7 @@ class AF:
         )
 
     @staticmethod
-    def from_file(file_path: str) -> 'AF':
+    def from_file(file_path: str) -> 'FiniteAutomata':
         """
         Lê um autômato no formato do trabalho e retorna um objeto AF.
         """
@@ -222,7 +222,7 @@ class AF:
             transitions[key].add(dest)
             states.update([origin, dest])
 
-        return AF(
+        return FiniteAutomata(
             states=states,
             alphabet=alphabet,
             initial_state=initial_state,
@@ -231,7 +231,7 @@ class AF:
         )
 
     @staticmethod
-    def union(af1: 'AF', af2: 'AF') -> 'AF':
+    def union(af1: 'FiniteAutomata', af2: 'FiniteAutomata') -> 'FiniteAutomata':
         """
         Retorna um novo autômato que é a união dos autômatos af1 e af2,
         renomeando os estados de af2 somente se houver conflito com os estados de af1.
@@ -282,7 +282,7 @@ class AF:
         # Estados finais são união dos finais dos dois autômatos
         new_final_states = af1.final_states | af2_renamed_finals
 
-        return AF(
+        return FiniteAutomata(
             states=new_states,
             alphabet=new_alphabet,
             initial_state=new_initial,

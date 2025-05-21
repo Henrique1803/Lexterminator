@@ -1,0 +1,17 @@
+4
+digit_q0_id_q0_letter_q0_qi
+digit_q1_id_q1,id_q2,letter_q1
+0,1,A,B,_,a,b
+digit_q0_id_q0_letter_q0_qi,a,letter_q1
+digit_q0_id_q0_letter_q0_qi,0,digit_q1_id_q1
+digit_q0_id_q0_letter_q0_qi,1,digit_q1_id_q1
+digit_q0_id_q0_letter_q0_qi,B,letter_q1
+digit_q0_id_q0_letter_q0_qi,b,letter_q1
+digit_q0_id_q0_letter_q0_qi,A,letter_q1
+digit_q1_id_q1,_,id_q2
+id_q2,a,id_q2
+id_q2,0,id_q2
+id_q2,1,id_q2
+id_q2,B,id_q2
+id_q2,b,id_q2
+id_q2,A,id_q2

@@ -1,5 +1,5 @@
-from node import Node
-from af import AF
+from src.node import Node
+from src.finite_automata import FiniteAutomata
 
 from typing import Dict, Set
 from collections import defaultdict
@@ -98,7 +98,7 @@ class Tree:
             for value in node.left_node.last_pose:
                 self.update_follow_pose(value, node.right_node.first_pose)
     
-    def generate_automata(self) -> AF:
+    def generate_automata(self, token_name: str) -> FiniteAutomata:
         format_states_name = dict()
         initial_state = self.nodes[-1].first_pose
         initial_state_name = self.format_automata_state_name(initial_state)
@@ -111,7 +111,7 @@ class Tree:
         while len(queue) != 0:
             current_state = queue.pop(0)
             current_state_name = self.format_automata_state_name(current_state)
-            format_states_name[current_state_name] = "q" + str(len(states)-1)
+            format_states_name[current_state_name] = token_name + "_q" + str(len(states)-1)
 
             for character in self.alphabet:
 
@@ -154,7 +154,7 @@ class Tree:
         for state, alphabet_character in transitions:
             new_transitions[(format_states_name[state], alphabet_character)] = {format_states_name[transitions[(state, alphabet_character)]]}
         
-        return AF(states, self.alphabet, initial_state, final_states, new_transitions)
+        return FiniteAutomata(states, self.alphabet, initial_state, final_states, new_transitions)
         
     def format_automata_state_name(self, name: set):
         state = map(int, list(name))

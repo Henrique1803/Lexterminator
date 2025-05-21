@@ -1,22 +1,8 @@
-from src.af import AF
+from src.lexical_analyzer import LexicalAnalyzer
+from src.utils.paths import LEXICAL_ANALYZER_INPUT_DIR
 
-af1 = AF.from_file("input_af/af_a_par.txt")  # L = número de a's par
-af2 = AF.from_file("input_af/af_b_mod3.txt") # L = número de b's múltiplo de 3
 
-af_union = AF.union(af1, af2) # união dos dois
-af_union.print_transition_table()
- 
-print("------------")
-af = af_union.determinize()
-af.print_transition_table()
-af.to_file("output_af/af_output.txt")
-print("------------")
-
-entrada = "abbb"
-reconhecido, estados_finais = af.run(entrada)
-
-if reconhecido:
-    print(f"A entrada '{entrada}' foi aceita. Estados finais: {estados_finais}")
-else:
-    print(f"A entrada '{entrada}' não foi aceita.")
-
+if __name__ == "__main__":
+    lexical_analyzer = LexicalAnalyzer()
+    lexical_analyzer.read_words_from_file_and_verify_pertinence(LEXICAL_ANALYZER_INPUT_DIR / "words.txt")
+    lexical_analyzer.read_words_from_file_and_verify_pertinence(LEXICAL_ANALYZER_INPUT_DIR/ "words2.txt")
