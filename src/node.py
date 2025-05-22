@@ -1,6 +1,6 @@
 class Node:
 
-    def __init__(self, token: str, left_node: "Node" = None, right_node: "Node" = None, value: str = str()):
+    def __init__(self, token: str, left_node: "Node" = None, right_node: "Node" = None, value: str = str(), operator: bool = True):
 
         self.__token: str = token
         self.__value: str = value
@@ -9,6 +9,7 @@ class Node:
         self.__nullable: bool = False
         self.__left_node: Node = left_node
         self.__right_node: Node = right_node
+        self.__is_operator: bool = operator
     
 
     def __str__(self):
@@ -69,6 +70,14 @@ class Node:
     @right_node.setter
     def right_node(self, right_node: "Node"):
         self.__right_node = right_node
+
+    @property
+    def is_operator(self):
+        return self.__is_operator
+
+    @is_operator.setter
+    def is_operator(self, is_operator: bool):
+        self.__is_operator = is_operator
     
 
     

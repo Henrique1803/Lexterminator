@@ -27,9 +27,15 @@ class RegularDefinitions:
             lines = [line.strip() for line in file]
         
         for line in lines:
-            token, regular_expression = line.split()
-            self.tokens.append(token[0:-1])
-            self.regular_definitions[token[0:-1]] = regular_expression        
+            token_index = line.find(":")
+            token, regular_expression = (str(), str())
+            if token_index != -1:
+                token = line[0:token_index]
+                regular_expression = line[token_index+1:len(line)]
+            else:
+                raise ValueError("Má formação: definições regulares esperadas na forma 'token: expressao'")
+            self.tokens.append(token[0])
+            self.regular_definitions[token] = regular_expression        
     
     def convert_regular_definitions_to_regular_expressions(self): # instancia as regexs e atualia o regular_definitions
         for token in self.regular_definitions:

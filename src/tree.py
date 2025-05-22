@@ -55,24 +55,24 @@ class Tree:
     def calculate_nodes_data(self):
         for node in self.nodes:
 
-            if node.left_node == None and node.right_node == None and node.token != "&":
+            if node.left_node == None and node.right_node == None and not node.is_operator:
                 node.first_pose.add(node.value)
                 node.last_pose.add(node.value)
 
                 if node.token != "#":
                     self.alphabet.add(node.token)
 
-            if node.token == "|":
+            if node.token == "|" and node.is_operator:
                 node.nullable = node.left_node.nullable or node.right_node.nullable
                 node.first_pose = node.left_node.first_pose.union(node.right_node.first_pose)
                 node.last_pose = node.left_node.last_pose.union(node.right_node.last_pose)
             
-            if node.token == "*":
+            if node.token == "*" and node.is_operator:
                 node.nullable = True
                 node.first_pose = node.left_node.first_pose
                 node.last_pose = node.left_node.last_pose
 
-            if node.token == ".":
+            if node.token == "." and node.is_operator:
                 node.nullable = node.left_node.nullable and node.right_node.nullable
                 
                 if node.left_node.nullable:
@@ -85,18 +85,18 @@ class Tree:
                 else:
                     node.last_pose = node.right_node.last_pose
                 
-            if node.token == "&":
+            if node.token == "&" and node.is_operator:
                 node.nullable = True
 
-            if node.token in ["*", "."]:
+            if node.token in ["*", "."] and node.is_operator:
                 self.calculate_node_follow_pose(node)
             
     def calculate_node_follow_pose(self, node: Node):
-        if node.token == "*":
+        if node.token == "*" and node.is_operator:
             for value in node.last_pose:
                 self.update_follow_pose(value, node.first_pose)
     
-        if node.token == ".":
+        if node.token == "." and node.is_operator:
             for value in node.left_node.last_pose:
                 self.update_follow_pose(value, node.right_node.first_pose)
     
