@@ -29,7 +29,7 @@ class RegularDefinitions:
         for line in lines:
             token, regular_expression = line.split()
             self.tokens.append(token[0:-1])
-            self.regular_definitions[token[0:-1]] = regular_expression        
+            self.regular_definitions[token[0:-1]] = regular_expression
     
     def convert_regular_definitions_to_regular_expressions(self): # instancia as regexs e atualia o regular_definitions
         for token in self.regular_definitions:
@@ -53,7 +53,7 @@ class RegularDefinitions:
             automatas = automatas[2:]
             automatas.append(new_automata)
         
-        self.automata = automatas[0].determinize()
+        self.automata = automatas[0].determinize(self.__tokens)
         self.automata.to_file(str(FA_OUTPUT_DIR / "af_output.txt"))       
         
     def __str__(self):
