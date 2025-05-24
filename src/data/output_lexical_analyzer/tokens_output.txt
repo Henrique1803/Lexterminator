@@ -14,7 +14,7 @@
 <>=,geq>
 <<,lt>
 <>,gt>
-<&&,and>
+<&&,erro!>
 <||,or>
 <!,not>
 <(,lparen>
@@ -35,6 +35,6 @@
 <//issoehumcomentario,comment>
 <0+1,expr>
 <1*1,expr>
-<2\2,expr>
+<2\2,erro!>
 <4-2,expr>
 <<number>,erro!>
