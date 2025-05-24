@@ -241,7 +241,6 @@ class RegularExpression:
 
             else:
                 node = Node(symbol)
-            
 
             stack.append(node)
             tree.add_node(node)

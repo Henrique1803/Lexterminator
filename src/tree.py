@@ -155,8 +155,6 @@ class Tree:
         for state, alphabet_character in transitions:
             new_transitions[(format_states_name[state], alphabet_character)] = {format_states_name[transitions[(state, alphabet_character)]]}
 
-        states, final_states, new_transitions = self.generate_only_one_final_state(states, final_states, new_transitions, token_name)
-
         return FiniteAutomata(states, self.alphabet, initial_state, final_states, new_transitions)
         
     def format_automata_state_name(self, name: set):
@@ -164,15 +162,6 @@ class Tree:
         state = sorted(state)
         state = map(str, state)
         return "".join(state)
-    
-    def generate_only_one_final_state(self,states: set, final_states: set, transitions: dict, token_name: str):
-        new_final_state = token_name
-        for final_state in final_states:
-            transitions[(final_state, "&")] = {new_final_state}
-        
-        final_states = {new_final_state}
-        states.add(new_final_state)
-        return states, final_states, transitions
             
     def __str__(self):
         text = ""
