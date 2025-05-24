@@ -94,7 +94,6 @@ class RegularDefinitions:
             automatas.append(new_automata)
         
         self.automata = automatas[0].determinize(self.__tokens)
-        print(self.automata.transition_table())
         self.automata.to_file(str(FA_OUTPUT_DIR / "af_output.txt"))       
         
     def __str__(self):
