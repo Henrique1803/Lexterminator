@@ -1,8 +1,8 @@
 from collections import deque
-from typing import Set, Dict, Tuple
+from typing import List, Set, Dict, Tuple
 
 
-class AF:
+class FiniteAutomata:
     def __init__(
         self,
         states: Set[str],
@@ -16,6 +16,7 @@ class AF:
         self.initial_state: str = initial_state
         self.final_states: Set[str] = final_states
         self.transitions: Dict[Tuple[str, str], Set[str]] = transitions
+        self.final_state_to_token: Dict[str, str] = {}  # Mapeia estados finais para nomes de tokens
 
     def get_transitions(self, state: str, symbol: str) -> Set[str]:
         """
@@ -97,12 +98,12 @@ class AF:
 
         return closure
     
-    def run(self, input_str: str) -> Tuple[bool, Set[str]]:
+    def run(self, input_str: str) -> Tuple[bool, str]:
         """
         Executa o autômato sobre a string de entrada.
         Retorna uma tupla:
-        (True, conjunto_de_estados_finais) se a entrada for aceita,
-        (False, conjunto_vazio) se a entrada for rejeitada.
+        (True, nome_do_token) se a entrada for aceita,
+        (False, "") se a entrada for rejeitada.
         """
         current_states = self._epsilon_closure({self.initial_state})
 
@@ -113,28 +114,24 @@ class AF:
                     next_states.update(self._epsilon_closure({target}))
 
             if not next_states:
-                return (False, set())
+                return (False, "")
 
             current_states = next_states
 
-        accepting = current_states & self.final_states
-        if accepting:
-            return (True, accepting)
-        else:
-            return (False, set())
+        # Verifica se algum estado atual é final e retorna o token correspondente
+        for state in current_states:
+            if state in self.final_states:
+                token_name = self.final_state_to_token.get(state, "")
+                return (True, token_name)
 
-    def determinize(self) -> 'AF':
+        return (False, "")
+
+    def determinize(self, token_priority: List[str]) -> 'FiniteAutomata':
         """
         Determiniza o autômato (AFND → AFD) e retorna um novo objeto AF.
-        Usa como nomes de estados determinísticos a concatenação dos nomes dos estados originais.
+        Preserva o mapeamento de estados finais para tokens.
         """
-
         def _name_from_set(state_set: Set[str]) -> str:
-            """
-            Gera um nome único para o novo estado determinístico
-            concatenando os nomes dos estados originais, em ordem alfabética.
-            Exemplo: {'q0', 'q2'} → 'q0_q2'
-            """
             return '_'.join(sorted(state_set))
 
         # Mapeia conjuntos de estados do AFND → nome do novo estado determinístico
@@ -145,6 +142,9 @@ class AF:
         new_states: Set[str] = set()
         new_final_states: Set[str] = set()
         new_alphabet: Set[str] = self.alphabet.copy()
+        
+        # Dicionário para mapear novos estados finais para tokens
+        new_final_state_to_token: Dict[str, str] = {}
 
         # Cálculo do ε-fecho do estado inicial do AFND
         initial_closure = self._epsilon_closure({self.initial_state})
@@ -153,7 +153,7 @@ class AF:
 
         # Mapeamos o ε-fecho como o primeiro estado determinístico
         state_map[initial_fset] = initial_name
-        queue = deque([initial_fset])  # fila de estados compostos a serem processados
+        queue = deque([initial_fset]) # fila de estados compostos a serem processados
 
         # Processa todos os estados compostos (conjuntos de estados do AFND)
         while queue:
@@ -161,10 +161,27 @@ class AF:
             current_name = state_map[current_set]
             new_states.add(current_name)
 
-            # Se qualquer estado do conjunto é final no AFND, o novo estado também será final
-            if current_set & self.final_states:
+            # Verifica se algum estado no conjunto atual é final no AFND original
+            final_states_in_set = current_set & self.final_states
+            if final_states_in_set:
                 new_final_states.add(current_name)
+                
+                # Determina qual token corresponde a este estado final
+                # Prioriza o token mais antigo (definido primeiro no arquivo de definições regulares)
+                best_token = None
+                best_priority = float('inf')  # Menor índice na lista = maior prioridade
 
+                for state in final_states_in_set:
+                    token = self.final_state_to_token.get(state)
+                    if token and token in token_priority:
+                        priority = token_priority.index(token)
+                        if priority < best_priority:
+                            best_priority = priority
+                            best_token = token
+
+                if best_token:
+                    new_final_state_to_token[current_name] = best_token
+            
             # Para cada símbolo do alfabeto, calcula os estados alcançáveis
             for symbol in self.alphabet:
                 next_set = set()
@@ -177,7 +194,7 @@ class AF:
                         next_set.update(self._epsilon_closure({t}))
 
                 if not next_set:
-                    continue  # nenhuma transição válida com esse símbolo
+                    continue # nenhuma transição válida com esse símbolo
 
                 next_fset = frozenset(next_set)
 
@@ -190,17 +207,22 @@ class AF:
                 # Adiciona a transição ao novo autômato
                 transitions[(current_name, symbol)] = {state_map[next_fset]}
 
-        # Retorna um novo autômato determinizado
-        return AF(
+        # Cria o novo autômato determinizado
+        determinized = FiniteAutomata(
             states=set(state_map.values()),
             alphabet=new_alphabet,
             initial_state=initial_name,
             final_states=new_final_states,
             transitions=transitions
         )
+        
+        # Atualiza o mapeamento de tokens para os novos estados finais
+        determinized.final_state_to_token = new_final_state_to_token
+
+        return determinized
 
     @staticmethod
-    def from_file(file_path: str) -> 'AF':
+    def from_file(file_path: str) -> 'FiniteAutomata':
         """
         Lê um autômato no formato do trabalho e retorna um objeto AF.
         """
@@ -222,7 +244,7 @@ class AF:
             transitions[key].add(dest)
             states.update([origin, dest])
 
-        return AF(
+        return FiniteAutomata(
             states=states,
             alphabet=alphabet,
             initial_state=initial_state,
@@ -231,7 +253,7 @@ class AF:
         )
 
     @staticmethod
-    def union(af1: 'AF', af2: 'AF') -> 'AF':
+    def union(af1: 'FiniteAutomata', af2: 'FiniteAutomata') -> 'FiniteAutomata':
         """
         Retorna um novo autômato que é a união dos autômatos af1 e af2,
         renomeando os estados de af2 somente se houver conflito com os estados de af1.
@@ -282,13 +304,26 @@ class AF:
         # Estados finais são união dos finais dos dois autômatos
         new_final_states = af1.final_states | af2_renamed_finals
 
-        return AF(
+        # Criar o novo autômato
+        new_automata = FiniteAutomata(
             states=new_states,
             alphabet=new_alphabet,
             initial_state=new_initial,
             final_states=new_final_states,
             transitions=new_transitions
         )
+
+        # Copiar mapeamentos dos estados finais para tokens do af1
+        for state, token in af1.final_state_to_token.items():
+            new_automata.final_state_to_token[state] = token
+
+        # Copiar mapeamentos dos estados finais para tokens do af2 (com nomes renomeados)
+        for original_state, renamed_state in rename_map.items():
+            if original_state in af2.final_state_to_token:
+                token = af2.final_state_to_token[original_state]
+                new_automata.final_state_to_token[renamed_state] = token
+
+        return new_automata
 
 
 

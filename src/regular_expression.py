@@ -1,5 +1,6 @@
-from node import Node
-from tree import Tree
+from src.node import Node
+from src.tree import Tree
+from src.finite_automata import FiniteAutomata
 
 
 class RegularExpression:
@@ -11,10 +12,10 @@ class RegularExpression:
     }
 
     def __init__(self, value: str, token_name:str = ""):
-        self.__postfix = []
-        self.__infix = []
-        self.__token_name = token_name
-        self.__automata = None
+        self.__postfix: list = list()
+        self.__infix: list = list()
+        self.__token_name: str = token_name
+        self.__automata: FiniteAutomata = None
         value = self.treat_characters(value)
         self.generate_infix(value)
         self.generate_postfix()
@@ -153,9 +154,8 @@ class RegularExpression:
         if len(brackets) != 0:
             raise ValueError("Formação incorreta de '()'")
         
-        self.infix.append(".")
-        self.infix.append("#")
-
+        self.infix.insert(0, "(")
+        self.infix.extend([")", ".", "#"])
 
     def expand_group(self, group: str):
         expanded_group = []
@@ -241,7 +241,6 @@ class RegularExpression:
 
             else:
                 node = Node(symbol)
-            
 
             stack.append(node)
             tree.add_node(node)
@@ -251,9 +250,9 @@ class RegularExpression:
     def convert_to_finite_automata(self):
         tree = self.convert_regular_expression_to_tree()
         tree.calculate_nodes_data()
-        automata = tree.generate_automata() # passar o nome do token da regex aqui como parâmetro
-
-        automata.to_file("output_af/af_output.txt")
+        self.automata = tree.generate_automata(self.token_name)
+        for state in self.automata.final_states:
+            self.automata.final_state_to_token[state] = self.token_name
 
     @property
     def postfix(self):
@@ -270,6 +269,18 @@ class RegularExpression:
     @infix.setter
     def infix(self, value):
         self.__infix = value
+    
+    @property
+    def token_name(self):
+        return self.__token_name
+
+    @property
+    def automata(self):
+        return self.__automata
+    
+    @automata.setter
+    def automata(self, automata: FiniteAutomata):
+        self.__automata = automata
 
     def __str__(self):
         return "".join(self.infix)

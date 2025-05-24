@@ -1,3 +1,0 @@
-digit: [0-1]
-letter: [A-Ba-b]
-id: digit_(letter|digit)*
