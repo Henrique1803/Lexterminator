@@ -262,6 +262,8 @@ class RegularExpression:
         tree = self.convert_regular_expression_to_tree()
         tree.calculate_nodes_data()
         self.automata = tree.generate_automata(self.token_name)
+        for state in self.automata.final_states:
+            self.automata.final_state_to_token[state] = self.token_name
 
     @property
     def postfix(self):

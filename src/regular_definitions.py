@@ -34,7 +34,7 @@ class RegularDefinitions:
                 regular_expression = line[token_index+1:len(line)]
             else:
                 raise ValueError("Má formação: definições regulares esperadas na forma 'token: expressao'")
-            self.tokens.append(token[0])
+            self.tokens.append(token)
             self.regular_definitions[token] = regular_expression        
     
     def convert_regular_definitions_to_regular_expressions(self): # instancia as regexs e atualia o regular_definitions
@@ -59,7 +59,7 @@ class RegularDefinitions:
             automatas = automatas[2:]
             automatas.append(new_automata)
         
-        self.automata = automatas[0].determinize()
+        self.automata = automatas[0].determinize(self.__tokens)
         self.automata.to_file(str(FA_OUTPUT_DIR / "af_output.txt"))       
         
     def __str__(self):

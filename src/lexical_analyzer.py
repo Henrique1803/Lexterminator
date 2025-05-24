@@ -1,5 +1,5 @@
 from src.regular_definitions import RegularDefinitions
-from src.utils.paths import REGULAR_DEFINITIONS_INPUT_DIR
+from src.utils.paths import LEXICAL_ANALYZER_OUTPUT_DIR, REGULAR_DEFINITIONS_INPUT_DIR
 
 from pathlib import Path
 from typing import List
@@ -15,14 +15,23 @@ class LexicalAnalyzer:
         with open(file_path, "r", encoding="utf-8") as file:
             self.words = [str(word).strip() for word in file]
         
-        self.verify_words_pertinence()
+        self.verify_words_pertinence(Path(LEXICAL_ANALYZER_OUTPUT_DIR / "tokens_output.txt"))
     
-    def verify_words_pertinence(self):
+    def verify_words_pertinence(self, output_path: Path):
         regular_definitions_automata = self.regular_definitions.automata
+        output_lines = []
+
         for word in self.words:
-            print(regular_definitions_automata.run(word))
-        
-        print()
+            accepted, token = regular_definitions_automata.run(word)
+            if accepted:
+                output_lines.append(f"<{word},{token}>")
+            else:
+                output_lines.append(f"<{word},erro!>")
+
+        with open(output_path, "w", encoding="utf-8") as out_file:
+            for line in output_lines:
+                out_file.write(line + "\n")
+
 
     @property
     def words(self):
