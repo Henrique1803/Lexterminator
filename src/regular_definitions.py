@@ -35,15 +35,49 @@ class RegularDefinitions:
             else:
                 raise ValueError("Má formação: definições regulares esperadas na forma 'token: expressao'")
             self.tokens.append(token)
-            self.regular_definitions[token] = regular_expression        
+            self.regular_definitions[token] = regular_expression
+
+    def _verify_subexpressions(self, regex: str):
+        stack = []
+        subexpressions = set()
+        subexpression = ""
+        last_char = ""
+        for char in regex:
+            is_scape = last_char in ["", "\\"]
+            if subexpression:
+                subexpression = f"{subexpression}{char}"
+            match char:
+                case '<':
+                    if not is_scape:
+                        stack.append("<")
+                        subexpression = f"{subexpression}{char}"
+                case '>':
+                    if not is_scape:
+                        try:
+                            stack.pop()
+                            subexpressions.add(subexpression)
+                            subexpression = ""
+                        except:
+                            raise ValueError(f"Expressão má formada: {regex}")
+            last_char = char
+        
+        if len(stack) > 0:
+            raise ValueError(f"Expressão má formada: {regex}")
+        
+        for subexpression in subexpressions:
+            try:
+                regex_from_token = self.regular_definitions[subexpression[1:-1]]
+            except:
+                raise ValueError(f"Subexpressão má formada: definição {subexpression[1:-1]} inexistente")
+            regex = regex.replace(subexpression, f"({regex_from_token})")
+        
+        return regex
     
     def convert_regular_definitions_to_regular_expressions(self): # instancia as regexs e atualia o regular_definitions
         for token in self.regular_definitions:
             for token_to_update, regular_expression_to_update in self.regular_definitions.items():
-                if token in regular_expression_to_update:
-                    regex_from_token = self.regular_definitions[token]
-                    new_regular_expression = regular_expression_to_update.replace(token, f"({regex_from_token})")
-                    self.regular_definitions[token_to_update] = new_regular_expression
+                new_regular_expression = self._verify_subexpressions(regular_expression_to_update)
+                self.regular_definitions[token_to_update] = new_regular_expression
                         
         for token, regular_expression in self.regular_definitions.items():
             self.regular_definitions[token] = RegularExpression(regular_expression, token)

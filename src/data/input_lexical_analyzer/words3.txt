@@ -33,3 +33,8 @@ return
 "_variavel"
 nome123
 //issoehumcomentario
+0+1
+1*1
+2\2
+4-2
+<number>

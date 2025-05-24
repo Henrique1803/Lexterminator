@@ -9,7 +9,7 @@ class LexicalAnalyzer:
 
     def __init__(self):
         self.__words: List[str] = list()
-        self.__regular_definitions = RegularDefinitions(REGULAR_DEFINITIONS_INPUT_DIR / "regular_definitions.txt")
+        self.__regular_definitions = RegularDefinitions(REGULAR_DEFINITIONS_INPUT_DIR / "programming_language.txt")
     
     def read_words_from_file_and_verify_pertinence(self, file_path: Path):
         with open(file_path, "r", encoding="utf-8") as file:
