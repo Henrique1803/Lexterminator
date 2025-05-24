@@ -1,7 +1,7 @@
 from typing import List, Tuple
-from src.node import Node
-from src.tree import Tree
-from src.finite_automata import FiniteAutomata
+from src.model.node import Node
+from src.model.tree import Tree
+from src.model.finite_automata import FiniteAutomata
 
 
 class RegularExpression:

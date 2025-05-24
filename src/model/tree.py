@@ -1,5 +1,5 @@
-from src.node import Node
-from src.finite_automata import FiniteAutomata
+from src.model.node import Node
+from src.model.finite_automata import FiniteAutomata
 
 from typing import Dict, Set
 from collections import defaultdict

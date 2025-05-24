@@ -1,5 +1,5 @@
-from src.regular_expression import RegularExpression
-from src.finite_automata import FiniteAutomata
+from src.model.regular_expression import RegularExpression
+from src.model.finite_automata import FiniteAutomata
 from src.utils.paths import FA_OUTPUT_DIR
 
 from pathlib import Path

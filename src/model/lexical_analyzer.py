@@ -1,4 +1,4 @@
-from src.regular_definitions import RegularDefinitions
+from src.model.regular_definitions import RegularDefinitions
 from src.utils.paths import LEXICAL_ANALYZER_OUTPUT_DIR, REGULAR_DEFINITIONS_INPUT_DIR
 
 from pathlib import Path
