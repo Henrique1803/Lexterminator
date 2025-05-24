@@ -33,6 +33,7 @@ semicolon: ;
 comma: ,
 dot: \.
 number: [0-9]+(\.[0-9]+)?
+teste: <any>teste?
 expr: <number><plus><number> | <number><minus><number> | <number><mult><number> | <number><div><number>
 string_literal: "[A-Za-z0-9Çç\s_]*"
 char_literal: '[A-Za-z0-9Çç]'
