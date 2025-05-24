@@ -1,2 +1,9 @@
 b
 0_ABABABA
+abac
+101010c
+0
+c
+@*@*
+teste
+ab

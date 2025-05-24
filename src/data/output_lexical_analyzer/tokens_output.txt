@@ -1,0 +1,9 @@
+<b,word>
+<0_ABABABA,erro!>
+<abac,id>
+<101010c,erro!>
+<0,int>
+<c,id>
+<@*@*,erro!>
+<teste,id>
+<ab,word>
