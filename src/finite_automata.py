@@ -1,6 +1,8 @@
 from collections import deque
 from typing import List, Set, Dict, Tuple
 
+from prettytable import PrettyTable
+
 
 class FiniteAutomata:
     def __init__(
@@ -25,62 +27,121 @@ class FiniteAutomata:
         """
         return self.transitions.get((state, symbol), set())
 
-    def print_transition_table(self):
+    def transition_table(self):
         """
-        Imprime a tabela de transições do autômato no terminal.
+        Imprime a tabela de transições do autômato utilizando prettytable,
+        com nomes de estados encurtados (q0, q1, ...) e tokens nos estados finais.
         """
+        from collections import defaultdict
+
         all_symbols = self.alphabet.copy()
-        # Detecta se há transições com epsilon
         if any(sym == '&' for (_, sym) in self.transitions):
             all_symbols.add('&')
 
-        largura = 25
+        headers = ['State'] + sorted(all_symbols)
+        table = PrettyTable()
+        table.field_names = headers
 
-        print(f"{'State':<{largura}}", end='')
-        for symbol in sorted(all_symbols):
-            print(f"{symbol:<{largura}}", end='')
-        print()
+        # Cria mapeamento: nome longo do estado → q0, q1, ...
+        state_names = sorted(self.states)
+        base_name_map = {state: f"q{i}" for i, state in enumerate(state_names)}
 
-        for state in sorted(self.states):
-            print(f"{state:<{largura}}", end='')
+        # Gerar nomes descritivos para estados finais com base nos tokens
+        token_counts = defaultdict(int)
+        final_name_map = {}
+
+        for state in self.final_states:
+            token = self.final_state_to_token.get(state, None)
+            if token:
+                token_counts[token] += 1
+                if token_counts[token] == 1:
+                    final_name_map[state] = token
+                else:
+                    final_name_map[state] = f"{token}_{token_counts[token]}"
+            else:
+                final_name_map[state] = base_name_map[state]  # fallback
+
+        for state in state_names:
+            # Define marcador e nome do estado
+            if state in self.final_states:
+                name = final_name_map[state]
+                marker = '*'
+            else:
+                name = base_name_map[state]
+                marker = ''
+
+            if state == self.initial_state:
+                marker = '→' + marker
+
+            display_state = f"{marker}{name}"
+            row = [display_state]
+
             for symbol in sorted(all_symbols):
                 dests = self.get_transitions(state, symbol)
-                dest_str = ','.join(sorted(dests)) if dests else '-'
-                print(f"{dest_str:<{largura}}", end='')
-            print()
+                if dests:
+                    dest_str = ','.join(
+                        final_name_map[d] if d in self.final_states else base_name_map[d]
+                        for d in sorted(dests)
+                    )
+                else:
+                    dest_str = '-'
+                row.append(dest_str)
+
+            table.add_row(row)
+
+        return table
 
 
     def to_file(self, file_path: str):
         """
-        Salva o autômato no formato:
-        - número de estados
-        - estado inicial
-        - estados finais (separados por vírgula)
-        - alfabeto (separado por vírgula)
-        - transições (uma por linha: origem,símbolo,destino)
+        Salva o autômato em um arquivo, usando nomes encurtados para estados:
+        - estados finais recebem nomes descritivos com base no token associado
+        - demais estados recebem nomes como q0, q1, ...
         """
-        # Gerar todos os estados únicos (ordenados por nome)
+        from collections import defaultdict
+
+        # Nome curto base: q0, q1, ...
         ordered_states = sorted(self.states)
-        ordered_final_states = sorted(self.final_states)
-        ordered_alphabet = sorted(self.alphabet)
+        base_name_map = {state: f"q{i}" for i, state in enumerate(ordered_states)}
+
+        # Nome descritivo para estados finais com base em tokens
+        token_counts = defaultdict(int)
+        final_name_map = {}
+        for state in self.final_states:
+            token = self.final_state_to_token.get(state)
+            if token:
+                token_counts[token] += 1
+                if token_counts[token] == 1:
+                    final_name_map[state] = token
+                else:
+                    final_name_map[state] = f"{token}_{token_counts[token]}"
+            else:
+                final_name_map[state] = base_name_map[state]  # fallback
+
+        # Mapa final: estado original → nome final (token ou qN)
+        final_map = {
+            state: final_name_map[state] if state in self.final_states else base_name_map[state]
+            for state in self.states
+        }
 
         with open(file_path, 'w', encoding='utf-8') as f:
-            # 1. Número de estados
+            # Número de estados
             f.write(f"{len(ordered_states)}\n")
 
-            # 2. Estado inicial
-            f.write(f"{self.initial_state}\n")
+            # Estado inicial
+            f.write(f"{final_map[self.initial_state]}\n")
 
-            # 3. Estados finais
-            f.write(','.join(ordered_final_states) + '\n')
+            # Estados finais
+            final_state_str = ','.join(final_map[s] for s in sorted(self.final_states))
+            f.write(final_state_str + '\n')
 
-            # 4. Alfabeto
-            f.write(','.join(ordered_alphabet) + '\n')
+            # Alfabeto
+            f.write(','.join(sorted(self.alphabet)) + '\n')
 
-            # 5. Transições
-            for (origin, symbol), destinations in self.transitions.items():
+            # Transições
+            for (origin, symbol), destinations in sorted(self.transitions.items()):
                 for dest in sorted(destinations):
-                    f.write(f"{origin},{symbol},{dest}\n")
+                    f.write(f"{final_map[origin]},{symbol},{final_map[dest]}\n")
 
     def _epsilon_closure(self, states: Set[str]) -> Set[str]:
         """
