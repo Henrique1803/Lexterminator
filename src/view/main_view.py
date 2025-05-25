@@ -17,7 +17,18 @@ class MainView(QtWidgets.QMainWindow):
         self.setup()
 
     def setup(self):
-        pass
+        self.tabWidget.currentChanged.connect(self.change_tab)
+        self.saveButton.setText("Save Automata File")
+        self.saveButton.clicked.connect(self.controller.save_automata_file)
+    
+    def change_tab(self, index):
+        self.saveButton.clicked.disconnect()
+        if index == 0:
+            self.saveButton.setText("Save Automata File")
+            self.saveButton.clicked.connect(self.controller.save_automata_file)
+        else:
+            self.saveButton.setText("Save Automata Diagram")
+            self.saveButton.clicked.connect(self.controller.save_automata_diagram)
 
     def setup_diagram_view(self, image_path: str = paths.AUTOMATA_DIAGRAM_DIR/ "automata_diagram.png"):
         print(image_path)
@@ -32,6 +43,7 @@ class MainView(QtWidgets.QMainWindow):
         for i, row in enumerate(rows):
             for j, cell in enumerate(row):
                 item = QTableWidgetItem(str(cell))
+                item.setFlags(item.flags() & ~Qt.ItemFlag.ItemIsEditable)
                 self.table.setItem(i, j, item)
         self.table.resizeColumnsToContents()
 
