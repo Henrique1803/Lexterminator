@@ -19,8 +19,9 @@ class MainView(QtWidgets.QMainWindow):
     def setup(self):
         pass
 
-    def setup_diagram_view(self, image_path: str = paths.FA_OUTPUT_DIR/ "automata_diagram.png"):
-        self.automataDiagram.setImagePath(image_path)
+    def setup_diagram_view(self, image_path: str = paths.AUTOMATA_DIAGRAM_DIR/ "automata_diagram.png"):
+        print(image_path)
+        self.automataDiagram.setImagePath(str(image_path))
 
     def setup_table_view(self, pretty_table: PrettyTable):
         rows = pretty_table.rows

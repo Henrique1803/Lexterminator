@@ -7,6 +7,7 @@ class ZoomableGraphicsView(QGraphicsView):
         super().__init__(parent)
 
     def setup(self):
+        print(self.__image_path)
         pixmap = QPixmap(self.__image_path)
         scene = QGraphicsScene()
         item = QGraphicsPixmapItem(pixmap)

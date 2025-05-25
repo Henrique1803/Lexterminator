@@ -94,7 +94,9 @@ class RegularDefinitions:
             automatas.append(new_automata)
         
         self.automata = automatas[0].determinize(self.__tokens)
-        self.automata.to_file(str(FA_OUTPUT_DIR / "af_output.txt"))       
+        self.automata.to_file(str(FA_OUTPUT_DIR / "af_output.txt"))
+
+        self.automata._generate_finite_automata_diagram()       
         
     def __str__(self):
         return

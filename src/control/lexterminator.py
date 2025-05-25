@@ -18,7 +18,7 @@ class LexicalAnalyzerController:
             self.__analyzer = LexicalAnalyzer(path)
             self.set_main_view()
             self.view.setup_table_view(self.analyzer.table)
-            self.view.setup_diagram_view("/home/jonatan/Documentos/UFSC/FORMAIS/GeradorDeAnalisadorLexico/src/data/output_automata_diagram/automata_diagram.png")
+            self.view.setup_diagram_view()
         except ValueError as e:
             self.show_error("Error in regular definitions file", str(e))
 

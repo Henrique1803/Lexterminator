@@ -1,7 +1,11 @@
-from collections import deque
+from src.utils.paths import AUTOMATA_DIAGRAM_DIR
+
+from collections import deque, defaultdict
 from typing import List, Set, Dict, Tuple
+from pprint import pprint
 
 from prettytable import PrettyTable
+from graphviz import Digraph
 
 
 class FiniteAutomata:
@@ -98,31 +102,11 @@ class FiniteAutomata:
         - estados finais recebem nomes descritivos com base no token associado
         - demais estados recebem nomes como q0, q1, ...
         """
-        from collections import defaultdict
 
         # Nome curto base: q0, q1, ...
         ordered_states = sorted(self.states)
-        base_name_map = {state: f"q{i}" for i, state in enumerate(ordered_states)}
 
-        # Nome descritivo para estados finais com base em tokens
-        token_counts = defaultdict(int)
-        final_name_map = {}
-        for state in self.final_states:
-            token = self.final_state_to_token.get(state)
-            if token:
-                token_counts[token] += 1
-                if token_counts[token] == 1:
-                    final_name_map[state] = token
-                else:
-                    final_name_map[state] = f"{token}_{token_counts[token]}"
-            else:
-                final_name_map[state] = base_name_map[state]  # fallback
-
-        # Mapa final: estado original → nome final (token ou qN)
-        final_map = {
-            state: final_name_map[state] if state in self.final_states else base_name_map[state]
-            for state in self.states
-        }
+        final_map = self._rename_states()
 
         with open(file_path, 'w', encoding='utf-8') as f:
             # Número de estados
@@ -276,11 +260,67 @@ class FiniteAutomata:
             final_states=new_final_states,
             transitions=transitions
         )
-        
         # Atualiza o mapeamento de tokens para os novos estados finais
         determinized.final_state_to_token = new_final_state_to_token
 
         return determinized
+
+    def _generate_finite_automata_diagram(self):
+        final_map = self._rename_states()
+        transitions = defaultdict(list)
+    
+        diagram = Digraph("Finite Automata Diagram")
+
+        diagram.attr("node", shape="doublecircle", height="1")
+        for state in self.final_states:
+            diagram.node(final_map[state])
+
+        for (origin, symbol), destinations in sorted(self.transitions.items()):
+            for dest in sorted(destinations):
+                transitions[(origin, dest)].append(symbol)
+        
+        diagram.attr("node", shape="circle", height="1")
+        for (origin, dest), symbols_list in sorted(transitions.items()):
+            symbols = str()
+            for symbol in symbols_list:
+                symbols += f"{symbol}|"
+            symbols = list(symbols)
+            symbols.pop()
+            symbols = "".join(symbols)
+
+            diagram.edge(final_map[origin], final_map[dest], symbols)
+        
+        diagram.node("", shape="none")
+        diagram.edge("", final_map[self.initial_state])
+
+        diagram.render(filename="automata_diagram", format="png", directory=str(AUTOMATA_DIAGRAM_DIR))
+    
+    def _rename_states(self) -> dict:
+        from collections import defaultdict
+
+        # Nome descritivo para estados finais com base em tokens
+        token_counts = defaultdict(int)
+        final_name_map = {}
+        for state in self.final_states:
+            token = self.final_state_to_token.get(state)
+            if token:
+                token_counts[token] += 1
+                if token_counts[token] == 1:
+                    final_name_map[state] = token
+                else:
+                    final_name_map[state] = f"{token}_{token_counts[token]}"
+
+        # Nome curto base: q0, q1, ...
+        ordered_states = sorted(self.states - self.final_states)
+        base_name_map = {state: f"q{i}" for i, state in enumerate(ordered_states)}
+
+        # Mapa final: estado original → nome final (token ou qN)
+        final_map = {
+            state: final_name_map[state] if state in self.final_states else base_name_map[state]
+            for state in self.states
+        }
+
+        return final_map
 
     @staticmethod
     def from_file(file_path: str) -> 'FiniteAutomata':

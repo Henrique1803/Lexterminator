@@ -12,14 +12,13 @@ false: false
 plus: \+
 minus: \-
 mult: \*
-div: / | \\
+div: / 
 eq: ==
 neq: !=
 lt: \<
 gt: \>
 leq: \<=
 geq: \>=
-and: \&\&
 or: \|\|
 not: !
 assign: =

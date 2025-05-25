@@ -1,0 +1,14 @@
+digraph "Finite Automata Diagram" {
+	node [height=1 shape=doublecircle]
+	num
+	id
+	num_2
+	node [height=1 shape=circle]
+	q0 -> id [label="A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z|a|b|c|d|e|f|g|h|i|j|k|l|m|n|o|p|q|r|s|t|u|v|w|x|y|z"]
+	q0 -> num [label="1|2|3|4|5|6|7|8|9"]
+	q0 -> num_2 [label=0]
+	id -> id [label="0|1|2|3|4|5|6|7|8|9|A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z|a|b|c|d|e|f|g|h|i|j|k|l|m|n|o|p|q|r|s|t|u|v|w|x|y|z"]
+	num -> num [label="0|1|2|3|4|5|6|7|8|9"]
+	"" [shape=none]
+	"" -> q0
+}
