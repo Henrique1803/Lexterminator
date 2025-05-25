@@ -7,9 +7,15 @@ PIP := $(VENV)/bin/pip
 run: install
 	$(PYTHON) main.py
 
-install:
+install: check-graphviz
 	@test -d $(VENV) || python3 -m venv $(VENV)
 	$(PIP) install -r requirements.txt
+
+check-graphviz:
+	@command -v dot >/dev/null 2>&1 || { \
+		echo "Graphviz não está instalado. Instalando..."; \
+		sudo apt update && sudo apt install -y graphviz; \
+	}
 
 clean:
 	rm -rf $(VENV)

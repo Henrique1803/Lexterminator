@@ -26,21 +26,13 @@ class MainView(QtWidgets.QMainWindow):
     def setup_table_view(self, pretty_table: PrettyTable):
         rows = pretty_table.rows
         headers = pretty_table.field_names
-
-        # Configura número de colunas e linhas
         self.table.setColumnCount(len(headers))
         self.table.setRowCount(len(rows))
-
-        # Define os cabeçalhos
         self.table.setHorizontalHeaderLabels(headers)
-
-        # Preenche os dados
         for i, row in enumerate(rows):
             for j, cell in enumerate(row):
                 item = QTableWidgetItem(str(cell))
                 self.table.setItem(i, j, item)
-
-        # Ajusta o redimensionamento das colunas
         self.table.resizeColumnsToContents()
 
     @property
