@@ -10,6 +10,7 @@ class LexicalAnalyzer:
     def __init__(self, regular_definitions_path: str):
         self.__words: List[str] = list()
         self.__regular_definitions = RegularDefinitions(regular_definitions_path)
+        self.__table = self.__regular_definitions.automata.transition_table()
     
     def read_words_from_file_and_verify_pertinence(self, file_path: Path):
         with open(file_path, "r", encoding="utf-8") as file:
@@ -44,3 +45,7 @@ class LexicalAnalyzer:
     @property
     def regular_definitions(self):
         return self.__regular_definitions
+    
+    @property
+    def table(self):
+        return self.__table
