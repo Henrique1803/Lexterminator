@@ -2,3 +2,6 @@
 *.pyc
 */venv
 venv/
+src/data/output_af/*
+src/data/output_automata_diagram/*
+src/data/output_lexical_analyzer/*
