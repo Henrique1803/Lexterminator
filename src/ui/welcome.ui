@@ -21,7 +21,7 @@
     <normaloff>resources/icon-resized.png</normaloff>resources/icon-resized.png</iconset>
   </property>
   <property name="windowOpacity">
-   <double>0.000000000000000</double>
+   <double>1.000000000000000</double>
   </property>
   <property name="styleSheet">
    <string notr="true"/>

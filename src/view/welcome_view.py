@@ -34,6 +34,7 @@ class WelcomeView(QtWidgets.QWidget):
         )
         
         if file_path:
+            self.close()
             self.controller.set_regular_definitions_file(file_path)
 
     @property

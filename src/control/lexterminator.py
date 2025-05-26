@@ -4,6 +4,7 @@ from pathlib import Path
 from src.model.lexical_analyzer import LexicalAnalyzer
 from src.view.welcome_view import WelcomeView # que carrega o .ui
 from src.view.main_view import MainView  # que carrega o .ui
+from src.view.token_view import TokenView  # que carrega o .ui
 import shutil
 
 from src.utils import paths
@@ -24,10 +25,22 @@ class LexicalAnalyzerController:
             self.view.setup_diagram_view()
         except ValueError as e:
             self.show_error("Error in regular definitions file", str(e))
+    
+    def set_input_file(self, path: str):
+        try:
+            self.__analyzer.read_words_from_file_and_verify_pertinence(path)
+            self.set_token_view()
+            self.view.setup_table_view()
+        except ValueError as e:
+            self.show_error("Error in input file", str(e))
 
     def set_main_view(self):
-        self.view.close()
         self.view = MainView(self)
+        self.show()
+    
+    def set_token_view(self):
+        self.view.deleteLater()
+        self.view = TokenView(self)
         self.show()
 
     def show_error(self, title: str, error_message: str):
@@ -97,11 +110,21 @@ class LexicalAnalyzerController:
         dialog.exec_()
 
     def save_automata_file(self):
-        print("save file")
+        print("save token file")
         file_path = self.select_save_file_path()
         if file_path:
             try:
                 self.analyzer.regular_definitions.automata.to_file(file_path)
+                self.show_success("File saved", f"File saved successfully in: {file_path}")
+            except Exception as e:
+                self.show_error("Error saving file", f"Could not save file: {e}")
+    
+    def save_token_file(self):
+        print("save file")
+        file_path = self.select_save_file_path()
+        if file_path:
+            try:
+                self.analyzer.write_words_result_to_file(file_path)
                 self.show_success("File saved", f"File saved successfully in: {file_path}")
             except Exception as e:
                 self.show_error("Error saving file", f"Could not save file: {e}")
@@ -136,6 +159,11 @@ class LexicalAnalyzerController:
             return file_path
 
         return None
+    
+    def return_to_welcome(self):
+        self.view.deleteLater()
+        self.view = WelcomeView(self)
+        self.show()
 
     @property
     def analyzer(self):

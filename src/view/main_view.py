@@ -1,6 +1,6 @@
 from src.view.utils.zoomable_graphics_view import ZoomableGraphicsView
 from PyQt5 import QtWidgets, uic
-from PyQt5.QtWidgets import QGraphicsScene, QGraphicsPixmapItem, QTableWidget, QTableWidgetItem
+from PyQt5.QtWidgets import QGraphicsScene, QGraphicsPixmapItem, QTableWidget, QTableWidgetItem, QFileDialog
 from PyQt5.QtGui import QPixmap
 from PyQt5.QtCore import Qt
 from prettytable import PrettyTable
@@ -20,6 +20,8 @@ class MainView(QtWidgets.QMainWindow):
         self.tabWidget.currentChanged.connect(self.change_tab)
         self.saveButton.setText("Save Automata File")
         self.saveButton.clicked.connect(self.controller.save_automata_file)
+        self.actionClose.triggered.connect(self.close_and_return_to_welcome)
+        self.actionOpen_file_to_recognize.triggered.connect(self.select_input_file)
     
     def change_tab(self, index):
         self.saveButton.clicked.disconnect()
@@ -46,6 +48,22 @@ class MainView(QtWidgets.QMainWindow):
                 item.setFlags(item.flags() & ~Qt.ItemFlag.ItemIsEditable)
                 self.table.setItem(i, j, item)
         self.table.resizeColumnsToContents()
+
+    def close_and_return_to_welcome(self):
+        self.controller.return_to_welcome()
+
+    def select_input_file(self):
+        options = QFileDialog.Options()
+        file_path, _ = QFileDialog.getOpenFileName(
+            self,
+            "Select a .txt file",
+            "",
+            "Text Files (*.txt)",
+            options=options
+        )
+        
+        if file_path:
+            self.controller.set_input_file(file_path)
 
     @property
     def controller(self):

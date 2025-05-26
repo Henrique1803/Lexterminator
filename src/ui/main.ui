@@ -179,7 +179,7 @@ QPushButton:hover
      <x>0</x>
      <y>0</y>
      <width>1020</width>
-     <height>27</height>
+     <height>28</height>
     </rect>
    </property>
    <property name="font">
@@ -200,7 +200,7 @@ QPushButton:hover
      <string>File</string>
     </property>
     <addaction name="actionOpen_file_to_recognize"/>
-    <addaction name="actionSave_Automata"/>
+    <addaction name="actionClose"/>
    </widget>
    <widget class="QMenu" name="menuAbout">
     <property name="title">
@@ -215,7 +215,7 @@ QPushButton:hover
     <string>Open file to recognize</string>
    </property>
   </action>
-  <action name="actionSave_Automata">
+  <action name="actionClose">
    <property name="text">
     <string>Close</string>
    </property>
