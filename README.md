@@ -66,7 +66,7 @@ A aplicação recebe como entrada um **conjunto de definições regulares**. As 
      - Nomes de tokens devem ser alfanuméricos e únicos.
      - **Caracteres de escape `\`**:
       - Qualquer símbolo imediatamente após o caractere `\` é considerado um símbolo literal, não um operador.
-      - Para representar como literal, os seguintes símbolos devem ser escapados: `\(`, `\)` `\[` `\]` `\*` `\|` `\.` `\?` `\+` `\&` `\-`
+      - Para representar como literal, os seguintes símbolos devem ser escapados: `\\`, `\<`, `\>`, `\(`, `\)` `\[` `\]` `\*` `\|` `\.` `\?` `\+` `\&` `\-`
 
 2. **Arquivo para análise léxica** (Exemplos: `src/data/input_lexical_analyzer/*.txt`):  
    - Contém o texto a ser reconhecido/tokenizado.

@@ -12,7 +12,7 @@ install: check-graphviz
 	$(PIP) install -r requirements.txt
 
 check-graphviz:
-	@command -v dot >/dev/null 2>&1 || { \
+	@which dot >/dev/null 2>&1 || { \
 		echo "Graphviz não está instalado. Instalando..."; \
 		sudo apt update && sudo apt install -y graphviz; \
 	}
