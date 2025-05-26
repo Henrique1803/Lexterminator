@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="cursor">
-   <cursorShape>PointingHandCursor</cursorShape>
+   <cursorShape>ArrowCursor</cursorShape>
   </property>
   <property name="windowTitle">
    <string>Lexterminator</string>
@@ -37,7 +37,7 @@
    </property>
    <property name="font">
     <font>
-     <family>Audiowide</family>
+     <family>Ubuntu</family>
      <pointsize>20</pointsize>
     </font>
    </property>
@@ -86,6 +86,9 @@
      <width>341</width>
      <height>61</height>
     </rect>
+   </property>
+   <property name="cursor">
+    <cursorShape>PointingHandCursor</cursorShape>
    </property>
    <property name="styleSheet">
     <string notr="true">

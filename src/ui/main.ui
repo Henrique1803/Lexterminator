@@ -137,9 +137,12 @@ border-width: 1px;
          </property>
          <property name="minimumSize">
           <size>
-           <width>200</width>
+           <width>250</width>
            <height>40</height>
           </size>
+         </property>
+         <property name="cursor">
+          <cursorShape>PointingHandCursor</cursorShape>
          </property>
          <property name="styleSheet">
           <string notr="true">

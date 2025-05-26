@@ -1,14 +1,250 @@
 digraph "Finite Automata Diagram" {
 	node [height=1 shape=doublecircle]
-	num
-	num_2
-	id
+	minus
+	identifier
+	not
+	expr
+	string
+	expr_2
+	identifier_2
+	while
+	lt
+	else
+	return
+	identifier_3
+	expr_3
+	number
+	int
+	leq
+	identifier_4
+	number_2
+	false
+	identifier_5
+	if
+	identifier_6
+	identifier_7
+	float
+	identifier_8
+	lparen
+	rbracket
+	identifier_9
+	dot
+	plus
+	comma
+	eq
+	or
+	rparen
+	identifier_10
+	identifier_11
+	identifier_12
+	identifier_13
+	identifier_14
+	mult
+	identifier_15
+	identifier_16
+	rbrace
+	identifier_17
+	identifier_18
+	identifier_19
+	identifier_20
+	div
+	char_literal
+	identifier_21
+	identifier_22
+	identifier_23
+	semicolon
+	neq
+	identifier_24
+	expr_4
+	comment
+	identifier_25
+	expr_5
+	gt
+	for
+	identifier_26
+	identifier_27
+	string_literal
+	identifier_28
+	identifier_29
+	identifier_30
+	lbracket
+	identifier_31
+	true
+	identifier_32
+	expr_6
+	lbrace
+	identifier_33
+	geq
+	expr_7
+	identifier_34
+	assign
+	expr_8
+	identifier_35
+	bool
 	node [height=1 shape=circle]
-	q0 -> id [label="A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z|a|b|c|d|e|f|g|h|i|j|k|l|m|n|o|p|q|r|s|t|u|v|w|x|y|z"]
-	q0 -> num [label="1|2|3|4|5|6|7|8|9"]
-	q0 -> num_2 [label=0]
-	id -> id [label="0|1|2|3|4|5|6|7|8|9|A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z|a|b|c|d|e|f|g|h|i|j|k|l|m|n|o|p|q|r|s|t|u|v|w|x|y|z"]
-	num -> num [label="0|1|2|3|4|5|6|7|8|9"]
+	q0 -> assign [label="="]
+	q0 -> identifier_35 [label=b]
+	q0 -> q1 [label="'"]
+	q0 -> comma [label=","]
+	q0 -> div [label="/"]
+	q0 -> dot [label="."]
+	q0 -> identifier_20 [label=e]
+	q0 -> number [label="0|1|2|3|4|5|6|7|8|9"]
+	q0 -> identifier_4 [label=f]
+	q0 -> gt [label=">"]
+	q0 -> identifier_27 [label="A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z|_|a|c|d|g|h|j|k|l|m|o|p|q|u|v|x|y|z"]
+	q0 -> identifier_16 [label=i]
+	q0 -> identifier_31 [label=r]
+	q0 -> identifier_29 [label=s]
+	q0 -> identifier_21 [label=t]
+	q0 -> identifier [label=w]
+	q0 -> identifier_19 [label=n]
+	q0 -> lbrace [label="{"]
+	q0 -> lbracket [label="["]
+	q0 -> lt [label="<"]
+	q0 -> lparen [label="("]
+	q0 -> minus [label="-"]
+	q0 -> mult [label="*"]
+	q0 -> not [label="!"]
+	q0 -> q12 [label="|"]
+	q0 -> plus [label="+"]
+	q0 -> rbrace [label="}"]
+	q0 -> rbracket [label="]"]
+	q0 -> rparen [label=")"]
+	q0 -> semicolon [label=";"]
+	q0 -> q13 [label="\""]
+	assign -> eq [label="="]
+	identifier_35 -> identifier_28 [label=o]
+	identifier_35 -> identifier_27 [label="0|1|2|3|4|5|6|7|8|9|A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z|_|a|b|c|d|e|f|g|h|i|j|k|l|m|n|p|q|r|s|t|u|v|w|x|y|z"]
+	identifier_28 -> identifier_23 [label=o]
+	identifier_28 -> identifier_27 [label="0|1|2|3|4|5|6|7|8|9|A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z|_|a|b|c|d|e|f|g|h|i|j|k|l|m|n|p|q|r|s|t|u|v|w|x|y|z"]
+	identifier_23 -> bool [label=l]
+	identifier_23 -> identifier_27 [label="0|1|2|3|4|5|6|7|8|9|A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z|_|a|b|c|d|e|f|g|h|i|j|k|m|n|o|p|q|r|s|t|u|v|w|x|y|z"]
+	bool -> identifier_27 [label="0|1|2|3|4|5|6|7|8|9|A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z|_|a|b|c|d|e|f|g|h|i|j|k|l|m|n|o|p|q|r|s|t|u|v|w|x|y|z"]
+	q1 -> q2 [label="0|1|2|3|4|5|6|7|8|9|A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z|a|b|c|d|e|f|g|h|i|j|k|l|m|n|o|p|q|r|s|t|u|v|w|x|y|z|Ç|ç"]
+	q2 -> char_literal [label="'"]
+	div -> comment [label="/"]
+	comment -> comment [label="0|1|2|3|4|5|6|7|8|9|A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z|a|b|c|d|e|f|g|h|i|j|k|l|m|n|o|p|q|r|s|t|u|v|w|x|y|z"]
+	identifier_20 -> identifier_22 [label=l]
+	identifier_20 -> identifier_27 [label="0|1|2|3|4|5|6|7|8|9|A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z|_|a|b|c|d|e|f|g|h|i|j|k|m|n|o|p|q|r|s|t|u|v|w|x|y|z"]
+	identifier_22 -> identifier_30 [label=s]
+	identifier_22 -> identifier_27 [label="0|1|2|3|4|5|6|7|8|9|A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z|_|a|b|c|d|e|f|g|h|i|j|k|l|m|n|o|p|q|r|t|u|v|w|x|y|z"]
+	identifier_30 -> else [label=e]
+	identifier_30 -> identifier_27 [label="0|1|2|3|4|5|6|7|8|9|A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z|_|a|b|c|d|f|g|h|i|j|k|l|m|n|o|p|q|r|s|t|u|v|w|x|y|z"]
+	else -> identifier_27 [label="0|1|2|3|4|5|6|7|8|9|A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z|_|a|b|c|d|e|f|g|h|i|j|k|l|m|n|o|p|q|r|s|t|u|v|w|x|y|z"]
+	number_2 -> number_2 [label="0|1|2|3|4|5|6|7|8|9"]
+	number_2 -> q7 [label="+"]
+	number_2 -> q8 [label="-"]
+	number_2 -> q9 [label="/"]
+	number_2 -> q11 [label="*"]
+	expr_5 -> expr_5 [label="0|1|2|3|4|5|6|7|8|9"]
+	expr_5 -> q6 [label="."]
+	q3 -> expr_7 [label="0|1|2|3|4|5|6|7|8|9"]
+	q4 -> expr_8 [label="0|1|2|3|4|5|6|7|8|9"]
+	q5 -> expr_4 [label="0|1|2|3|4|5|6|7|8|9"]
+	q6 -> expr_6 [label="0|1|2|3|4|5|6|7|8|9"]
+	expr_7 -> expr_7 [label="0|1|2|3|4|5|6|7|8|9"]
+	expr_8 -> expr_8 [label="0|1|2|3|4|5|6|7|8|9"]
+	expr_4 -> expr_4 [label="0|1|2|3|4|5|6|7|8|9"]
+	expr_6 -> expr_6 [label="0|1|2|3|4|5|6|7|8|9"]
+	number -> number [label="0|1|2|3|4|5|6|7|8|9"]
+	number -> q7 [label="+"]
+	number -> q8 [label="-"]
+	number -> q9 [label="/"]
+	number -> q10 [label="."]
+	number -> q11 [label="*"]
+	q7 -> expr_2 [label="0|1|2|3|4|5|6|7|8|9"]
+	q8 -> expr [label="0|1|2|3|4|5|6|7|8|9"]
+	q9 -> expr_3 [label="0|1|2|3|4|5|6|7|8|9"]
+	q10 -> number_2 [label="0|1|2|3|4|5|6|7|8|9"]
+	q11 -> expr_5 [label="0|1|2|3|4|5|6|7|8|9"]
+	expr_2 -> q3 [label="."]
+	expr_2 -> expr_2 [label="0|1|2|3|4|5|6|7|8|9"]
+	expr -> q4 [label="."]
+	expr -> expr [label="0|1|2|3|4|5|6|7|8|9"]
+	expr_3 -> q5 [label="."]
+	expr_3 -> expr_3 [label="0|1|2|3|4|5|6|7|8|9"]
+	identifier_4 -> identifier_5 [label=a]
+	identifier_4 -> identifier_10 [label=l]
+	identifier_4 -> identifier_34 [label=o]
+	identifier_4 -> identifier_27 [label="0|1|2|3|4|5|6|7|8|9|A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z|_|b|c|d|e|f|g|h|i|j|k|m|n|p|q|r|s|t|u|v|w|x|y|z"]
+	identifier_5 -> identifier_14 [label=l]
+	identifier_5 -> identifier_27 [label="0|1|2|3|4|5|6|7|8|9|A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z|_|a|b|c|d|e|f|g|h|i|j|k|m|n|o|p|q|r|s|t|u|v|w|x|y|z"]
+	identifier_14 -> identifier_2 [label=s]
+	identifier_14 -> identifier_27 [label="0|1|2|3|4|5|6|7|8|9|A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z|_|a|b|c|d|e|f|g|h|i|j|k|l|m|n|o|p|q|r|t|u|v|w|x|y|z"]
+	identifier_2 -> false [label=e]
+	identifier_2 -> identifier_27 [label="0|1|2|3|4|5|6|7|8|9|A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z|_|a|b|c|d|f|g|h|i|j|k|l|m|n|o|p|q|r|s|t|u|v|w|x|y|z"]
+	false -> identifier_27 [label="0|1|2|3|4|5|6|7|8|9|A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z|_|a|b|c|d|e|f|g|h|i|j|k|l|m|n|o|p|q|r|s|t|u|v|w|x|y|z"]
+	identifier_10 -> identifier_8 [label=o]
+	identifier_10 -> identifier_27 [label="0|1|2|3|4|5|6|7|8|9|A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z|_|a|b|c|d|e|f|g|h|i|j|k|l|m|n|p|q|r|s|t|u|v|w|x|y|z"]
+	identifier_8 -> identifier_7 [label=a]
+	identifier_8 -> identifier_27 [label="0|1|2|3|4|5|6|7|8|9|A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z|_|b|c|d|e|f|g|h|i|j|k|l|m|n|o|p|q|r|s|t|u|v|w|x|y|z"]
+	identifier_7 -> float [label=t]
+	identifier_7 -> identifier_27 [label="0|1|2|3|4|5|6|7|8|9|A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z|_|a|b|c|d|e|f|g|h|i|j|k|l|m|n|o|p|q|r|s|u|v|w|x|y|z"]
+	float -> identifier_27 [label="0|1|2|3|4|5|6|7|8|9|A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z|_|a|b|c|d|e|f|g|h|i|j|k|l|m|n|o|p|q|r|s|t|u|v|w|x|y|z"]
+	identifier_34 -> for [label=r]
+	identifier_34 -> identifier_27 [label="0|1|2|3|4|5|6|7|8|9|A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z|_|a|b|c|d|e|f|g|h|i|j|k|l|m|n|o|p|q|s|t|u|v|w|x|y|z"]
+	for -> identifier_27 [label="0|1|2|3|4|5|6|7|8|9|A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z|_|a|b|c|d|e|f|g|h|i|j|k|l|m|n|o|p|q|r|s|t|u|v|w|x|y|z"]
+	gt -> geq [label="="]
+	identifier_27 -> identifier_27 [label="0|1|2|3|4|5|6|7|8|9|A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z|_|a|b|c|d|e|f|g|h|i|j|k|l|m|n|o|p|q|r|s|t|u|v|w|x|y|z"]
+	identifier_16 -> identifier_27 [label="0|1|2|3|4|5|6|7|8|9|A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z|_|a|b|c|d|e|g|h|i|j|k|l|m|o|p|q|r|s|t|u|v|w|x|y|z"]
+	identifier_16 -> if [label=f]
+	identifier_16 -> identifier_13 [label=n]
+	if -> identifier_27 [label="0|1|2|3|4|5|6|7|8|9|A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z|_|a|b|c|d|e|f|g|h|i|j|k|l|m|n|o|p|q|r|s|t|u|v|w|x|y|z"]
+	identifier_13 -> identifier_27 [label="0|1|2|3|4|5|6|7|8|9|A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z|_|a|b|c|d|e|f|g|h|i|j|k|l|m|n|o|p|q|r|s|u|v|w|x|y|z"]
+	identifier_13 -> int [label=t]
+	int -> identifier_27 [label="0|1|2|3|4|5|6|7|8|9|A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z|_|a|b|c|d|e|f|g|h|i|j|k|l|m|n|o|p|q|r|s|t|u|v|w|x|y|z"]
+	identifier_31 -> identifier_27 [label="0|1|2|3|4|5|6|7|8|9|A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z|_|a|b|c|d|f|g|h|i|j|k|l|m|o|p|q|u|v|w|x|y|z"]
+	identifier_31 -> identifier_18 [label=e]
+	identifier_31 -> identifier_19 [label="n|r|s|t"]
+	identifier_18 -> identifier_27 [label="0|1|2|3|4|5|6|7|8|9|A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z|_|a|b|c|d|e|f|g|h|i|j|k|l|m|n|o|p|q|r|s|u|v|w|x|y|z"]
+	identifier_18 -> identifier_24 [label=t]
+	identifier_24 -> identifier_27 [label="0|1|2|3|4|5|6|7|8|9|A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z|_|a|b|c|d|e|f|g|h|i|j|k|l|m|n|o|p|q|r|s|t|v|w|x|y|z"]
+	identifier_24 -> identifier_11 [label=u]
+	identifier_11 -> identifier_27 [label="0|1|2|3|4|5|6|7|8|9|A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z|_|a|b|c|d|e|f|g|h|i|j|k|l|m|n|o|p|q|s|t|u|v|w|x|y|z"]
+	identifier_11 -> identifier_3 [label=r]
+	identifier_3 -> identifier_27 [label="0|1|2|3|4|5|6|7|8|9|A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z|_|a|b|c|d|e|f|g|h|i|j|k|l|m|o|p|q|r|s|t|u|v|w|x|y|z"]
+	identifier_3 -> return [label=n]
+	return -> identifier_27 [label="0|1|2|3|4|5|6|7|8|9|A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z|_|a|b|c|d|e|f|g|h|i|j|k|l|m|n|o|p|q|r|s|t|u|v|w|x|y|z"]
+	identifier_29 -> identifier_27 [label="0|1|2|3|4|5|6|7|8|9|A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z|_|a|b|c|d|e|f|g|h|i|j|k|l|m|o|p|q|u|v|w|x|y|z"]
+	identifier_29 -> identifier_17 [label=t]
+	identifier_29 -> identifier_19 [label="n|r|s"]
+	identifier_17 -> identifier_27 [label="0|1|2|3|4|5|6|7|8|9|A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z|_|a|b|c|d|e|f|g|h|i|j|k|l|m|o|p|q|u|v|w|x|y|z"]
+	identifier_17 -> identifier_25 [label=r]
+	identifier_17 -> identifier_19 [label="n|s|t"]
+	identifier_25 -> identifier_27 [label="0|1|2|3|4|5|6|7|8|9|A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z|_|a|b|c|d|e|f|g|h|j|k|l|m|o|p|q|u|v|w|x|y|z"]
+	identifier_25 -> identifier_12 [label=i]
+	identifier_25 -> identifier_19 [label="n|r|s|t"]
+	identifier_12 -> identifier_27 [label="0|1|2|3|4|5|6|7|8|9|A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z|_|a|b|c|d|e|f|g|h|i|j|k|l|m|o|p|q|r|s|t|u|v|w|x|y|z"]
+	identifier_12 -> identifier_6 [label=n]
+	identifier_6 -> identifier_27 [label="0|1|2|3|4|5|6|7|8|9|A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z|_|a|b|c|d|e|f|h|i|j|k|l|m|n|o|p|q|r|s|t|u|v|w|x|y|z"]
+	identifier_6 -> string [label=g]
+	string -> identifier_27 [label="0|1|2|3|4|5|6|7|8|9|A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z|_|a|b|c|d|e|f|g|h|i|j|k|l|m|n|o|p|q|r|s|t|u|v|w|x|y|z"]
+	identifier_21 -> identifier_27 [label="0|1|2|3|4|5|6|7|8|9|A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z|_|a|b|c|d|e|f|g|h|i|j|k|l|m|o|p|q|u|v|w|x|y|z"]
+	identifier_21 -> identifier_9 [label=r]
+	identifier_21 -> identifier_19 [label="n|s|t"]
+	identifier_9 -> identifier_27 [label="0|1|2|3|4|5|6|7|8|9|A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z|_|a|b|c|d|e|f|g|h|i|j|k|l|m|o|p|q|v|w|x|y|z"]
+	identifier_9 -> identifier_26 [label=u]
+	identifier_9 -> identifier_19 [label="n|r|s|t"]
+	identifier_26 -> identifier_27 [label="0|1|2|3|4|5|6|7|8|9|A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z|_|a|b|c|d|f|g|h|i|j|k|l|m|n|o|p|q|r|s|t|u|v|w|x|y|z"]
+	identifier_26 -> true [label=e]
+	true -> identifier_27 [label="0|1|2|3|4|5|6|7|8|9|A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z|_|a|b|c|d|e|f|g|h|i|j|k|l|m|n|o|p|q|r|s|t|u|v|w|x|y|z"]
+	identifier -> identifier_27 [label="0|1|2|3|4|5|6|7|8|9|A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z|_|a|b|c|d|e|f|g|i|j|k|l|m|n|o|p|q|r|s|t|u|v|w|x|y|z"]
+	identifier -> identifier_32 [label=h]
+	identifier_32 -> identifier_27 [label="0|1|2|3|4|5|6|7|8|9|A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z|_|a|b|c|d|e|f|g|h|j|k|l|m|n|o|p|q|r|s|t|u|v|w|x|y|z"]
+	identifier_32 -> identifier_15 [label=i]
+	identifier_15 -> identifier_27 [label="0|1|2|3|4|5|6|7|8|9|A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z|_|a|b|c|d|e|f|g|h|i|j|k|m|n|o|p|q|r|s|t|u|v|w|x|y|z"]
+	identifier_15 -> identifier_33 [label=l]
+	identifier_33 -> identifier_27 [label="0|1|2|3|4|5|6|7|8|9|A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z|_|a|b|c|d|f|g|h|i|j|k|l|m|n|o|p|q|r|s|t|u|v|w|x|y|z"]
+	identifier_33 -> while [label=e]
+	while -> identifier_27 [label="0|1|2|3|4|5|6|7|8|9|A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z|_|a|b|c|d|e|f|g|h|i|j|k|l|m|n|o|p|q|r|s|t|u|v|w|x|y|z"]
+	identifier_19 -> identifier_27 [label="0|1|2|3|4|5|6|7|8|9|A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z|_|a|b|c|d|e|f|g|h|i|j|k|l|m|o|p|q|u|v|w|x|y|z"]
+	identifier_19 -> identifier_19 [label="n|r|s|t"]
+	lt -> leq [label="="]
+	not -> neq [label="="]
+	q12 -> or [label="|"]
+	q13 -> q13 [label="0|1|2|3|4|5|6|7|8|9|A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z|_|a|b|c|d|e|f|g|h|i|j|k|l|m|n|o|p|q|r|s|t|u|v|w|x|y|z|Ç|ç"]
+	q13 -> string_literal [label="\""]
 	"" [shape=none]
 	"" -> q0
 }
