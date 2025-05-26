@@ -5,13 +5,20 @@ from src.model.finite_automata import FiniteAutomata
 
 
 class RegularExpression:
+    """
+    Classe que representa uma expressão regular.
+    Possui métodos que verificam má formações, e trata a expressão
+    para convertê-la em um AFD correspondente.
+    """
 
+    # Constante com a precedência dos operadores primitivos, utilizados na conversão para AFD
     PRECEDENCE = {
         "*": 2,
         ".": 1,
         "|": 0
     }
 
+    # Constante listando os operadores considerados, para distingui-los de literais
     OPERATORS = ['(', ")", "[", "]", "*", "|", ".", "?", "+", "&", "-"]
 
     def __init__(self, value: str, token_name:str = ""):
@@ -24,9 +31,18 @@ class RegularExpression:
         self.convert_to_finite_automata()
 
     def _remove_whitespaces(self, value: str):
+        """
+        Desconsidera quaisquer espaços em branco da expressão,
+        retornando a nova expressão com estes removidos.
+        """
         return value.replace(" ", "").replace("\n", "").replace("\t", "")
 
     def _tokenize(self, value: str):
+        """
+        Tokeniza a expressão regular em tokens do tipo LITERAL, ou OPERATOR.
+        Utiliza o caractere \ como escape para tratar qualquer símbolo após ele como LITERAL.
+        Verifica má formação relacionadas à parênteses/colchetes.
+        """
         brackets_stack = []
         last_char = "#"
         for c in value:
@@ -62,6 +78,10 @@ class RegularExpression:
         
 
     def _update_to_primitive_operators(self):
+        """
+        Valida cada token da expressão, deixando-a apenas com os operadores primitivos : *, . e |
+        Expande grupos/sequências, insere concatenações e gera exceções de má formação.
+        """
         stack = []
         last_token = ("OPERATOR", str())
         is_sequence = False
@@ -140,6 +160,11 @@ class RegularExpression:
         self.infix = stack
 
     def _find_last_group_by_stack(self, stack: list, is_sequence: bool = False):
+        """
+        Procura o último parênteses (ou colchetes se is_sequence) de abertura em uma pilha (stack),
+        validando a formação de parêntes e colchetes, e retornando o grupo limitado por tal caracteres de abertura e fechamento.
+        Desconsidera qualquer caractere LITERAL nessa busca.
+        """
         open_char = "[" if is_sequence else "("
         close_char = "]" if is_sequence else ")"
         substack = []
@@ -158,6 +183,10 @@ class RegularExpression:
         raise ValueError(f"Expressão com má formação de '{open_char}{close_char}'")
 
     def _expand_group(self, group: list):
+        """
+        Expande um grupo/sequência do tipo [A-Za-z0-9] ou [ABCDEF...] para (A | B | C | ...).
+        Valida exceções de má formação no grupo em questão.
+        """
         index_token = 1
         sequence = set()
         for token_type, token_char in group[1:-1]:
@@ -184,6 +213,11 @@ class RegularExpression:
         return expanded_group
 
     def _generate_sequence(self, prev: Tuple, pos: Tuple):
+        """
+        Dado um grupo com uma sequência do tipo A-Z ou 0-9, retorna um conjunto
+        com todos os caracteres inclusos na sequência.
+        Gera exceção em caso de sequência inválida, como [A-9] ou [A-z] ou [Z-A]
+        """
         start, end = prev[1], pos[1]
         if start.isalpha() and end.isalpha() and start.isupper() and end.isupper() and start <= end:
             return set([("LITERAL", chr(c)) for c in range(ord(start), ord(end) + 1)])
@@ -195,6 +229,12 @@ class RegularExpression:
             raise ValueError(f"Sequência inválida: [{start}-{end}]")
         
     def generate_infix(self, value: str):
+        """
+        Método principal que gera a notação infixa da expressão de entrada.
+        Utiliza os demais métodos para tratar e validar a expressão.
+        Inclui a concatenação com o literal # no final, preparando a expressão para
+        convertê-la em um AFD.
+        """
         value = self._remove_whitespaces(value)
         self._tokenize(value)
         self._update_to_primitive_operators()
@@ -202,6 +242,10 @@ class RegularExpression:
         self.infix.extend([("OPERATOR", ")"), ("OPERATOR", "."), ("LITERAL", "#")])
 
     def generate_postfix(self):
+        """
+        Com base na notação infixa previamente tratada, gera a notação pós fixa da expressão
+        eliminando parênteses (do tipo OPERATOR) nesse processo.
+        """
         stack = []
 
         for type, char in self.infix:
@@ -225,6 +269,10 @@ class RegularExpression:
             self.postfix.append(stack.pop())
 
     def convert_regular_expression_to_tree(self) -> Tree:
+        """
+        Converte a expressão na forma pós-fixa para a árvore de
+        conversão ER -> AFD.
+        """
         stack = list()
         counter = 0
 
@@ -259,6 +307,9 @@ class RegularExpression:
         return tree
     
     def convert_to_finite_automata(self):
+        """
+        Utilizando a árvore formada, converte a expressão em um AFD
+        """
         tree = self.convert_regular_expression_to_tree()
         tree.calculate_nodes_data()
         self.automata = tree.generate_automata(self.token_name)

@@ -1,4 +1,7 @@
 class Node:
+    """
+    Classe que representa um nó na árvore utilizada na conversão de ER para AFD.
+    """
 
     def __init__(self, token: str, left_node: "Node" = None, right_node: "Node" = None, value: str = str(), operator: bool = True):
 

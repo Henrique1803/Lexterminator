@@ -6,6 +6,10 @@ from collections import defaultdict
 
 
 class Tree:
+    """
+    Classe que representa a árvore utilizada no método de conversão de ER para AFD.
+    Implementa o algoritmo de conversão, considerando uma árvore montada para determinada ER.
+    """
 
     def __init__(self):
         self.__nodes: list[Node] = list()
@@ -14,15 +18,19 @@ class Tree:
         self.__node_value_to_token: Dict[str, str] = defaultdict(str)
         self.__acceptance_node: Node = None
 
-    @property
-    def nodes(self):
-        return self.__nodes
 
     def add_node(self, node: Node):
+        """
+        Método que adiciona um nó na árvore.
+        """
         self.__nodes.append(node)
 
         if node.value:
             self.add_default_follow_pose(node.value)
+
+    @property
+    def nodes(self):
+        return self.__nodes
     
     @property
     def follow_pose(self):
@@ -45,12 +53,21 @@ class Tree:
         self.__acceptance_node = node
     
     def update_follow_pose(self, value:str, follow_pose:set):
+        """
+        Atualiza o dicionário follow_pose de acordo com um novo valor a ser incluso no conjunto.
+        """
         self.follow_pose[value] = self.follow_pose[value].union(follow_pose)
     
     def add_default_follow_pose(self, value:str):
+        """
+        Adiciona um conjunto vazio padrão para cada estado do follow_pose
+        """
         self.follow_pose[value] = set()
     
     def calculate_nodes_data(self):
+        """
+        Calcula iterativamente firs pos, last pos, nullable e follow pos para cada um dos nós da árvore.
+        """
         for node in self.nodes:
 
             if node.left_node == None and node.right_node == None and not node.is_operator:
@@ -90,6 +107,10 @@ class Tree:
                 self.calculate_node_follow_pose(node)
             
     def calculate_node_follow_pose(self, node: Node):
+        """
+        Atualiza o follow_pose considerando o cálculo de um único nó.
+        Este método é chamado iterativamente pelo anterior, buscando construir todo o follow_pose.
+        """
         if node.token == "*" and node.is_operator:
             for value in node.last_pose:
                 self.update_follow_pose(value, node.first_pose)
@@ -99,6 +120,9 @@ class Tree:
                 self.update_follow_pose(value, node.right_node.first_pose)
     
     def generate_automata(self, token_name: str) -> FiniteAutomata:
+        """
+        Considerando os dados de follow_pose já computados, gera e retorna o AFD correspondente.
+        """
         format_states_name = dict()
         initial_state = self.nodes[-1].first_pose
         initial_state_name = self.format_automata_state_name(initial_state)
@@ -158,6 +182,9 @@ class Tree:
         return FiniteAutomata(states, self.alphabet, initial_state, final_states, new_transitions)
         
     def format_automata_state_name(self, name: set):
+        """
+        Formata o nome de um determinado estado para convenção q0, q1, ... utilizada.
+        """
         state = map(int, list(name))
         state = sorted(state)
         state = map(str, state)

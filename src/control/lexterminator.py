@@ -10,13 +10,18 @@ import shutil
 from src.utils import paths
 
 class LexicalAnalyzerController:
+    """
+    Classe que representa o controlador da interface, associando View com Model.
+    """
     def __init__(self):
         self.__view = WelcomeView(self)
         self.show()
 
+    # exibe a view maximizada
     def show(self):
         self.view.showMaximized()
 
+    # carrega o arquivo de definições regulares e atualiza a view de acordo
     def set_regular_definitions_file(self, path: str):
         try:
             self.__analyzer = LexicalAnalyzer(path)
@@ -26,6 +31,7 @@ class LexicalAnalyzerController:
         except ValueError as e:
             self.show_error("Error in regular definitions file", str(e))
     
+    # carrega o arquivo de entrada para ser reconhecido pelo AL e atualiza a view de acordo
     def set_input_file(self, path: str):
         try:
             self.__analyzer.read_words_from_file_and_verify_pertinence(path)
@@ -34,15 +40,18 @@ class LexicalAnalyzerController:
         except ValueError as e:
             self.show_error("Error in input file", str(e))
 
+    # atualiza a view como a MainView
     def set_main_view(self):
         self.view = MainView(self)
         self.show()
     
+    # atualiza a view como a TokenView
     def set_token_view(self):
         self.view.deleteLater()
         self.view = TokenView(self)
         self.show()
 
+    # exibe modal de erro
     def show_error(self, title: str, error_message: str):
         dialog = QDialog(self.view)
         dialog.setWindowTitle("Error")
@@ -76,6 +85,7 @@ class LexicalAnalyzerController:
         dialog.setLayout(layout)
         dialog.exec_()
 
+    # exibe modal de sucesso
     def show_success(self, title: str, success_message: str):
         dialog = QDialog(self.view)
         dialog.setWindowTitle("Success")
@@ -109,6 +119,7 @@ class LexicalAnalyzerController:
         dialog.setLayout(layout)
         dialog.exec_()
 
+    # trata o evento de click no botão de salvar o arquivo do autômato
     def save_automata_file(self):
         print("save token file")
         file_path = self.select_save_file_path()
@@ -119,6 +130,7 @@ class LexicalAnalyzerController:
             except Exception as e:
                 self.show_error("Error saving file", f"Could not save file: {e}")
     
+    # trata o evento de click no botão de salvar a lista de tokens reconhecidos
     def save_token_file(self):
         print("save file")
         file_path = self.select_save_file_path()
@@ -129,6 +141,7 @@ class LexicalAnalyzerController:
             except Exception as e:
                 self.show_error("Error saving file", f"Could not save file: {e}")
 
+    # trata o evento de click no botão de salvar o diagrama do autômato
     def save_automata_diagram(self):
         print("save diagram")
         file_path = self.select_save_file_path(type=".png")
@@ -139,6 +152,7 @@ class LexicalAnalyzerController:
             except:
                 self.show_error("Error saving file", "Could not save file")
 
+    # abre dialog com seletor de arquivos para salvar, de acordo com tipo especificado
     def select_save_file_path(self, type: str = ".txt"):
         options = QFileDialog.Options()
 
@@ -160,6 +174,7 @@ class LexicalAnalyzerController:
 
         return None
     
+    # retorna para a tela de welcmoe, permitindo criar um novo AL
     def return_to_welcome(self):
         self.view.deleteLater()
         self.view = WelcomeView(self)

@@ -9,6 +9,10 @@ from graphviz import Digraph
 
 
 class FiniteAutomata:
+    """
+    Classe que representa o Autômato Finito, de acordo com a definição formal.
+    Inclui métodos de operações com o autômato como união e determinização.
+    """
     def __init__(
         self,
         states: Set[str],

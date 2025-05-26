@@ -1,5 +1,9 @@
 from pathlib import Path
 
+"""
+Utilitários para o uso de paths ao salvar e abrir arquivos, 
+tomando o caminho absoluto para evitar problemas em diferentes sistemas operacionais
+"""
 PROGRAM_DIR = Path(__file__).parents[2]
 LEXICAL_ANALYZER_INPUT_DIR = PROGRAM_DIR / "src/data/input_lexical_analyzer"
 REGULAR_DEFINITIONS_INPUT_DIR = PROGRAM_DIR / "src/data/input_regular_definitions" 

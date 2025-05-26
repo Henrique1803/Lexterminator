@@ -5,6 +5,10 @@ from PyQt5.QtCore import Qt
 
 
 class TokenView(QtWidgets.QMainWindow):
+    """
+    Classe que representa a view da lista de tokens, de acordo com o layout 'src/ui/token.ui'.
+    Trata eventos relacionados a interface e interage com o controller.
+    """
 
     def __init__(self, controller):
         super(TokenView, self).__init__()
@@ -13,10 +17,17 @@ class TokenView(QtWidgets.QMainWindow):
         self.setup()
 
     def setup(self):
+        """
+        Configura eventos nos componentes para determinados métodos.
+        """
         self.returnButton.clicked.connect(self.return_to_main)
         self.saveButton.clicked.connect(self.controller.save_token_file)
 
     def setup_table_view(self):
+        """
+        Configura widget que exibe a lista de tokens em formato de tabela,
+        de acordo com words_result do analyzer.
+        """
         words_result = self.controller.analyzer.words_result
         headers = ["Word", "Token"]
         self.table.setColumnCount(len(headers))
@@ -43,6 +54,9 @@ class TokenView(QtWidgets.QMainWindow):
 
 
     def return_to_main(self):
+        """
+        Retorna par a main view.
+        """
         self.close()
         self.controller.set_main_view()
         self.controller.view.setup_table_view(self.controller.analyzer.table)

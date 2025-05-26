@@ -7,7 +7,10 @@ from typing import Dict, List
 
 
 class RegularDefinitions:
-    
+    """
+    Classe que representa as definições regulares de entrada para o analisador léxico.
+    Cada definição, após tratar subdefinições, possui um nome (token), e a RegularExpression correspondente.
+    """
     def __init__(self, regular_definitions_file: Path):
         self.__tokens: List[str] = list()
         self.__regular_definitions: Dict[str, str|RegularExpression] = dict() #mapeia o nome da definição pra regex / grupo
@@ -38,6 +41,11 @@ class RegularDefinitions:
             self.regular_definitions[token] = regular_expression
 
     def _verify_subexpressions(self, regex: str):
+        """
+        Verifica formação de uma expressão regex contendo subexpressões,
+        i.e. contendo definições de tokens declaradas previamente com <nome_token>.
+        Substitui subexpressões pela expressão regular correspondente.
+        """
         stack = []
         subexpressions = set()
         subexpression = ""
@@ -73,7 +81,11 @@ class RegularDefinitions:
         
         return regex
     
-    def convert_regular_definitions_to_regular_expressions(self): # instancia as regexs e atualia o regular_definitions
+    def convert_regular_definitions_to_regular_expressions(self):
+        """
+        Instancia as expressões regulares correspondentes a cada definição,
+        construindo o dicionário regular_definitions.
+        """
         for token in self.regular_definitions:
             for token_to_update, regular_expression_to_update in self.regular_definitions.items():
                 new_regular_expression = self._verify_subexpressions(regular_expression_to_update)
@@ -83,6 +95,10 @@ class RegularDefinitions:
             self.regular_definitions[token] = RegularExpression(regular_expression, token)
         
     def regular_expressions_automata_union(self):
+        """
+        Realiza a união dos autômatos correspondente a cada uma das definições,
+        gerando um autômato geral, determinizando-o.
+        """
         automatas: List[FiniteAutomata] = list()
         for regular_expression in self.regular_definitions.values():
             automatas.append(regular_expression.automata)

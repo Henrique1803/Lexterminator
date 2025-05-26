@@ -6,6 +6,10 @@ from typing import List
 
 
 class LexicalAnalyzer:
+    """
+    Classe que representa o Analisador Léxico considerando as definições regulares de entrada.
+    Utilizando as estruturas internas, gera o autômato finito determinístico para o AL.
+    """
 
     def __init__(self, regular_definitions_path: str):
         self.__words: List[str] = list()
@@ -14,12 +18,21 @@ class LexicalAnalyzer:
         self.__words_result = None
     
     def read_words_from_file_and_verify_pertinence(self, file_path: Path):
+        """
+        Lê arquivo de entrada e salva a lista de tokens reconhecidos em um diretório padrão
+        """
         with open(file_path, "r", encoding="utf-8") as file:
             self.words = [str(word).strip() for word in file]
         
         self.verify_words_pertinence(Path(LEXICAL_ANALYZER_OUTPUT_DIR / "tokens_output.txt"))
     
     def verify_words_pertinence(self, output_path: Path):
+        """
+        Itera pelas palavras buscando reconhecê-las com o autômato.
+        Constrói a lista de tokens de acordo com o estado de aceitação
+        retornado pelo autômato, ou erro.
+        Salva a lista de tokens em um arquivo de saída, com diretório padrão.
+        """
         regular_definitions_automata = self.regular_definitions.automata
         output_lines = []
         results = []
