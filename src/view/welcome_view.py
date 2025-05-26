@@ -3,7 +3,7 @@ from PyQt5.QtWidgets import QFileDialog
 from PyQt5.QtGui import QFontDatabase, QFont
 
 
-class WelcomeView(QtWidgets.QWidget):
+class WelcomeView(QtWidgets.QMainWindow):
 
     def __init__(self, controller):
         super(WelcomeView, self).__init__()
