@@ -2,12 +2,14 @@ from PyQt5.QtWidgets import QDialog, QVBoxLayout, QHBoxLayout, QLabel, QTextEdit
 from PyQt5.QtCore import Qt
 from pathlib import Path
 from src.model.lexical_analyzer import LexicalAnalyzer
-from src.view.welcome_view import WelcomeView # que carrega o .ui
-from src.view.main_view import MainView  # que carrega o .ui
-from src.view.token_view import TokenView  # que carrega o .ui
+from src.view.welcome_view import WelcomeView
+from src.view.main_view import MainView 
+from src.view.token_view import TokenView 
+from src.view.about_view import AboutView
 import shutil
 
 from src.utils import paths
+
 
 class LexicalAnalyzerController:
     """
@@ -174,11 +176,15 @@ class LexicalAnalyzerController:
 
         return None
     
-    # retorna para a tela de welcmoe, permitindo criar um novo AL
+    # retorna para a tela de welcome, permitindo criar um novo AL
     def return_to_welcome(self):
         self.view.deleteLater()
         self.view = WelcomeView(self)
         self.show()
+
+    def show_about(self):
+        self.about_window = AboutView(self.view)
+        self.about_window.show()
 
     @property
     def analyzer(self):

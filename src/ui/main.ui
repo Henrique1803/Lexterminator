@@ -202,13 +202,14 @@ QPushButton:hover
     <addaction name="actionOpen_file_to_recognize"/>
     <addaction name="actionClose"/>
    </widget>
-   <widget class="QMenu" name="menuAbout">
+   <widget class="QMenu" name="menuInfo">
     <property name="title">
-     <string>About</string>
+     <string>Info</string>
     </property>
+    <addaction name="actionAbout"/>
    </widget>
    <addaction name="menuFile"/>
-   <addaction name="menuAbout"/>
+   <addaction name="menuInfo"/>
   </widget>
   <action name="actionOpen_file_to_recognize">
    <property name="text">
@@ -218,6 +219,11 @@ QPushButton:hover
   <action name="actionClose">
    <property name="text">
     <string>Close</string>
+   </property>
+  </action>
+  <action name="actionAbout">
+   <property name="text">
+    <string>About</string>
    </property>
   </action>
  </widget>

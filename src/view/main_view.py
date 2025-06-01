@@ -29,6 +29,7 @@ class MainView(QtWidgets.QMainWindow):
         self.saveButton.clicked.connect(self.controller.save_automata_file)
         self.actionClose.triggered.connect(self.close_and_return_to_welcome)
         self.actionOpen_file_to_recognize.triggered.connect(self.select_input_file)
+        self.actionAbout.triggered.connect(self.controller.show_about)
     
     def change_tab(self, index):
         """
