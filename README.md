@@ -60,13 +60,14 @@ A aplicação recebe como entrada um **conjunto de definições regulares**. As 
      - Operadores suportados: `|`, `*`, `+`, `?`, concatenação implícita ou explícita.
      - `&` equivalente ao símbolo vazio.
      - Suporte a agrupamentos `()`.
+     - Suporte a espaço `\s`.
      - Grupos e sequências lógicas no formato `[A-Za-z0-9_]` (para A, B .., Z, a, b, .. z, 0, ..., 9, _)
      - Aliases de definições anteriores no formato `<alias>`.
      - Uma definição por linha, no formato `definição: expressão` .
      - Nomes de tokens devem ser alfanuméricos e únicos.
      - **Caracteres de escape `\`**:
       - Qualquer símbolo imediatamente após o caractere `\` é considerado um símbolo literal, não um operador.
-      - Para representar como literal, os seguintes símbolos devem ser escapados: `\\`, `\<`, `\>`, `\(`, `\)` `\[` `\]` `\*` `\|` `\.` `\?` `\+` `\&` `\-`
+      - Para representar como literal, os seguintes símbolos devem ser escapados: `\\`, `\<`, `\>`, `\(`, `\)` `\[` `\]` `\*` `\|` `\.` `\?` `\+` `\&` `\-`, `\\s`
 
 2. **Arquivo para análise léxica** (Exemplos: `src/data/input_lexical_analyzer/*.txt`):  
    - Contém o texto a ser reconhecido/tokenizado.

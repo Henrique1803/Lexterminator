@@ -46,7 +46,9 @@ class RegularExpression:
         brackets_stack = []
         last_char = "#"
         for c in value:
-            if (c == "\\" or c == ".") and last_char != "\\":
+            if (c == "s" and last_char == '\\'):
+                c = " "
+            elif (c == "\\" or c == ".") and last_char != "\\":
                 last_char = c
                 continue
 

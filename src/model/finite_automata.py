@@ -287,7 +287,8 @@ class FiniteAutomata:
         for (origin, dest), symbols_list in sorted(transitions.items()):
             symbols = str()
             for symbol in symbols_list:
-                symbols += f"{symbol}|"
+                add_symbol = "\\\\" if symbol == "\\" else symbol
+                symbols += f"{add_symbol}|"
             symbols = list(symbols)
             symbols.pop()
             symbols = "".join(symbols)
@@ -320,7 +321,7 @@ class FiniteAutomata:
 
         # Mapa final: estado original → nome final (token ou qN)
         final_map = {
-            state: final_name_map[state] if state in self.final_states else base_name_map[state]
+            state: ("\\\\" if final_name_map[state] == "\\" else final_name_map[state]) if state in self.final_states else base_name_map[state]
             for state in self.states
         }
 
