@@ -1,0 +1,7 @@
+zero: 0
+one: 1
+bit: <zero>|<one>
+mult_2: (0|(<bit>*0))
+mult_3: (0|(1(01*0)*1)*)
+mult_5: (0|1(01*(00|11)*1)*)
+binario_qualquer: <bit><bit>*
