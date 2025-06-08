@@ -82,5 +82,5 @@ class SLRTable:
                 row.append(self.table[state].get(symbol, ""))
             table.add_row(row)
 
-        print("\nTabela LR:")
+        print("\nTabela SLR:")
         print(table)
