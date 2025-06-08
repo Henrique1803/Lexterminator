@@ -1,3 +1,4 @@
+from src.model.slr_table import SLRTable
 from src.model.grammar import Grammar
 from src.utils.closure_and_canonnical_collection import *
 
@@ -12,3 +13,6 @@ if __name__ == "__main__":
     collection, transitions = canonical_collection(extended_grammar)
     print_canonical_collection(collection, extended_grammar)
     print(transitions)
+
+    parser = SLRTable(extended_grammar, collection, transitions, get_production_order(extended_grammar))
+    parser.print_table()
