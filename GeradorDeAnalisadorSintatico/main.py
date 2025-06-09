@@ -17,10 +17,17 @@ if __name__ == "__main__":
     
     slr_table = SLRTable(extended_grammar, collection, transitions, prod_order)
 
-    entrada = list("id * id + id".split())
+    entrada_text = "id * id + id"
+    entrada = list(entrada_text.split())
     
     parsing = LRParsing(extended_grammar, slr_table)
 
     a, b = parsing.parse(entrada)
+
+    print_canonical_collection(collection, extended_grammar)
+    print("|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||")
+    slr_table.print_table()
+    print("|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||")
+    print("Entrada: ", entrada_text)
     print("Passou? ",b)
     print(a)
