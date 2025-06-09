@@ -1,18 +1,26 @@
+from src.model.lr_parsing import LRParsing
 from src.model.slr_table import SLRTable
 from src.model.grammar import Grammar
 from src.utils.closure_and_canonnical_collection import *
 
+
 if __name__ == "__main__":
     
-    # Carrega a gramática original
-    original_grammar = Grammar("src/input/grammar_slides.txt")
+    grammar = Grammar("src/input/grammar_slides.txt")
     
-    # Estende a gramática
-    extended_grammar = extend_grammar(original_grammar)
-
+    extended_grammar = extend_grammar(grammar)
+    
     collection, transitions = canonical_collection(extended_grammar)
-    print_canonical_collection(collection, extended_grammar)
-    print(transitions)
+    
+    # útil para ordenar as produções com base na ordem de aparição no arquivo
+    prod_order = get_production_order(extended_grammar)
+    
+    slr_table = SLRTable(extended_grammar, collection, transitions, prod_order)
 
-    parser = SLRTable(extended_grammar, collection, transitions, get_production_order(extended_grammar))
-    parser.print_table()
+    entrada = list("id * id + id".split())
+    
+    parsing = LRParsing(extended_grammar, slr_table)
+
+    a, b = parsing.parse(entrada)
+    print("Passou? ",b)
+    print(a)

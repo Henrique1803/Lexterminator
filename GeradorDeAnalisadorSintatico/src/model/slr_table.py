@@ -67,7 +67,7 @@ class SLRTable:
 
     def print_table(self):
         """
-        Imprime a tabela SLR em formato tabular usando PrettyTable.
+        Imprime a tabela SLR usando PrettyTable.
         """
         terminals = sorted(self.grammar.terminals) + ["$"]
         non_terminals = sorted(self.grammar.non_terminals - {self.grammar.get_start_symbol()})
@@ -82,5 +82,5 @@ class SLRTable:
                 row.append(self.table[state].get(symbol, ""))
             table.add_row(row)
 
-        print("\nTabela SLR:")
+        print("\nSLR Table:")
         print(table)

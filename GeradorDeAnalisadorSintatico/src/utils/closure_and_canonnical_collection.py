@@ -5,7 +5,7 @@ from src.model.grammar import Grammar
 import tempfile
 
 
-def extend_grammar(grammar: 'Grammar') -> 'Grammar':
+def extend_grammar(grammar: Grammar) -> Grammar:
     """
     Retorna uma nova gramática estendida com:
     1. Um novo símbolo inicial (adicionando "'" ao símbolo original)
