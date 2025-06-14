@@ -4,13 +4,37 @@ from prettytable import PrettyTable
 from src.model.grammar import Grammar
 from src.model.slr_table import SLRTable
 
+from src.utils.closure_and_canonnical_collection import *
 
-class LRParsing:
-    def __init__(self, grammar: Grammar, slr_table: SLRTable):
-        self.grammar: Grammar = grammar
-        self.slr_table: SLRTable = slr_table
 
-    def parse(self, w: List[str]) -> Tuple[PrettyTable, bool]:
+class SintaticalAnalyzer:
+    def __init__(self, grammar_file: str):
+        self.grammar: Grammar = Grammar(grammar_file)
+
+        extended_grammar = extend_grammar(self.grammar)
+        collection, transitions = canonical_collection(extended_grammar)
+        prod_order = get_production_order(extended_grammar)
+
+        self.slr_table: SLRTable = SLRTable(extended_grammar, collection, transitions, prod_order)
+        self.tokens_list: list = list()
+    
+    def read_tokens_from_lexical_analyzer_output(self, file_path: str):
+        with open(file_path, "r") as file:
+            for line in file:
+                line = line.strip()
+                line = line.replace("<", "").replace(">", "")
+                token = line.split(",")[1]
+                self.tokens_list.append(token)
+
+        pretty_table, input_passed = self.parse_tokens(self.tokens_list)
+
+        input_string = ""
+        for token in self.tokens_list:
+            input_string += token + " "
+
+        self.print_parse_tokens_data(input_string, input_passed, pretty_table)
+        
+    def parse_tokens(self, w: List[str]) -> Tuple[PrettyTable, bool]:
         """"
         Método principal que tenta reconhecer uma cadeia, 
         retornando a tabela de etapas e um booleano indicando sucesso ou erro
@@ -72,3 +96,11 @@ class LRParsing:
                 return table, False
 
             step += 1
+        
+    def print_parse_tokens_data(self, input_str: str, input_passed: bool, pretty_table: PrettyTable): # Método usado para mostrar os dados da análise sintática temporariamente no terminal (será removido depois)
+        print("|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||")
+        self.slr_table.print_table()
+        print("|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||")
+        print("Entrada: ", input_str)
+        print("Passou? ",input_passed)
+        print(pretty_table)

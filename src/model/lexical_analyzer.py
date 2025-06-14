@@ -16,6 +16,7 @@ class LexicalAnalyzer:
         self.__regular_definitions = RegularDefinitions(regular_definitions_path)
         self.__table = self.__regular_definitions.automata.transition_table()
         self.__words_result = None
+        self.__output_path: Path = LEXICAL_ANALYZER_OUTPUT_DIR / "tokens_output.txt"
     
     def read_words_from_file_and_verify_pertinence(self, file_path: Path):
         """
@@ -24,7 +25,7 @@ class LexicalAnalyzer:
         with open(file_path, "r", encoding="utf-8") as file:
             self.words = [str(word).strip() for word in file]
         
-        self.verify_words_pertinence(Path(LEXICAL_ANALYZER_OUTPUT_DIR / "tokens_output.txt"))
+        self.verify_words_pertinence(self.output_path)
     
     def verify_words_pertinence(self, output_path: Path):
         """
@@ -87,3 +88,11 @@ class LexicalAnalyzer:
     @words_result.setter
     def words_result(self, words_result: List[str]):
         self.__words_result = words_result
+
+    @property
+    def output_path(self):
+        return self.__output_path
+
+    @output_path.setter
+    def output_path(self, output_path: Path):
+        self.__output_path = output_path

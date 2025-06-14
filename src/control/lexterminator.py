@@ -2,6 +2,7 @@ from PyQt5.QtWidgets import QDialog, QVBoxLayout, QHBoxLayout, QLabel, QTextEdit
 from PyQt5.QtCore import Qt
 from pathlib import Path
 from src.model.lexical_analyzer import LexicalAnalyzer
+from src.model.sintatical_analyzer import SintaticalAnalyzer
 from src.view.welcome_view import WelcomeView
 from src.view.main_view import MainView 
 from src.view.token_view import TokenView 
@@ -11,12 +12,15 @@ import shutil
 from src.utils import paths
 
 
-class LexicalAnalyzerController:
+class LexicalAndSintaticalAnalyzerController:
     """
     Classe que representa o controlador da interface, associando View com Model.
     """
     def __init__(self):
         self.__view = WelcomeView(self)
+        
+        self.set_grammar_file() # Deve ser removido com a implementação da janela de input para o arquivo da gramática (apenas para testes temporários)
+
         self.show()
 
     # exibe a view maximizada
@@ -33,12 +37,21 @@ class LexicalAnalyzerController:
         except ValueError as e:
             self.show_error("Error in regular definitions file", str(e))
     
+    def set_grammar_file(self, path: str = ""):
+        try:
+            path = paths.SINTATICAL_ANALYZER_INPUT_DIR /"grammar_example.txt" # Temporário até a janela para ler o arquivo da grámatica ser feita
+            self.__sintatical_analyzer = SintaticalAnalyzer(path)
+        except ValueError as e:
+            self.show_error("Error in grammar file", str(e))
+    
     # carrega o arquivo de entrada para ser reconhecido pelo AL e atualiza a view de acordo
     def set_input_file(self, path: str):
         try:
-            self.__analyzer.read_words_from_file_and_verify_pertinence(path)
+            self.analyzer.read_words_from_file_and_verify_pertinence(path)
             self.set_token_view()
             self.view.setup_table_view()
+            self.sintatical_analyzer.read_tokens_from_lexical_analyzer_output(self.analyzer.output_path) # Faz a leitura da lista de tokens gerada pelo analisador léxico
+
         except ValueError as e:
             self.show_error("Error in input file", str(e))
 
@@ -193,6 +206,14 @@ class LexicalAnalyzerController:
     @analyzer.setter
     def analyzer(self, value):
         self.__analyzer = value
+
+    @property
+    def sintatical_analyzer(self):
+        return self.__sintatical_analyzer
+    
+    @sintatical_analyzer.setter
+    def sintatical_analyzer(self, value):
+        self.__sintatical_analyzer = value
 
     @property
     def view(self):

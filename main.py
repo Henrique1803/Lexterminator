@@ -5,7 +5,7 @@ from src.utils.paths import LEXICAL_ANALYZER_INPUT_DIR
 
 import sys
 from PyQt5.QtWidgets import QApplication
-from src.control.lexterminator import LexicalAnalyzerController
+from src.control.lexterminator import LexicalAndSintaticalAnalyzerController
 
 def main():
     if sys.platform.startswith("linux") and os.environ.get("XDG_SESSION_TYPE") == "wayland":
@@ -13,7 +13,7 @@ def main():
     
     app = QApplication(sys.argv)
     
-    controller = LexicalAnalyzerController()
+    controller = LexicalAndSintaticalAnalyzerController()
     
     sys.exit(app.exec_())
 

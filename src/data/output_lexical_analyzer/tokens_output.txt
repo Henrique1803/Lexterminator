@@ -1,9 +1,5 @@
-<João da Silva,name>
-<01/05/2004,birth_date>
-<043.853.284-43,cpf>
-<148273289,rg>
-<88040-110,cep>
-<(55)912345678,telefone>
-<joao_silva@mail.com,email>
-<Rua Deputado Antonio Edu Vieira, 90, Ap 05,address>
-<masculino,genero>
+<123,number>
+<*,*>
+<1234,number>
+<+,+>
+<5,number>
