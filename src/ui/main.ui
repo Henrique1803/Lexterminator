@@ -41,13 +41,13 @@
      <number>50</number>
     </property>
     <property name="topMargin">
-     <number>50</number>
+     <number>20</number>
     </property>
     <property name="rightMargin">
      <number>50</number>
     </property>
     <property name="bottomMargin">
-     <number>50</number>
+     <number>20</number>
     </property>
     <item>
      <widget class="QTabWidget" name="tabWidget">
@@ -67,7 +67,7 @@ border-width: 1px;
 }</string>
       </property>
       <property name="currentIndex">
-       <number>3</number>
+       <number>0</number>
       </property>
       <widget class="QWidget" name="AutomataTable">
        <property name="sizePolicy">
@@ -102,32 +102,20 @@ border-width: 1px;
          <verstretch>0</verstretch>
         </sizepolicy>
        </property>
-       <property name="maximumSize">
-        <size>
-         <width>916</width>
-         <height>16777215</height>
-        </size>
-       </property>
        <attribute name="title">
         <string>SLR Table</string>
        </attribute>
-       <layout class="QVBoxLayout" name="verticalLayout_3">
+       <layout class="QHBoxLayout" name="horizontalLayout_3">
         <item>
          <widget class="QTableWidget" name="slrTable"/>
         </item>
        </layout>
       </widget>
       <widget class="QWidget" name="SLRItems">
-       <property name="maximumSize">
-        <size>
-         <width>916</width>
-         <height>545</height>
-        </size>
-       </property>
        <attribute name="title">
         <string>Canonical Items</string>
        </attribute>
-       <layout class="QVBoxLayout" name="verticalLayout_4">
+       <layout class="QHBoxLayout" name="horizontalLayout_4">
         <item>
          <widget class="ZoomableGraphicsView" name="slrItems"/>
         </item>
@@ -149,6 +137,9 @@ border-width: 1px;
         <height>20</height>
        </size>
       </property>
+      <property name="styleSheet">
+       <string notr="true"/>
+      </property>
       <layout class="QHBoxLayout" name="horizontalLayout">
        <property name="spacing">
         <number>0</number>
@@ -163,7 +154,7 @@ border-width: 1px;
         <number>0</number>
        </property>
        <property name="bottomMargin">
-        <number>20</number>
+        <number>0</number>
        </property>
        <item alignment="Qt::AlignRight">
         <widget class="QPushButton" name="saveButton">

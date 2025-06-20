@@ -35,7 +35,7 @@ class WelcomeWizard(QtWidgets.QWizard):
 
         # Seta variáveis de controle
         self.lexical_ready = False
-        self.sintatical_ready = True
+        self.sintatical_ready = False
 
         # Página 1: Seleção do arquivo de definições regulares
         self.buttonSelectFile.clicked.connect(self.select_regular_definitions_file)
@@ -110,6 +110,7 @@ class WelcomeWizard(QtWidgets.QWizard):
         self.loading1.setVisible(False)
         self.lexical_ready = True
         self.page(0).completeChanged.emit()
+        self.next()
 
     def on_sintatical_analyzer_ready(self):
         self.buttonSelectFile_2.setEnabled(True)

@@ -1,0 +1,105 @@
+// Canonical LR0 Items
+digraph {
+	fontsize=12 rankdir=LR
+	0 [label="I0:
+A → • A and B
+A → • B
+B → • ( S )
+B → • false
+B → • not B
+B → • true
+S → • A
+S → • S or A
+S' → • S" fontsize=10 shape=box]
+	1 [label="I1:
+S → S • or A
+S' → S •" fontsize=10 shape=box]
+	2 [label="I2:
+A → A • and B
+S → A •" fontsize=10 shape=box]
+	3 [label="I3:
+A → B •" fontsize=10 shape=box]
+	4 [label="I4:
+B → • ( S )
+B → • false
+B → • not B
+B → not • B
+B → • true" fontsize=10 shape=box]
+	5 [label="I5:
+A → • A and B
+A → • B
+B → • ( S )
+B → ( • S )
+B → • false
+B → • not B
+B → • true
+S → • A
+S → • S or A" fontsize=10 shape=box]
+	6 [label="I6:
+B → true •" fontsize=10 shape=box]
+	7 [label="I7:
+B → false •" fontsize=10 shape=box]
+	8 [label="I8:
+A → • A and B
+A → • B
+B → • ( S )
+B → • false
+B → • not B
+B → • true
+S → S or • A" fontsize=10 shape=box]
+	9 [label="I9:
+A → A and • B
+B → • ( S )
+B → • false
+B → • not B
+B → • true" fontsize=10 shape=box]
+	10 [label="I10:
+B → not B •" fontsize=10 shape=box]
+	11 [label="I11:
+B → ( S • )
+S → S • or A" fontsize=10 shape=box]
+	12 [label="I12:
+A → A • and B
+S → S or A •" fontsize=10 shape=box]
+	13 [label="I13:
+A → A and B •" fontsize=10 shape=box]
+	14 [label="I14:
+B → ( S ) •" fontsize=10 shape=box]
+	0 -> 1 [label=S]
+	0 -> 2 [label=A]
+	0 -> 3 [label=B]
+	0 -> 4 [label=not]
+	0 -> 5 [label="("]
+	0 -> 6 [label=true]
+	0 -> 7 [label=false]
+	1 -> 8 [label=or]
+	accept [label=ACCEPT fillcolor=lightgreen shape=doublecircle style=filled]
+	1 -> accept [label="$"]
+	2 -> 9 [label=and]
+	4 -> 4 [label=not]
+	4 -> 10 [label=B]
+	4 -> 5 [label="("]
+	4 -> 6 [label=true]
+	4 -> 7 [label=false]
+	5 -> 11 [label=S]
+	5 -> 2 [label=A]
+	5 -> 3 [label=B]
+	5 -> 4 [label=not]
+	5 -> 5 [label="("]
+	5 -> 6 [label=true]
+	5 -> 7 [label=false]
+	8 -> 12 [label=A]
+	8 -> 3 [label=B]
+	8 -> 4 [label=not]
+	8 -> 5 [label="("]
+	8 -> 6 [label=true]
+	8 -> 7 [label=false]
+	9 -> 13 [label=B]
+	9 -> 4 [label=not]
+	9 -> 5 [label="("]
+	9 -> 6 [label=true]
+	9 -> 7 [label=false]
+	11 -> 8 [label=or]
+	11 -> 14 [label=")"]
+	12 -> 9 [label=and]
+}

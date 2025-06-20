@@ -45,6 +45,9 @@ class MainView(QtWidgets.QMainWindow):
         elif index == 2:
             self.saveButton.setText("Save SLR Table")
             self.saveButton.clicked.connect(self.controller.save_slr_table)
+        else:
+            self.saveButton.setText("Save Canonical Items")
+            self.saveButton.clicked.connect(self.controller.save_canonical_items)
 
     def setup_automata_diagram_view(self, image_path: str = paths.AUTOMATA_DIAGRAM_DIR/ "automata_diagram.png"):
         """
@@ -128,6 +131,13 @@ class MainView(QtWidgets.QMainWindow):
                 self.slrTable.setItem(row_idx + 2, col_idx, item)
 
         self.slrTable.resizeColumnsToContents()
+
+    def setup_canonical_items_diagram_view(self, image_path: str = paths.CANONICAL_ITEMS_DIAGRAM_DIR/ "canonical_items_diagram.png"):
+        """
+        Atualiza a imagem dos items canônicos no ZoomableGraphicsView widget utilizado.
+        """
+        print(image_path)
+        self.slrItems.setImagePath(str(image_path))
 
     def close_and_return_to_welcome(self):
         """

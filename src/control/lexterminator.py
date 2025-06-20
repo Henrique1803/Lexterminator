@@ -51,6 +51,7 @@ class LexicalAndSintaticalAnalyzerController:
         self.view.setup_automata_table_view(self.lexical_analyzer.table)
         self.view.setup_automata_diagram_view()
         self.view.setup_slr_table_view(self.sintatical_analyzer.pretty_table)
+        self.view.setup_canonical_items_diagram_view()
         self.show()
     
     # atualiza a view como a TokenView
@@ -167,6 +168,16 @@ class LexicalAndSintaticalAnalyzerController:
         if file_path:
             try:
                 shutil.copy(paths.SLR_TABLE_DIR/ "slr_table.csv", file_path)
+                self.show_success("File saved", f"File saved successfully in: {file_path}")
+            except:
+                self.show_error("Error saving file", "Could not save file")
+
+    def save_canonical_items(self):
+        print("save canonical items")
+        file_path = self.select_save_file_path(type=".png")
+        if file_path:
+            try:
+                shutil.copy(paths.CANONICAL_ITEMS_DIAGRAM_DIR/ "canonical_items_diagram.png", file_path)
                 self.show_success("File saved", f"File saved successfully in: {file_path}")
             except:
                 self.show_error("Error saving file", "Could not save file")

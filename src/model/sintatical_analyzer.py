@@ -1,10 +1,12 @@
 from typing import List, Tuple, Optional
 from prettytable import PrettyTable
+from graphviz import Digraph
 
 from src.model.grammar import Grammar
 from src.model.slr_table import SLRTable
 
 from src.utils.closure_and_canonnical_collection import *
+from src.utils import paths
 
 
 class SintaticalAnalyzer:
@@ -13,6 +15,7 @@ class SintaticalAnalyzer:
 
         extended_grammar = extend_grammar(self.grammar)
         collection, transitions = canonical_collection(extended_grammar)
+        self.generate_canonical_items_diagram(collection, transitions)
         prod_order = get_production_order(extended_grammar)
 
         self.slr_table: SLRTable = SLRTable(extended_grammar, collection, transitions, prod_order)
@@ -97,6 +100,30 @@ class SintaticalAnalyzer:
                 return table, False
 
             step += 1
+
+    def generate_canonical_items_diagram(self, collection, transitions):
+        dot = Digraph(comment="Canonical LR0 Items", format='png')
+        dot.attr(rankdir='LR', fontsize='12')
+
+        # Criar nós
+        for idx, itemset in enumerate(collection):
+            # Cada item é LR0Item, usar o método to_string() para mostrar o ponto
+            label_lines = [f"I{idx}:"]
+            label_lines += [repr(item) for item in sorted(itemset, key=lambda x: (x.head, x.body, x.dot_pos))]
+            label = "\n".join(label_lines)
+            dot.node(str(idx), label=label, shape='box', fontsize='10')
+
+        # Criar arestas (transições)
+        for from_state, edges in transitions.items():
+            for symbol, to_state in edges.items():
+                if to_state == "accept":
+                    dot.node("accept", label="ACCEPT", shape="doublecircle", style="filled", fillcolor="lightgreen")
+                    dot.edge(str(from_state), "accept", label=symbol)
+                else:
+                    dot.edge(str(from_state), str(to_state), label=symbol)
+
+        # 3. Renderiza o grafo
+        dot.render(filename="canonical_items_diagram", format="png", directory=str(paths.CANONICAL_ITEMS_DIAGRAM_DIR))
         
     def print_parse_tokens_data(self, input_str: str, input_passed: bool, pretty_table: PrettyTable): # Método usado para mostrar os dados da análise sintática temporariamente no terminal (será removido depois)
         print("Entrada: ", input_str)
