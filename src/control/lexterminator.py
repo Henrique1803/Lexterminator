@@ -27,10 +27,11 @@ class LexicalAndSintaticalAnalyzerController:
         else:
             self.view.show()
 
-    # carrega o arquivo de definições regulares e atualiza a view de acordo
+    # carrega o arquivo de definições regulares e cria o analisador léxico
     def set_regular_definitions_file(self, path: str):
         self.__lexical_analyzer = LexicalAnalyzer(path)
     
+    # carrega o arquivo da gramátila e cria o analisador sintático
     def set_grammar_file(self, path: str = ""):
         self.__sintatical_analyzer = SintaticalAnalyzer(path, set(self.lexical_analyzer.regular_definitions.tokens))
     
@@ -47,7 +48,7 @@ class LexicalAndSintaticalAnalyzerController:
         except ValueError as e:
             self.show_error("Error in input file", str(e))
 
-    def select_input_file(self, rerunnig = False):
+    def select_input_file(self):
         """
         Abre um QFileDialog com um checkbox adicional ("Ignore whitespaces from file")
         e envia o caminho + a opção marcada para o controller.
@@ -60,7 +61,7 @@ class LexicalAndSintaticalAnalyzerController:
 
         # Cria e adiciona o checkbox personalizado
         checkbox = QCheckBox("Ignore whitespaces from file")
-        checkbox.setChecked(False)
+        checkbox.setChecked(True)
 
         # Espaçamento visual e adição ao layout do diálogo
         layout = dialog.layout()
@@ -73,9 +74,11 @@ class LexicalAndSintaticalAnalyzerController:
             ignore_whitespaces = checkbox.isChecked()
             self.set_input_file(file_path, ignore_whitespaces)
     
+    # executa novamente a análise léxica com o mesmo arquivo aberto
     def rerun_lexical(self):
         self.set_input_file(self.__last_filepath, self.__last_ignore_whitespaces)
 
+    # executa a análise sintática e atualiza a view de acordo
     def run_sintatical_analysis(self):
         parsing_table, passed = self.sintatical_analyzer.read_tokens_from_lexical_analyzer_output(self.lexical_analyzer.output_path) # Faz a leitura da lista de tokens gerada pelo analisador léxico
         self.view.setup_parsing_table_view(parsing_table)
@@ -212,6 +215,7 @@ class LexicalAndSintaticalAnalyzerController:
             except:
                 self.show_error("Error saving file", "Could not save file")
 
+    # trata o evento de click no botão de salvar a tabela de parsing
     def save_parsing_table(self):
         print("save parsing table")
         file_path = self.select_save_file_path(type=".csv")
@@ -222,6 +226,7 @@ class LexicalAndSintaticalAnalyzerController:
             except:
                 self.show_error("Error saving file", "Could not save file")
 
+    # trata o evento de click no botão de salvar items canônicos
     def save_canonical_items(self):
         print("save canonical items")
         file_path = self.select_save_file_path(type=".png")
@@ -260,6 +265,7 @@ class LexicalAndSintaticalAnalyzerController:
         self.__view = WelcomeWizard(self)
         self.show(maximized=False)
 
+    # abre a tela de sobre
     def show_about(self):
         self.about_window = AboutView(self.view)
         self.about_window.show()

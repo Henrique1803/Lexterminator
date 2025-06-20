@@ -1,4 +1,6 @@
-# ![Lexterminator Logo](src/ui/resources/logo-lexterminator-resized.png)
+<p align="center">
+  <img src="src/ui/resources/logo-lexterminator-resized.png" />
+</p>
 
 # Lexterminator
 

@@ -14,7 +14,7 @@
    <string>Wizard</string>
   </property>
   <property name="options">
-   <set>QWizard::NoCancelButton|QWizard::NoCancelButtonOnLastPage</set>
+   <set>QWizard::HaveHelpButton|QWizard::HelpButtonOnRight|QWizard::NoCancelButton|QWizard::NoCancelButtonOnLastPage</set>
   </property>
   <widget class="QWizardPage" name="inputRegularDefinitionsPage">
    <property name="minimumSize">
@@ -163,7 +163,7 @@ QPushButton:hover
        </layout>
       </widget>
      </item>
-     <item>
+     <item alignment="Qt::AlignHCenter">
       <widget class="QWidget" name="widget" native="true">
        <property name="sizePolicy">
         <sizepolicy hsizetype="Expanding" vsizetype="Expanding">

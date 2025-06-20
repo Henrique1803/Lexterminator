@@ -51,6 +51,7 @@ class WelcomeWizard(QtWidgets.QWizard):
 
         # Botão finalizar (Finish)
         self.button(QtWidgets.QWizard.FinishButton).clicked.connect(self.finish)
+        self.button(QtWidgets.QWizard.HelpButton).clicked.connect(self.controller.show_about)
 
     def page1_is_complete(self):
         return self.lexical_ready
