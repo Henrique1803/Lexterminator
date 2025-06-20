@@ -28,7 +28,7 @@ class TokenView(QtWidgets.QMainWindow):
         Configura widget que exibe a lista de tokens em formato de tabela,
         de acordo com words_result do analyzer.
         """
-        words_result = self.controller.analyzer.words_result
+        words_result = self.controller.lexical_analyzer.words_result
         headers = ["Word", "Token"]
         self.table.setColumnCount(len(headers))
         self.table.setRowCount(len(words_result))
@@ -59,8 +59,8 @@ class TokenView(QtWidgets.QMainWindow):
         """
         self.close()
         self.controller.set_main_view()
-        self.controller.view.setup_table_view(self.controller.analyzer.table)
-        self.controller.view.setup_diagram_view()
+        self.controller.view.setup_automata_table_view(self.controller.lexical_analyzer.table)
+        self.controller.view.setup_automata_diagram_view()
 
     @property
     def controller(self):

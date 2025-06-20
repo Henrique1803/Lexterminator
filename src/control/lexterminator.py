@@ -29,7 +29,7 @@ class LexicalAndSintaticalAnalyzerController:
 
     # carrega o arquivo de definições regulares e atualiza a view de acordo
     def set_regular_definitions_file(self, path: str):
-        self.__analyzer = LexicalAnalyzer(path)
+        self.__lexical_analyzer = LexicalAnalyzer(path)
     
     def set_grammar_file(self, path: str = ""):
         self.__sintatical_analyzer = SintaticalAnalyzer(path)
@@ -37,10 +37,10 @@ class LexicalAndSintaticalAnalyzerController:
     # carrega o arquivo de entrada para ser reconhecido pelo AL e atualiza a view de acordo
     def set_input_file(self, path: str):
         try:
-            self.analyzer.read_words_from_file_and_verify_pertinence(path)
+            self.lexical_analyzer.read_words_from_file_and_verify_pertinence(path)
             self.set_token_view()
             self.view.setup_table_view()
-            self.sintatical_analyzer.read_tokens_from_lexical_analyzer_output(self.analyzer.output_path) # Faz a leitura da lista de tokens gerada pelo analisador léxico
+            self.sintatical_analyzer.read_tokens_from_lexical_analyzer_output(self.lexical_analyzer.output_path) # Faz a leitura da lista de tokens gerada pelo analisador léxico
 
         except ValueError as e:
             self.show_error("Error in input file", str(e))
@@ -48,8 +48,9 @@ class LexicalAndSintaticalAnalyzerController:
     # atualiza a view como a MainView
     def set_main_view(self):
         self.view = MainView(self)
-        self.view.setup_table_view(self.analyzer.table)
-        self.view.setup_diagram_view()
+        self.view.setup_automata_table_view(self.lexical_analyzer.table)
+        self.view.setup_automata_diagram_view()
+        self.view.setup_slr_table_view(self.sintatical_analyzer.pretty_table)
         self.show()
     
     # atualiza a view como a TokenView
@@ -132,7 +133,7 @@ class LexicalAndSintaticalAnalyzerController:
         file_path = self.select_save_file_path()
         if file_path:
             try:
-                self.analyzer.regular_definitions.automata.to_file(file_path)
+                self.lexical_analyzer.regular_definitions.automata.to_file(file_path)
                 self.show_success("File saved", f"File saved successfully in: {file_path}")
             except Exception as e:
                 self.show_error("Error saving file", f"Could not save file: {e}")
@@ -143,7 +144,7 @@ class LexicalAndSintaticalAnalyzerController:
         file_path = self.select_save_file_path()
         if file_path:
             try:
-                self.analyzer.write_words_result_to_file(file_path)
+                self.lexical_analyzer.write_words_result_to_file(file_path)
                 self.show_success("File saved", f"File saved successfully in: {file_path}")
             except Exception as e:
                 self.show_error("Error saving file", f"Could not save file: {e}")
@@ -192,12 +193,12 @@ class LexicalAndSintaticalAnalyzerController:
         self.about_window.show()
 
     @property
-    def analyzer(self):
-        return self.__analyzer
+    def lexical_analyzer(self):
+        return self.__lexical_analyzer
     
-    @analyzer.setter
-    def analyzer(self, value):
-        self.__analyzer = value
+    @lexical_analyzer.setter
+    def lexical_analyzer(self, value):
+        self.__lexical_analyzer = value
 
     @property
     def sintatical_analyzer(self):

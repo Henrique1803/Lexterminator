@@ -67,9 +67,9 @@ border-width: 1px;
 }</string>
       </property>
       <property name="currentIndex">
-       <number>0</number>
+       <number>3</number>
       </property>
-      <widget class="QWidget" name="Table">
+      <widget class="QWidget" name="AutomataTable">
        <property name="sizePolicy">
         <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
          <horstretch>0</horstretch>
@@ -81,17 +81,55 @@ border-width: 1px;
        </attribute>
        <layout class="QHBoxLayout" name="verticalLayout_2">
         <item>
-         <widget class="QTableWidget" name="table"/>
+         <widget class="QTableWidget" name="automataTable"/>
         </item>
        </layout>
       </widget>
-      <widget class="QWidget" name="Diagram">
+      <widget class="QWidget" name="AutomataDiagram">
        <attribute name="title">
         <string>Automata Diagram</string>
        </attribute>
        <layout class="QHBoxLayout" name="horizontalLayout_2">
         <item>
          <widget class="ZoomableGraphicsView" name="automataDiagram"/>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="SLRTable">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>916</width>
+         <height>16777215</height>
+        </size>
+       </property>
+       <attribute name="title">
+        <string>SLR Table</string>
+       </attribute>
+       <layout class="QVBoxLayout" name="verticalLayout_3">
+        <item>
+         <widget class="QTableWidget" name="slrTable"/>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="SLRItems">
+       <property name="maximumSize">
+        <size>
+         <width>916</width>
+         <height>545</height>
+        </size>
+       </property>
+       <attribute name="title">
+        <string>Canonical Items</string>
+       </attribute>
+       <layout class="QVBoxLayout" name="verticalLayout_4">
+        <item>
+         <widget class="ZoomableGraphicsView" name="slrItems"/>
         </item>
        </layout>
       </widget>
@@ -125,7 +163,7 @@ border-width: 1px;
         <number>0</number>
        </property>
        <property name="bottomMargin">
-        <number>0</number>
+        <number>20</number>
        </property>
        <item alignment="Qt::AlignRight">
         <widget class="QPushButton" name="saveButton">
@@ -179,7 +217,7 @@ QPushButton:hover
      <x>0</x>
      <y>0</y>
      <width>1020</width>
-     <height>28</height>
+     <height>27</height>
     </rect>
    </property>
    <property name="font">

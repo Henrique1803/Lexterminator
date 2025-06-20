@@ -65,7 +65,7 @@ class SLRTable:
                 if self.grammar.is_non_terminal(symbol):
                     self.table[state_index][symbol] = target  # GOTO é só o número do estado
 
-    def print_table(self):
+    def build_pretty_table(self):
         """
         Imprime a tabela SLR usando PrettyTable.
         """
@@ -73,14 +73,13 @@ class SLRTable:
         non_terminals = sorted(self.grammar.non_terminals - {self.grammar.get_start_symbol()})
         headers = ["STATE"] + terminals + non_terminals
 
-        table = PrettyTable()
-        table.field_names = headers
+        pretty_table = PrettyTable()
+        pretty_table.field_names = headers
 
         for state in sorted(self.table.keys()):
             row = [str(state)]
             for symbol in terminals + non_terminals:
                 row.append(self.table[state].get(symbol, ""))
-            table.add_row(row)
+            pretty_table.add_row(row)
 
-        print("\nSLR Table:")
-        print(table)
+        return pretty_table

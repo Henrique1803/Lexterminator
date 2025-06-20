@@ -16,6 +16,7 @@ class SintaticalAnalyzer:
         prod_order = get_production_order(extended_grammar)
 
         self.slr_table: SLRTable = SLRTable(extended_grammar, collection, transitions, prod_order)
+        self.pretty_table = self.slr_table.build_pretty_table()
         self.tokens_list: list = list()
     
     def read_tokens_from_lexical_analyzer_output(self, file_path: str):
@@ -98,9 +99,6 @@ class SintaticalAnalyzer:
             step += 1
         
     def print_parse_tokens_data(self, input_str: str, input_passed: bool, pretty_table: PrettyTable): # Método usado para mostrar os dados da análise sintática temporariamente no terminal (será removido depois)
-        print("|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||")
-        self.slr_table.print_table()
-        print("|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||")
         print("Entrada: ", input_str)
         print("Passou? ",input_passed)
         print(pretty_table)
