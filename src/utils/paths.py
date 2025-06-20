@@ -11,3 +11,4 @@ REGULAR_DEFINITIONS_INPUT_DIR = PROGRAM_DIR / "src/data/input_regular_definition
 FA_OUTPUT_DIR = PROGRAM_DIR / "src/data/output_af"
 LEXICAL_ANALYZER_OUTPUT_DIR = PROGRAM_DIR / "src/data/output_lexical_analyzer"
 AUTOMATA_DIAGRAM_DIR = PROGRAM_DIR / "src/data/output_automata_diagram"
+SLR_TABLE_DIR = PROGRAM_DIR / "src/data/output_slr_table"

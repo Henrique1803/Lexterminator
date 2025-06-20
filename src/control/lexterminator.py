@@ -160,6 +160,17 @@ class LexicalAndSintaticalAnalyzerController:
             except:
                 self.show_error("Error saving file", "Could not save file")
 
+    # trata o evento de click no botão de salvar a tabela slr
+    def save_slr_table(self):
+        print("save slr table")
+        file_path = self.select_save_file_path(type=".csv")
+        if file_path:
+            try:
+                shutil.copy(paths.SLR_TABLE_DIR/ "slr_table.csv", file_path)
+                self.show_success("File saved", f"File saved successfully in: {file_path}")
+            except:
+                self.show_error("Error saving file", "Could not save file")
+
     # abre dialog com seletor de arquivos para salvar, de acordo com tipo especificado
     def select_save_file_path(self, type: str = ".txt"):
         options = QFileDialog.Options()

@@ -39,9 +39,12 @@ class MainView(QtWidgets.QMainWindow):
         if index == 0:
             self.saveButton.setText("Save Automata File")
             self.saveButton.clicked.connect(self.controller.save_automata_file)
-        else:
+        elif index == 1:
             self.saveButton.setText("Save Automata Diagram")
             self.saveButton.clicked.connect(self.controller.save_automata_diagram)
+        elif index == 2:
+            self.saveButton.setText("Save SLR Table")
+            self.saveButton.clicked.connect(self.controller.save_slr_table)
 
     def setup_automata_diagram_view(self, image_path: str = paths.AUTOMATA_DIAGRAM_DIR/ "automata_diagram.png"):
         """

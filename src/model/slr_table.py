@@ -2,6 +2,7 @@ from typing import Dict, List, Set, Tuple
 from src.model.lr0_item import LR0Item
 from src.model.grammar import Grammar
 from prettytable import PrettyTable
+from src.utils import paths
 
 
 class SLRTable:
@@ -81,5 +82,10 @@ class SLRTable:
             for symbol in terminals + non_terminals:
                 row.append(self.table[state].get(symbol, ""))
             pretty_table.add_row(row)
+        
+        csv_str = pretty_table.get_csv_string()
+        output_path = paths.SLR_TABLE_DIR / "slr_table.csv"
+        with open(output_path, "w", encoding="utf-8") as f:
+            f.write(csv_str)
 
         return pretty_table
