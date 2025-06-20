@@ -3,7 +3,7 @@ from PyQt5.QtCore import Qt
 from pathlib import Path
 from src.model.lexical_analyzer import LexicalAnalyzer
 from src.model.sintatical_analyzer import SintaticalAnalyzer
-from src.view.welcome_view import WelcomeView
+from src.view.welcome_wizard import WelcomeWizard
 from src.view.main_view import MainView 
 from src.view.token_view import TokenView 
 from src.view.about_view import AboutView
@@ -17,32 +17,22 @@ class LexicalAndSintaticalAnalyzerController:
     Classe que representa o controlador da interface, associando View com Model.
     """
     def __init__(self):
-        self.__view = WelcomeView(self)
-        
-        self.set_grammar_file() # Deve ser removido com a implementação da janela de input para o arquivo da gramática (apenas para testes temporários)
+        self.__view = WelcomeWizard(self)
+        self.show(maximized=False)
 
-        self.show()
-
-    # exibe a view maximizada
-    def show(self):
-        self.view.showMaximized()
+    # exibe a view (welcome minimizada, e main maximizada)
+    def show(self, maximized = True):
+        if maximized:
+            self.view.showMaximized()
+        else:
+            self.view.show()
 
     # carrega o arquivo de definições regulares e atualiza a view de acordo
     def set_regular_definitions_file(self, path: str):
-        try:
-            self.__analyzer = LexicalAnalyzer(path)
-            self.set_main_view()
-            self.view.setup_table_view(self.analyzer.table)
-            self.view.setup_diagram_view()
-        except ValueError as e:
-            self.show_error("Error in regular definitions file", str(e))
+        self.__analyzer = LexicalAnalyzer(path)
     
     def set_grammar_file(self, path: str = ""):
-        try:
-            path = paths.SINTATICAL_ANALYZER_INPUT_DIR /"grammar_example.txt" # Temporário até a janela para ler o arquivo da grámatica ser feita
-            self.__sintatical_analyzer = SintaticalAnalyzer(path)
-        except ValueError as e:
-            self.show_error("Error in grammar file", str(e))
+        self.__sintatical_analyzer = SintaticalAnalyzer(path)
     
     # carrega o arquivo de entrada para ser reconhecido pelo AL e atualiza a view de acordo
     def set_input_file(self, path: str):
@@ -58,6 +48,8 @@ class LexicalAndSintaticalAnalyzerController:
     # atualiza a view como a MainView
     def set_main_view(self):
         self.view = MainView(self)
+        self.view.setup_table_view(self.analyzer.table)
+        self.view.setup_diagram_view()
         self.show()
     
     # atualiza a view como a TokenView
@@ -192,8 +184,8 @@ class LexicalAndSintaticalAnalyzerController:
     # retorna para a tela de welcome, permitindo criar um novo AL
     def return_to_welcome(self):
         self.view.deleteLater()
-        self.view = WelcomeView(self)
-        self.show()
+        self.__view = WelcomeWizard(self)
+        self.show(maximized=False)
 
     def show_about(self):
         self.about_window = AboutView(self.view)
