@@ -27,12 +27,19 @@ class TokenView(QtWidgets.QMainWindow):
         self.runSintatical.clicked.connect(self.handle_button_run_click)
 
     def handle_button_run_click(self):
+        """
+        Trata o evento de click no botão de run, de acordo com a análise sintática,
+        ou executa novamente a análise léxica
+        """
         if "Sintatical" in self.runSintatical.text():
             self.controller.run_sintatical_analysis()
         else:
             self.controller.rerun_lexical()
 
     def update_handle_run_sintatical(self):
+        """
+        Atualiza a view após a análise léxica, liberando para a análise sintática ou não.
+        """
         if self.controller.lexical_analyzer.lexical_error:
             self.runSintatical.setEnabled(False)
             self.runSintatical.setVisible(False)

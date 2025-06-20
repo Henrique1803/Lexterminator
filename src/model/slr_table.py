@@ -6,6 +6,9 @@ from src.utils import paths
 
 
 class SLRTable:
+    """
+    Classe que representa a tabela SLR.
+    """
     def __init__(
         self,
         grammar: Grammar,

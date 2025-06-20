@@ -183,6 +183,9 @@ def canonical_collection(grammar: Grammar) -> Tuple[List[Set[LR0Item]], Dict[int
     return C, transitions
 
 def print_canonical_collection(canonical_collection: List[Set[LR0Item]], grammar: Grammar):
+    """
+    Método auxiliar que printa a coleção de items canônicos.
+    """
     prod_order = get_production_order(grammar)
     print("\n=== Coleção Canônica de Itens LR(0) ===\n")
     for idx, state in enumerate(canonical_collection):

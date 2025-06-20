@@ -2,6 +2,9 @@ from typing import Tuple
 
 
 class LR0Item:
+    """
+    Classe que representa um item canônico
+    """
     def __init__(self, head: str, body: Tuple[str, ...], dot_pos: int):
         self.head = head
         self.body = body

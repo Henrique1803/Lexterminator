@@ -18,6 +18,9 @@ class WelcomeWizard(QtWidgets.QWizard):
         self.setup()
 
     def setup(self):
+        """
+        Configura os elementos da interface inicial, e handlers de eventos.
+        """
         # Carregar fonte personalizada
         font_id = QFontDatabase.addApplicationFont("src/ui/resources/Audiowide-Regular.ttf")
         if font_id != -1:
@@ -53,12 +56,15 @@ class WelcomeWizard(QtWidgets.QWizard):
         self.button(QtWidgets.QWizard.FinishButton).clicked.connect(self.finish)
         self.button(QtWidgets.QWizard.HelpButton).clicked.connect(self.controller.show_about)
 
+    # handler para quando a página 1 (input das definições regulares feito) está pronta
     def page1_is_complete(self):
         return self.lexical_ready
 
+    # handler para quando a página 2 (input da gramática feito) está pronta
     def page2_is_complete(self):
         return self.sintatical_ready
 
+    # seleciona o arquivo de definições regulares com worker. Exibe loading enquanto isso.
     def select_regular_definitions_file(self):
         file_path, _ = QFileDialog.getOpenFileName(
             self, "Selecione o primeiro arquivo (.txt)", "", "Text Files (*.txt)"
@@ -76,6 +82,7 @@ class WelcomeWizard(QtWidgets.QWizard):
             )
             self.worker_lexical.start()
     
+    # seleciona o arquivo da gramática com worker. Exibe loading enquanto isso.
     def select_grammar_file(self):
         file_path, _ = QFileDialog.getOpenFileName(
             self, "Selecione o segundo arquivo (.txt)", "", "Text Files (*.txt)"
@@ -93,18 +100,21 @@ class WelcomeWizard(QtWidgets.QWizard):
             )
             self.worker_sintatical.start()
 
+    # exibe erro na entrada das definições regulares
     def show_error_lexical_analyzer(self, error_message: str):
         self.buttonSelectFile.setEnabled(True)
         self.loading1_gif.stop()
         self.loading1.setVisible(False)
         self.__controller.show_error("Error in regular definitions file", error_message)
 
+    # exibe erro na entrada da gramática
     def show_error_sintatical_analyzer(self, error_message: str):
         self.buttonSelectFile_2.setEnabled(True)
         self.loading2_gif.stop()
         self.loading2.setVisible(False)
         self.__controller.show_error("Error in grammar file", error_message)
 
+    # handler para quando o analisador léxico está criado corretamente
     def on_lexical_analyzer_ready(self):
         self.buttonSelectFile.setEnabled(True)
         self.loading1_gif.stop()
@@ -113,6 +123,7 @@ class WelcomeWizard(QtWidgets.QWizard):
         self.page(0).completeChanged.emit()
         self.next()
 
+    # handler para quando o analisador sintático está criado corretamente
     def on_sintatical_analyzer_ready(self):
         self.buttonSelectFile_2.setEnabled(True)
         self.loading2_gif.stop()
@@ -120,6 +131,7 @@ class WelcomeWizard(QtWidgets.QWizard):
         self.sintatical_ready = True
         self.page(1).completeChanged.emit()
 
+    # handler para o botão de finish
     def finish(self):
         self.close()
         self.__controller.set_main_view()

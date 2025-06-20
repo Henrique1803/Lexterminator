@@ -270,6 +270,9 @@ class FiniteAutomata:
         return determinized
 
     def _generate_finite_automata_diagram(self):
+        """
+        Gera o diagrama para o autômato, e salva no diretório padrão.
+        """
         final_map = self._rename_states()
         transitions = defaultdict(list)
     
@@ -301,6 +304,9 @@ class FiniteAutomata:
         diagram.render(filename="automata_diagram", format="png", directory=str(AUTOMATA_DIAGRAM_DIR))
     
     def _rename_states(self) -> dict:
+        """
+        Renomeia os estados do autômato por simplicidade.
+        """
         from collections import defaultdict
 
         # Nome descritivo para estados finais com base em tokens

@@ -14,9 +14,3 @@ AUTOMATA_DIAGRAM_DIR = PROGRAM_DIR / "src/data/output_automata_diagram"
 SLR_TABLE_DIR = PROGRAM_DIR / "src/data/output_slr_table"
 CANONICAL_ITEMS_DIAGRAM_DIR = PROGRAM_DIR / "src/data/output_canonical_items_diagram"
 PARSING_TABLE_DIR = PROGRAM_DIR / "src/data/output_parsing_table"
-
-"""
-TODO:
-- ajustar README e about
-- ajustar comentários
-"""

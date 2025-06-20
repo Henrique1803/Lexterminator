@@ -4,6 +4,9 @@ from PyQt5 import uic
 from pathlib import Path
 
 class AboutView(QDialog):
+    """
+    Classe que representa a tela de sobre, sendo equivalente ao README
+    """
     def __init__(self, parent=None):
         super().__init__(parent)
         uic.loadUi(Path("src/ui/about.ui"), self)

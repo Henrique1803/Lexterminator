@@ -11,6 +11,10 @@ import math
 
 
 class SintaticalAnalyzer:
+    """
+    Classe que representa o Analisador Sintático considerando a gramática SLR de entrada.
+    Gera a tabela SLR correspondente.
+    """
     def __init__(self, grammar_file: str, expected_tokens: Set = None):
         self.grammar: Grammar = Grammar(grammar_file, expected_tokens)
 
@@ -24,6 +28,9 @@ class SintaticalAnalyzer:
         self.tokens_list: list = list()
     
     def read_tokens_from_lexical_analyzer_output(self, file_path: str):
+        """
+        Faz a análise sintática de uma lista de tokens dada em um determinado arquivo, no formato esperado.
+        """
         self.tokens_list = []
         with open(file_path, "r") as file:
             for line in file:
@@ -104,6 +111,7 @@ class SintaticalAnalyzer:
 
             step += 1
 
+    # salva a tabela de parsing no diretório padrão
     def save_parsing_table(self, table: PrettyTable):
         csv_str = table.get_csv_string()
         output_path = paths.PARSING_TABLE_DIR / "parsing_table.csv"
@@ -111,6 +119,9 @@ class SintaticalAnalyzer:
             f.write(csv_str)
 
     def generate_canonical_items_diagram(self, collection, transitions):
+        """
+        Gera o diagrama de itens canônicos e salva no diretório padrão.
+        """
         dot = Digraph(comment="Canonical LR0 Items", format='png')
         dot.attr(rankdir='LR', fontsize='12')
 

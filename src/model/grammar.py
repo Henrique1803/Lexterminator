@@ -6,6 +6,9 @@ from typing import Dict, List, Set, Optional
 
 
 class Grammar:
+    """
+    Classe que representa uma gramática SLR(1).
+    """
     def __init__(self, grammar_file: str, expected_tokens: Set = None):
         self.productions: Dict[str, List[List[str]]] = defaultdict(list)
         self.terminals: Set[str] = set()
@@ -190,31 +193,39 @@ class Grammar:
                                 changed = True
                             apply_follow_of_head = False  # Limpa a flag para o próximo loop
 
+    # retorna o conjunto first de algum não terminal
     def get_first(self, symbol: str) -> Set[str]:
         return self.first_sets.get(symbol, set())
     
+    # retorna o conjunto follow de algum não terminal
     def get_follow(self, symbol: str) -> Set[str]:
         return self.follow_sets.get(symbol, set())
 
+    # método auxiliar que printa os conjuntos first
     def print_first_sets(self):
         for symbol in sorted(self.first_sets):
             first = ', '.join(sorted(self.first_sets[symbol]))
             print(f"FIRST({symbol}) = {{ {first} }}")
 
+    # método auxiliar que printa os conjuntos follow
     def print_follow_sets(self):
         for symbol in sorted(self.follow_sets):
             follow = ', '.join(sorted(self.follow_sets[symbol]))
             print(f"FIRST({symbol}) = {{ {follow} }}")
 
+    # retorna as produções
     def get_productions(self) -> Dict[str, List[List[str]]]:
         return dict(self.productions)
 
+    # retorna o símbolo inicial
     def get_start_symbol(self) -> Optional[str]:
         return self.start_symbol
 
+    # verifica se um dado símbolo é terminal
     def is_terminal(self, symbol: str) -> bool:
         return symbol in self.terminals
 
+    # verifica se um dado símbolo é não terminal
     def is_non_terminal(self, symbol: str) -> bool:
         return symbol in self.non_terminals
 
