@@ -2,7 +2,7 @@ from PyQt5 import QtWidgets, uic
 from PyQt5.QtWidgets import QTableWidgetItem, QHeaderView
 from PyQt5.QtGui import QColor
 from PyQt5.QtCore import Qt
-
+from prettytable import PrettyTable
 
 class TokenView(QtWidgets.QMainWindow):
     """
@@ -21,9 +21,19 @@ class TokenView(QtWidgets.QMainWindow):
         Configura eventos nos componentes para determinados métodos.
         """
         self.returnButton.clicked.connect(self.return_to_main)
-        self.saveButton.clicked.connect(self.controller.save_token_file)
+        self.actionSave_Token_List_File.triggered.connect(self.controller.save_token_file)
+        self.actionCompile_New_File.triggered.connect(self.controller.select_input_file)
+        self.runSintatical.clicked.connect(self.controller.run_sintatical_analysis)
 
-    def setup_table_view(self):
+    def update_handle_run_sintatical(self):
+        if self.controller.lexical_analyzer.lexical_error:
+            self.runSintatical.setEnabled(False)
+            self.controller.show_error("Lexical Error", "Lexical analysis failed due to unrecognized characters.")
+        else:
+            self.runSintatical.setEnabled(True)
+            self.controller.show_success("Lexical Analysis finished", "Lexical analysis completed successfully. No errors were found.")
+
+    def setup_tokens_table_view(self):
         """
         Configura widget que exibe a lista de tokens em formato de tabela,
         de acordo com words_result do analyzer.
@@ -52,6 +62,21 @@ class TokenView(QtWidgets.QMainWindow):
         self.table.horizontalHeader().setSectionResizeMode(QHeaderView.Stretch)
         self.table.resizeRowsToContents()
 
+    def setup_parsing_table_view(self, pretty_table: PrettyTable):
+        """
+        Atualiza o widget que exibe a tabela de parsing da análise sintática, de acordo com um PrettyTable.
+        """
+        rows = pretty_table.rows
+        headers = pretty_table.field_names
+        self.table.setColumnCount(len(headers))
+        self.table.setRowCount(len(rows))
+        self.table.setHorizontalHeaderLabels(headers)
+        for i, row in enumerate(rows):
+            for j, cell in enumerate(row):
+                item = QTableWidgetItem(str(cell))
+                item.setFlags(item.flags() & ~Qt.ItemFlag.ItemIsEditable)
+                self.table.setItem(i, j, item)
+        self.table.resizeColumnsToContents()
 
     def return_to_main(self):
         """

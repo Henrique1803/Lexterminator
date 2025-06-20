@@ -4,4 +4,4 @@ or: or
 and: and
 not: not
 (: \(
-:) \)
+): \)

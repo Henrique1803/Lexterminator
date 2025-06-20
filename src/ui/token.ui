@@ -67,7 +67,20 @@
      </widget>
     </item>
     <item>
-     <widget class="QTableWidget" name="table"/>
+     <widget class="QTableWidget" name="table">
+      <attribute name="horizontalHeaderCascadingSectionResizes">
+       <bool>true</bool>
+      </attribute>
+      <attribute name="horizontalHeaderStretchLastSection">
+       <bool>false</bool>
+      </attribute>
+      <attribute name="verticalHeaderCascadingSectionResizes">
+       <bool>true</bool>
+      </attribute>
+      <attribute name="verticalHeaderStretchLastSection">
+       <bool>false</bool>
+      </attribute>
+     </widget>
     </item>
     <item>
      <widget class="QWidget" name="widget_2" native="true">
@@ -180,7 +193,7 @@ QPushButton:hover
            <number>0</number>
           </property>
           <item alignment="Qt::AlignRight">
-           <widget class="QPushButton" name="saveButton">
+           <widget class="QPushButton" name="runSintatical">
             <property name="sizePolicy">
              <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
               <horstretch>0</horstretch>
@@ -216,7 +229,7 @@ QPushButton:hover
 }</string>
             </property>
             <property name="text">
-             <string>Save Token List File</string>
+             <string>Run Sintatical Analysis</string>
             </property>
            </widget>
           </item>
@@ -228,6 +241,24 @@ QPushButton:hover
     </item>
    </layout>
   </widget>
+  <widget class="QMenuBar" name="menuBar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>1020</width>
+     <height>22</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuSave">
+    <property name="title">
+     <string>File</string>
+    </property>
+    <addaction name="actionSave_Token_List_File"/>
+    <addaction name="actionCompile_New_File"/>
+   </widget>
+   <addaction name="menuSave"/>
+  </widget>
   <action name="actionOpen_file_to_recognize">
    <property name="text">
     <string>Open file to recognize</string>
@@ -236,6 +267,21 @@ QPushButton:hover
   <action name="actionClose">
    <property name="text">
     <string>Return</string>
+   </property>
+  </action>
+  <action name="actionSave_Token_List_File">
+   <property name="text">
+    <string>Save Token List File</string>
+   </property>
+  </action>
+  <action name="actionRerun">
+   <property name="text">
+    <string>Rerun</string>
+   </property>
+  </action>
+  <action name="actionCompile_New_File">
+   <property name="text">
+    <string>Compile New File</string>
    </property>
   </action>
  </widget>

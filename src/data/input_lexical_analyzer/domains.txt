@@ -1,6 +1,0 @@
-192.168.0.1
-http://google.com
-https://teste.org:443
-127.0.0.1
-http://localhost:8080
-:8080

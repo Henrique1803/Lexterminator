@@ -242,7 +242,7 @@ QPushButton:hover
   </widget>
   <action name="actionOpen_file_to_recognize">
    <property name="text">
-    <string>Open file to recognize</string>
+    <string>Compile File</string>
    </property>
   </action>
   <action name="actionClose">

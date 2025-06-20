@@ -16,14 +16,21 @@ class LexicalAnalyzer:
         self.__regular_definitions = RegularDefinitions(regular_definitions_path)
         self.__table = self.__regular_definitions.automata.transition_table()
         self.__words_result = None
+        self.__lexical_error = False
         self.__output_path: Path = LEXICAL_ANALYZER_OUTPUT_DIR / "tokens_output.txt"
     
-    def read_words_from_file_and_verify_pertinence(self, file_path: Path):
+    def read_words_from_file_and_verify_pertinence(self, file_path: Path, ignore_whitespaces = False):
         """
         Lê arquivo de entrada e salva a lista de tokens reconhecidos em um diretório padrão
         """
+        self.words = []
         with open(file_path, "r", encoding="utf-8") as file:
-            self.words = [str(word).strip() for word in file]
+            if ignore_whitespaces:
+                for line in file:
+                    self.words.extend(str(line).strip().split())
+            else:
+                self.words = [str(word).strip() for word in file]
+
         
         self.verify_words_pertinence(self.output_path)
     
@@ -37,6 +44,7 @@ class LexicalAnalyzer:
         regular_definitions_automata = self.regular_definitions.automata
         output_lines = []
         results = []
+        self.lexical_error = False
 
         for word in self.words:
             accepted, token = regular_definitions_automata.run(word)
@@ -44,6 +52,7 @@ class LexicalAnalyzer:
                 results.append((word, token))
                 output_lines.append(f"<{word},{token}>")
             else:
+                self.lexical_error = True
                 results.append((word, "erro!"))
                 output_lines.append(f"<{word},erro!>")
 
@@ -96,3 +105,11 @@ class LexicalAnalyzer:
     @output_path.setter
     def output_path(self, output_path: Path):
         self.__output_path = output_path
+
+    @property
+    def lexical_error(self):
+        return self.__lexical_error
+
+    @lexical_error.setter
+    def lexical_error(self, lexical_error: bool):
+        self.__lexical_error = lexical_error

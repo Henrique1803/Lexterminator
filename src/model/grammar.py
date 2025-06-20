@@ -52,6 +52,8 @@ class Grammar:
         # Percorre todas as produções da gramática
         for bodies in self.productions.values():
             for body in bodies:
+                if "&" in body:
+                    body.remove("&")
                 symbols_in_productions.update(body) # Adiciona todos os símbolos da produção ao conjunto
 
         # Atualiza os terminais

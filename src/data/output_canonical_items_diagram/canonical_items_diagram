@@ -2,7 +2,7 @@
 digraph {
 	fontsize=12 rankdir=LR
 	0 [label="I0:
-<dcl_const> → • &
+<dcl_const> → • 
 <dcl_const> → • const <tipo_pre_def> id = <constante> ; <dcl_const>
 <declaracoes> → • <dcl_const> <dcl_var> <dcl_procs>
 <programa> → • <declaracoes> <comandos> .
@@ -13,7 +13,7 @@ digraph {
 <comandos> → • inicio <comando> <rep_comando> fim
 <programa> → <declaracoes> • <comandos> ." fontsize=10 shape=box]
 	3 [label="I3:
-<dcl_var> → • &
+<dcl_var> → • 
 <dcl_var> → • var <lid> : <tipo> ; <dcl_var>
 <declaracoes> → <dcl_const> • <dcl_var> <dcl_procs>" fontsize=10 shape=box]
 	4 [label="I4:
@@ -23,11 +23,9 @@ digraph {
 <tipo_pre_def> → • inteiro
 <tipo_pre_def> → • real" fontsize=10 shape=box]
 	5 [label="I5:
-<dcl_const> → & •" fontsize=10 shape=box]
-	6 [label="I6:
 <programa> → <declaracoes> <comandos> • ." fontsize=10 shape=box]
-	7 [label="I7:
-<comando> → • &
+	6 [label="I6:
+<comando> → • 
 <comando> → • enquanto <expressao> faca <comando>
 <comando> → • escreva ( <expressao> <rep_expressao> )
 <comando> → • id <rcomid>
@@ -36,41 +34,39 @@ digraph {
 <comando> → • repita <comando> ate <expressao>
 <comando> → • se <expressao> entao <comando> <senaoparte>
 <comandos> → inicio • <comando> <rep_comando> fim" fontsize=10 shape=box]
-	8 [label="I8:
+	7 [label="I7:
 <dcl_proc> → • funcao id <parametros> : <tipo_pre_def> ; <declaracoes> <comandos>
 <dcl_proc> → • proc id <parametros> ; <declaracoes> <comandos>
-<dcl_procs> → • &
+<dcl_procs> → • 
 <dcl_procs> → • <dcl_proc> ; <dcl_procs>
 <declaracoes> → <dcl_const> <dcl_var> • <dcl_procs>" fontsize=10 shape=box]
-	9 [label="I9:
+	8 [label="I8:
 <dcl_var> → var • <lid> : <tipo> ; <dcl_var>
 <lid> → • id <rep_id>" fontsize=10 shape=box]
-	10 [label="I10:
-<dcl_var> → & •" fontsize=10 shape=box]
-	11 [label="I11:
+	9 [label="I9:
 <dcl_const> → const <tipo_pre_def> • id = <constante> ; <dcl_const>" fontsize=10 shape=box]
-	12 [label="I12:
+	10 [label="I10:
 <tipo_pre_def> → inteiro •" fontsize=10 shape=box]
-	13 [label="I13:
+	11 [label="I11:
 <tipo_pre_def> → real •" fontsize=10 shape=box]
-	14 [label="I14:
+	12 [label="I12:
 <tipo_pre_def> → booleano •" fontsize=10 shape=box]
-	15 [label="I15:
+	13 [label="I13:
 <tipo_pre_def> → caracter •" fontsize=10 shape=box]
-	16 [label="I16:
+	14 [label="I14:
 <programa> → <declaracoes> <comandos> . •" fontsize=10 shape=box]
-	17 [label="I17:
+	15 [label="I15:
 <comandos> → inicio <comando> • <rep_comando> fim
-<rep_comando> → • &
+<rep_comando> → • 
 <rep_comando> → • ; <comando> <rep_comando>" fontsize=10 shape=box]
-	18 [label="I18:
+	16 [label="I16:
 <comando> → id • <rcomid>
-<rcomid> → • &
+<rcomid> → • 
 <rcomid> → • ( <expressao> <rep_expressao> )
 <rcomid> → • := <expressao>
 <rcomid> → • [ <expressao> ] := <expressao>" fontsize=10 shape=box]
-	19 [label="I19:
-<comando> → • &
+	17 [label="I17:
+<comando> → • 
 <comando> → • enquanto <expressao> faca <comando>
 <comando> → • escreva ( <expressao> <rep_expressao> )
 <comando> → • id <rcomid>
@@ -79,7 +75,7 @@ digraph {
 <comando> → • leia ( <lid> )
 <comando> → • repita <comando> ate <expressao>
 <comando> → • se <expressao> entao <comando> <senaoparte>" fontsize=10 shape=box]
-	20 [label="I20:
+	18 [label="I18:
 <comando> → se • <expressao> entao <comando> <senaoparte>
 <constante_explicita> → • falso
 <constante_explicita> → • literal
@@ -95,7 +91,7 @@ digraph {
 <fator> → • nao <fator>
 <termo> → • <fator> <rep_termo>
 <variavel> → • id <rvar>" fontsize=10 shape=box]
-	21 [label="I21:
+	19 [label="I19:
 <comando> → enquanto • <expressao> faca <comando>
 <constante_explicita> → • falso
 <constante_explicita> → • literal
@@ -111,8 +107,8 @@ digraph {
 <fator> → • nao <fator>
 <termo> → • <fator> <rep_termo>
 <variavel> → • id <rvar>" fontsize=10 shape=box]
-	22 [label="I22:
-<comando> → • &
+	20 [label="I20:
+<comando> → • 
 <comando> → • enquanto <expressao> faca <comando>
 <comando> → • escreva ( <expressao> <rep_expressao> )
 <comando> → • id <rcomid>
@@ -121,34 +117,30 @@ digraph {
 <comando> → • repita <comando> ate <expressao>
 <comando> → repita • <comando> ate <expressao>
 <comando> → • se <expressao> entao <comando> <senaoparte>" fontsize=10 shape=box]
-	23 [label="I23:
+	21 [label="I21:
 <comando> → leia • ( <lid> )" fontsize=10 shape=box]
-	24 [label="I24:
+	22 [label="I22:
 <comando> → escreva • ( <expressao> <rep_expressao> )" fontsize=10 shape=box]
-	25 [label="I25:
-<comando> → & •" fontsize=10 shape=box]
-	26 [label="I26:
+	23 [label="I23:
 <declaracoes> → <dcl_const> <dcl_var> <dcl_procs> •" fontsize=10 shape=box]
-	27 [label="I27:
+	24 [label="I24:
 <dcl_procs> → <dcl_proc> • ; <dcl_procs>" fontsize=10 shape=box]
-	28 [label="I28:
-<dcl_procs> → & •" fontsize=10 shape=box]
-	29 [label="I29:
+	25 [label="I25:
 <dcl_proc> → proc • id <parametros> ; <declaracoes> <comandos>" fontsize=10 shape=box]
-	30 [label="I30:
+	26 [label="I26:
 <dcl_proc> → funcao • id <parametros> : <tipo_pre_def> ; <declaracoes> <comandos>" fontsize=10 shape=box]
-	31 [label="I31:
+	27 [label="I27:
 <dcl_var> → var <lid> • : <tipo> ; <dcl_var>" fontsize=10 shape=box]
-	32 [label="I32:
+	28 [label="I28:
 <lid> → id • <rep_id>
-<rep_id> → • &
+<rep_id> → • 
 <rep_id> → • , id <rep_id>" fontsize=10 shape=box]
-	33 [label="I33:
+	29 [label="I29:
 <dcl_const> → const <tipo_pre_def> id • = <constante> ; <dcl_const>" fontsize=10 shape=box]
-	34 [label="I34:
+	30 [label="I30:
 <comandos> → inicio <comando> <rep_comando> • fim" fontsize=10 shape=box]
-	35 [label="I35:
-<comando> → • &
+	31 [label="I31:
+<comando> → • 
 <comando> → • enquanto <expressao> faca <comando>
 <comando> → • escreva ( <expressao> <rep_expressao> )
 <comando> → • id <rcomid>
@@ -157,11 +149,9 @@ digraph {
 <comando> → • repita <comando> ate <expressao>
 <comando> → • se <expressao> entao <comando> <senaoparte>
 <rep_comando> → ; • <comando> <rep_comando>" fontsize=10 shape=box]
-	36 [label="I36:
-<rep_comando> → & •" fontsize=10 shape=box]
-	37 [label="I37:
+	32 [label="I32:
 <comando> → id <rcomid> •" fontsize=10 shape=box]
-	38 [label="I38:
+	33 [label="I33:
 <constante_explicita> → • falso
 <constante_explicita> → • literal
 <constante_explicita> → • num_int
@@ -177,7 +167,7 @@ digraph {
 <rcomid> → := • <expressao>
 <termo> → • <fator> <rep_termo>
 <variavel> → • id <rvar>" fontsize=10 shape=box]
-	39 [label="I39:
+	34 [label="I34:
 <constante_explicita> → • falso
 <constante_explicita> → • literal
 <constante_explicita> → • num_int
@@ -193,7 +183,7 @@ digraph {
 <rcomid> → [ • <expressao> ] := <expressao>
 <termo> → • <fator> <rep_termo>
 <variavel> → • id <rvar>" fontsize=10 shape=box]
-	40 [label="I40:
+	35 [label="I35:
 <constante_explicita> → • falso
 <constante_explicita> → • literal
 <constante_explicita> → • num_int
@@ -209,15 +199,13 @@ digraph {
 <rcomid> → ( • <expressao> <rep_expressao> )
 <termo> → • <fator> <rep_termo>
 <variavel> → • id <rvar>" fontsize=10 shape=box]
-	41 [label="I41:
-<rcomid> → & •" fontsize=10 shape=box]
-	42 [label="I42:
+	36 [label="I36:
 <comando> → inicio <comando> • <rep_comando> fim
-<rep_comando> → • &
+<rep_comando> → • 
 <rep_comando> → • ; <comando> <rep_comando>" fontsize=10 shape=box]
-	43 [label="I43:
+	37 [label="I37:
 <comando> → se <expressao> • entao <comando> <senaoparte>" fontsize=10 shape=box]
-	44 [label="I44:
+	38 [label="I38:
 <expressao> → <expsimp> • <resto_expressao>
 <oprel> → • <
 <oprel> → • <=
@@ -225,23 +213,23 @@ digraph {
 <oprel> → • =
 <oprel> → • >
 <oprel> → • >=
-<resto_expressao> → • &
+<resto_expressao> → • 
 <resto_expressao> → • <oprel> <expsimp>" fontsize=10 shape=box]
-	45 [label="I45:
+	39 [label="I39:
 <expsimp> → <termo> • <rep_expsimp>
 <op_add> → • +
 <op_add> → • -
 <op_add> → • ou
-<rep_expsimp> → • &
+<rep_expsimp> → • 
 <rep_expsimp> → • <op_add> <termo> <rep_expsimp>" fontsize=10 shape=box]
-	46 [label="I46:
+	40 [label="I40:
 <op_mult> → • *
 <op_mult> → • /
 <op_mult> → • e
-<rep_termo> → • &
+<rep_termo> → • 
 <rep_termo> → • <op_mult> <fator> <rep_termo>
 <termo> → <fator> • <rep_termo>" fontsize=10 shape=box]
-	47 [label="I47:
+	41 [label="I41:
 <constante_explicita> → • falso
 <constante_explicita> → • literal
 <constante_explicita> → • num_int
@@ -254,7 +242,7 @@ digraph {
 <fator> → • nao <fator>
 <fator> → nao • <fator>
 <variavel> → • id <rvar>" fontsize=10 shape=box]
-	48 [label="I48:
+	42 [label="I42:
 <constante_explicita> → • falso
 <constante_explicita> → • literal
 <constante_explicita> → • num_int
@@ -267,7 +255,7 @@ digraph {
 <fator> → • <variavel>
 <fator> → • nao <fator>
 <variavel> → • id <rvar>" fontsize=10 shape=box]
-	49 [label="I49:
+	43 [label="I43:
 <constante_explicita> → • falso
 <constante_explicita> → • literal
 <constante_explicita> → • num_int
@@ -283,33 +271,33 @@ digraph {
 <fator> → • nao <fator>
 <termo> → • <fator> <rep_termo>
 <variavel> → • id <rvar>" fontsize=10 shape=box]
-	50 [label="I50:
+	44 [label="I44:
 <fator> → <variavel> •" fontsize=10 shape=box]
-	51 [label="I51:
+	45 [label="I45:
 <fator> → <constante_explicita> •" fontsize=10 shape=box]
-	52 [label="I52:
-<rvar> → • &
+	46 [label="I46:
+<rvar> → • 
 <rvar> → • ( <expressao> <rep_expressao> )
 <rvar> → • [ <expressao> ]
 <variavel> → id • <rvar>" fontsize=10 shape=box]
-	53 [label="I53:
+	47 [label="I47:
 <constante_explicita> → num_int •" fontsize=10 shape=box]
-	54 [label="I54:
+	48 [label="I48:
 <constante_explicita> → num_real •" fontsize=10 shape=box]
-	55 [label="I55:
+	49 [label="I49:
 <constante_explicita> → falso •" fontsize=10 shape=box]
-	56 [label="I56:
+	50 [label="I50:
 <constante_explicita> → verdadeiro •" fontsize=10 shape=box]
-	57 [label="I57:
+	51 [label="I51:
 <constante_explicita> → literal •" fontsize=10 shape=box]
-	58 [label="I58:
+	52 [label="I52:
 <comando> → enquanto <expressao> • faca <comando>" fontsize=10 shape=box]
-	59 [label="I59:
+	53 [label="I53:
 <comando> → repita <comando> • ate <expressao>" fontsize=10 shape=box]
-	60 [label="I60:
+	54 [label="I54:
 <comando> → leia ( • <lid> )
 <lid> → • id <rep_id>" fontsize=10 shape=box]
-	61 [label="I61:
+	55 [label="I55:
 <comando> → escreva ( • <expressao> <rep_expressao> )
 <constante_explicita> → • falso
 <constante_explicita> → • literal
@@ -325,21 +313,21 @@ digraph {
 <fator> → • nao <fator>
 <termo> → • <fator> <rep_termo>
 <variavel> → • id <rvar>" fontsize=10 shape=box]
-	62 [label="I62:
+	56 [label="I56:
 <dcl_proc> → • funcao id <parametros> : <tipo_pre_def> ; <declaracoes> <comandos>
 <dcl_proc> → • proc id <parametros> ; <declaracoes> <comandos>
-<dcl_procs> → • &
+<dcl_procs> → • 
 <dcl_procs> → • <dcl_proc> ; <dcl_procs>
 <dcl_procs> → <dcl_proc> ; • <dcl_procs>" fontsize=10 shape=box]
-	63 [label="I63:
+	57 [label="I57:
 <dcl_proc> → proc id • <parametros> ; <declaracoes> <comandos>
-<parametros> → • &
+<parametros> → • 
 <parametros> → • ( <listapar> )" fontsize=10 shape=box]
-	64 [label="I64:
+	58 [label="I58:
 <dcl_proc> → funcao id • <parametros> : <tipo_pre_def> ; <declaracoes> <comandos>
-<parametros> → • &
+<parametros> → • 
 <parametros> → • ( <listapar> )" fontsize=10 shape=box]
-	65 [label="I65:
+	59 [label="I59:
 <dcl_var> → var <lid> : • <tipo> ; <dcl_var>
 <tipo> → • <tipo_pre_def>
 <tipo> → • cadeia [ <constante> ]
@@ -349,13 +337,11 @@ digraph {
 <tipo_pre_def> → • caracter
 <tipo_pre_def> → • inteiro
 <tipo_pre_def> → • real" fontsize=10 shape=box]
-	66 [label="I66:
+	60 [label="I60:
 <lid> → id <rep_id> •" fontsize=10 shape=box]
-	67 [label="I67:
+	61 [label="I61:
 <rep_id> → , • id <rep_id>" fontsize=10 shape=box]
-	68 [label="I68:
-<rep_id> → & •" fontsize=10 shape=box]
-	69 [label="I69:
+	62 [label="I62:
 <constante> → • <constante_explicita>
 <constante> → • id
 <constante_explicita> → • falso
@@ -364,24 +350,24 @@ digraph {
 <constante_explicita> → • num_real
 <constante_explicita> → • verdadeiro
 <dcl_const> → const <tipo_pre_def> id = • <constante> ; <dcl_const>" fontsize=10 shape=box]
-	70 [label="I70:
+	63 [label="I63:
 <comandos> → inicio <comando> <rep_comando> fim •" fontsize=10 shape=box]
-	71 [label="I71:
-<rep_comando> → • &
+	64 [label="I64:
+<rep_comando> → • 
 <rep_comando> → • ; <comando> <rep_comando>
 <rep_comando> → ; <comando> • <rep_comando>" fontsize=10 shape=box]
-	72 [label="I72:
+	65 [label="I65:
 <rcomid> → := <expressao> •" fontsize=10 shape=box]
-	73 [label="I73:
+	66 [label="I66:
 <rcomid> → [ <expressao> • ] := <expressao>" fontsize=10 shape=box]
-	74 [label="I74:
+	67 [label="I67:
 <rcomid> → ( <expressao> • <rep_expressao> )
-<rep_expressao> → • &
+<rep_expressao> → • 
 <rep_expressao> → • , <expressao> <rep_expressao>" fontsize=10 shape=box]
-	75 [label="I75:
+	68 [label="I68:
 <comando> → inicio <comando> <rep_comando> • fim" fontsize=10 shape=box]
-	76 [label="I76:
-<comando> → • &
+	69 [label="I69:
+<comando> → • 
 <comando> → • enquanto <expressao> faca <comando>
 <comando> → • escreva ( <expressao> <rep_expressao> )
 <comando> → • id <rcomid>
@@ -390,9 +376,9 @@ digraph {
 <comando> → • repita <comando> ate <expressao>
 <comando> → • se <expressao> entao <comando> <senaoparte>
 <comando> → se <expressao> entao • <comando> <senaoparte>" fontsize=10 shape=box]
-	77 [label="I77:
+	70 [label="I70:
 <expressao> → <expsimp> <resto_expressao> •" fontsize=10 shape=box]
-	78 [label="I78:
+	71 [label="I71:
 <constante_explicita> → • falso
 <constante_explicita> → • literal
 <constante_explicita> → • num_int
@@ -407,23 +393,21 @@ digraph {
 <resto_expressao> → <oprel> • <expsimp>
 <termo> → • <fator> <rep_termo>
 <variavel> → • id <rvar>" fontsize=10 shape=box]
-	79 [label="I79:
-<resto_expressao> → & •" fontsize=10 shape=box]
-	80 [label="I80:
+	72 [label="I72:
 <oprel> → = •" fontsize=10 shape=box]
-	81 [label="I81:
+	73 [label="I73:
 <oprel> → < •" fontsize=10 shape=box]
-	82 [label="I82:
+	74 [label="I74:
 <oprel> → > •" fontsize=10 shape=box]
-	83 [label="I83:
+	75 [label="I75:
 <oprel> → >= •" fontsize=10 shape=box]
-	84 [label="I84:
+	76 [label="I76:
 <oprel> → <= •" fontsize=10 shape=box]
-	85 [label="I85:
+	77 [label="I77:
 <oprel> → <> •" fontsize=10 shape=box]
-	86 [label="I86:
+	78 [label="I78:
 <expsimp> → <termo> <rep_expsimp> •" fontsize=10 shape=box]
-	87 [label="I87:
+	79 [label="I79:
 <constante_explicita> → • falso
 <constante_explicita> → • literal
 <constante_explicita> → • num_int
@@ -437,17 +421,15 @@ digraph {
 <rep_expsimp> → <op_add> • <termo> <rep_expsimp>
 <termo> → • <fator> <rep_termo>
 <variavel> → • id <rvar>" fontsize=10 shape=box]
-	88 [label="I88:
-<rep_expsimp> → & •" fontsize=10 shape=box]
-	89 [label="I89:
+	80 [label="I80:
 <op_add> → + •" fontsize=10 shape=box]
-	90 [label="I90:
+	81 [label="I81:
 <op_add> → - •" fontsize=10 shape=box]
-	91 [label="I91:
+	82 [label="I82:
 <op_add> → ou •" fontsize=10 shape=box]
-	92 [label="I92:
+	83 [label="I83:
 <termo> → <fator> <rep_termo> •" fontsize=10 shape=box]
-	93 [label="I93:
+	84 [label="I84:
 <constante_explicita> → • falso
 <constante_explicita> → • literal
 <constante_explicita> → • num_int
@@ -460,23 +442,21 @@ digraph {
 <fator> → • nao <fator>
 <rep_termo> → <op_mult> • <fator> <rep_termo>
 <variavel> → • id <rvar>" fontsize=10 shape=box]
-	94 [label="I94:
-<rep_termo> → & •" fontsize=10 shape=box]
-	95 [label="I95:
+	85 [label="I85:
 <op_mult> → * •" fontsize=10 shape=box]
-	96 [label="I96:
+	86 [label="I86:
 <op_mult> → / •" fontsize=10 shape=box]
-	97 [label="I97:
+	87 [label="I87:
 <op_mult> → e •" fontsize=10 shape=box]
-	98 [label="I98:
+	88 [label="I88:
 <fator> → nao <fator> •" fontsize=10 shape=box]
-	99 [label="I99:
+	89 [label="I89:
 <fator> → - <fator> •" fontsize=10 shape=box]
-	100 [label="I100:
+	90 [label="I90:
 <fator> → ( <expressao> • )" fontsize=10 shape=box]
-	101 [label="I101:
+	91 [label="I91:
 <variavel> → id <rvar> •" fontsize=10 shape=box]
-	102 [label="I102:
+	92 [label="I92:
 <constante_explicita> → • falso
 <constante_explicita> → • literal
 <constante_explicita> → • num_int
@@ -492,7 +472,7 @@ digraph {
 <rvar> → ( • <expressao> <rep_expressao> )
 <termo> → • <fator> <rep_termo>
 <variavel> → • id <rvar>" fontsize=10 shape=box]
-	103 [label="I103:
+	93 [label="I93:
 <constante_explicita> → • falso
 <constante_explicita> → • literal
 <constante_explicita> → • num_int
@@ -508,10 +488,8 @@ digraph {
 <rvar> → [ • <expressao> ]
 <termo> → • <fator> <rep_termo>
 <variavel> → • id <rvar>" fontsize=10 shape=box]
-	104 [label="I104:
-<rvar> → & •" fontsize=10 shape=box]
-	105 [label="I105:
-<comando> → • &
+	94 [label="I94:
+<comando> → • 
 <comando> → • enquanto <expressao> faca <comando>
 <comando> → enquanto <expressao> faca • <comando>
 <comando> → • escreva ( <expressao> <rep_expressao> )
@@ -520,7 +498,7 @@ digraph {
 <comando> → • leia ( <lid> )
 <comando> → • repita <comando> ate <expressao>
 <comando> → • se <expressao> entao <comando> <senaoparte>" fontsize=10 shape=box]
-	106 [label="I106:
+	95 [label="I95:
 <comando> → repita <comando> ate • <expressao>
 <constante_explicita> → • falso
 <constante_explicita> → • literal
@@ -536,29 +514,27 @@ digraph {
 <fator> → • nao <fator>
 <termo> → • <fator> <rep_termo>
 <variavel> → • id <rvar>" fontsize=10 shape=box]
-	107 [label="I107:
+	96 [label="I96:
 <comando> → leia ( <lid> • )" fontsize=10 shape=box]
-	108 [label="I108:
+	97 [label="I97:
 <comando> → escreva ( <expressao> • <rep_expressao> )
-<rep_expressao> → • &
+<rep_expressao> → • 
 <rep_expressao> → • , <expressao> <rep_expressao>" fontsize=10 shape=box]
-	109 [label="I109:
+	98 [label="I98:
 <dcl_procs> → <dcl_proc> ; <dcl_procs> •" fontsize=10 shape=box]
-	110 [label="I110:
+	99 [label="I99:
 <dcl_proc> → proc id <parametros> • ; <declaracoes> <comandos>" fontsize=10 shape=box]
-	111 [label="I111:
+	100 [label="I100:
 <listapar> → • ref <lid> : <tipo_pre_def> <rep_listapar>
 <listapar> → • val <lid> : <tipo_pre_def> <rep_listapar>
 <parametros> → ( • <listapar> )" fontsize=10 shape=box]
-	112 [label="I112:
-<parametros> → & •" fontsize=10 shape=box]
-	113 [label="I113:
+	101 [label="I101:
 <dcl_proc> → funcao id <parametros> • : <tipo_pre_def> ; <declaracoes> <comandos>" fontsize=10 shape=box]
-	114 [label="I114:
+	102 [label="I102:
 <dcl_var> → var <lid> : <tipo> • ; <dcl_var>" fontsize=10 shape=box]
-	115 [label="I115:
+	103 [label="I103:
 <tipo> → <tipo_pre_def> •" fontsize=10 shape=box]
-	116 [label="I116:
+	104 [label="I104:
 <constante> → • <constante_explicita>
 <constante> → • id
 <constante_explicita> → • falso
@@ -567,27 +543,27 @@ digraph {
 <constante_explicita> → • num_real
 <constante_explicita> → • verdadeiro
 <tipo> → intervalo • <constante> .. <constante>" fontsize=10 shape=box]
-	117 [label="I117:
+	105 [label="I105:
 <tipo> → cadeia • [ <constante> ]" fontsize=10 shape=box]
-	118 [label="I118:
+	106 [label="I106:
 <tipo> → vetor • [ <constante> ] de <tipo_pre_def>" fontsize=10 shape=box]
-	119 [label="I119:
-<rep_id> → • &
+	107 [label="I107:
+<rep_id> → • 
 <rep_id> → • , id <rep_id>
 <rep_id> → , id • <rep_id>" fontsize=10 shape=box]
-	120 [label="I120:
+	108 [label="I108:
 <dcl_const> → const <tipo_pre_def> id = <constante> • ; <dcl_const>" fontsize=10 shape=box]
-	121 [label="I121:
+	109 [label="I109:
 <constante> → id •" fontsize=10 shape=box]
-	122 [label="I122:
+	110 [label="I110:
 <constante> → <constante_explicita> •" fontsize=10 shape=box]
-	123 [label="I123:
+	111 [label="I111:
 <rep_comando> → ; <comando> <rep_comando> •" fontsize=10 shape=box]
-	124 [label="I124:
+	112 [label="I112:
 <rcomid> → [ <expressao> ] • := <expressao>" fontsize=10 shape=box]
-	125 [label="I125:
+	113 [label="I113:
 <rcomid> → ( <expressao> <rep_expressao> • )" fontsize=10 shape=box]
-	126 [label="I126:
+	114 [label="I114:
 <constante_explicita> → • falso
 <constante_explicita> → • literal
 <constante_explicita> → • num_int
@@ -603,72 +579,70 @@ digraph {
 <rep_expressao> → , • <expressao> <rep_expressao>
 <termo> → • <fator> <rep_termo>
 <variavel> → • id <rvar>" fontsize=10 shape=box]
-	127 [label="I127:
-<rep_expressao> → & •" fontsize=10 shape=box]
-	128 [label="I128:
+	115 [label="I115:
 <comando> → inicio <comando> <rep_comando> fim •" fontsize=10 shape=box]
-	129 [label="I129:
+	116 [label="I116:
 <comando> → se <expressao> entao <comando> • <senaoparte>
-<senaoparte> → • &
+<senaoparte> → • 
 <senaoparte> → • senao <comando>" fontsize=10 shape=box]
-	130 [label="I130:
+	117 [label="I117:
 <resto_expressao> → <oprel> <expsimp> •" fontsize=10 shape=box]
-	131 [label="I131:
+	118 [label="I118:
 <op_add> → • +
 <op_add> → • -
 <op_add> → • ou
-<rep_expsimp> → • &
+<rep_expsimp> → • 
 <rep_expsimp> → • <op_add> <termo> <rep_expsimp>
 <rep_expsimp> → <op_add> <termo> • <rep_expsimp>" fontsize=10 shape=box]
-	132 [label="I132:
+	119 [label="I119:
 <op_mult> → • *
 <op_mult> → • /
 <op_mult> → • e
-<rep_termo> → • &
+<rep_termo> → • 
 <rep_termo> → • <op_mult> <fator> <rep_termo>
 <rep_termo> → <op_mult> <fator> • <rep_termo>" fontsize=10 shape=box]
-	133 [label="I133:
+	120 [label="I120:
 <fator> → ( <expressao> ) •" fontsize=10 shape=box]
-	134 [label="I134:
-<rep_expressao> → • &
+	121 [label="I121:
+<rep_expressao> → • 
 <rep_expressao> → • , <expressao> <rep_expressao>
 <rvar> → ( <expressao> • <rep_expressao> )" fontsize=10 shape=box]
-	135 [label="I135:
+	122 [label="I122:
 <rvar> → [ <expressao> • ]" fontsize=10 shape=box]
-	136 [label="I136:
+	123 [label="I123:
 <comando> → enquanto <expressao> faca <comando> •" fontsize=10 shape=box]
-	137 [label="I137:
+	124 [label="I124:
 <comando> → repita <comando> ate <expressao> •" fontsize=10 shape=box]
-	138 [label="I138:
+	125 [label="I125:
 <comando> → leia ( <lid> ) •" fontsize=10 shape=box]
-	139 [label="I139:
+	126 [label="I126:
 <comando> → escreva ( <expressao> <rep_expressao> • )" fontsize=10 shape=box]
-	140 [label="I140:
-<dcl_const> → • &
+	127 [label="I127:
+<dcl_const> → • 
 <dcl_const> → • const <tipo_pre_def> id = <constante> ; <dcl_const>
 <dcl_proc> → proc id <parametros> ; • <declaracoes> <comandos>
 <declaracoes> → • <dcl_const> <dcl_var> <dcl_procs>" fontsize=10 shape=box]
-	141 [label="I141:
+	128 [label="I128:
 <parametros> → ( <listapar> • )" fontsize=10 shape=box]
-	142 [label="I142:
+	129 [label="I129:
 <lid> → • id <rep_id>
 <listapar> → ref • <lid> : <tipo_pre_def> <rep_listapar>" fontsize=10 shape=box]
-	143 [label="I143:
+	130 [label="I130:
 <lid> → • id <rep_id>
 <listapar> → val • <lid> : <tipo_pre_def> <rep_listapar>" fontsize=10 shape=box]
-	144 [label="I144:
+	131 [label="I131:
 <dcl_proc> → funcao id <parametros> : • <tipo_pre_def> ; <declaracoes> <comandos>
 <tipo_pre_def> → • booleano
 <tipo_pre_def> → • caracter
 <tipo_pre_def> → • inteiro
 <tipo_pre_def> → • real" fontsize=10 shape=box]
-	145 [label="I145:
-<dcl_var> → • &
+	132 [label="I132:
+<dcl_var> → • 
 <dcl_var> → • var <lid> : <tipo> ; <dcl_var>
 <dcl_var> → var <lid> : <tipo> ; • <dcl_var>" fontsize=10 shape=box]
-	146 [label="I146:
+	133 [label="I133:
 <tipo> → intervalo <constante> • .. <constante>" fontsize=10 shape=box]
-	147 [label="I147:
+	134 [label="I134:
 <constante> → • <constante_explicita>
 <constante> → • id
 <constante_explicita> → • falso
@@ -677,7 +651,7 @@ digraph {
 <constante_explicita> → • num_real
 <constante_explicita> → • verdadeiro
 <tipo> → cadeia [ • <constante> ]" fontsize=10 shape=box]
-	148 [label="I148:
+	135 [label="I135:
 <constante> → • <constante_explicita>
 <constante> → • id
 <constante_explicita> → • falso
@@ -686,13 +660,13 @@ digraph {
 <constante_explicita> → • num_real
 <constante_explicita> → • verdadeiro
 <tipo> → vetor [ • <constante> ] de <tipo_pre_def>" fontsize=10 shape=box]
-	149 [label="I149:
+	136 [label="I136:
 <rep_id> → , id <rep_id> •" fontsize=10 shape=box]
-	150 [label="I150:
-<dcl_const> → • &
+	137 [label="I137:
+<dcl_const> → • 
 <dcl_const> → • const <tipo_pre_def> id = <constante> ; <dcl_const>
 <dcl_const> → const <tipo_pre_def> id = <constante> ; • <dcl_const>" fontsize=10 shape=box]
-	151 [label="I151:
+	138 [label="I138:
 <constante_explicita> → • falso
 <constante_explicita> → • literal
 <constante_explicita> → • num_int
@@ -708,16 +682,16 @@ digraph {
 <rcomid> → [ <expressao> ] := • <expressao>
 <termo> → • <fator> <rep_termo>
 <variavel> → • id <rvar>" fontsize=10 shape=box]
-	152 [label="I152:
+	139 [label="I139:
 <rcomid> → ( <expressao> <rep_expressao> ) •" fontsize=10 shape=box]
-	153 [label="I153:
-<rep_expressao> → • &
+	140 [label="I140:
+<rep_expressao> → • 
 <rep_expressao> → • , <expressao> <rep_expressao>
 <rep_expressao> → , <expressao> • <rep_expressao>" fontsize=10 shape=box]
-	154 [label="I154:
+	141 [label="I141:
 <comando> → se <expressao> entao <comando> <senaoparte> •" fontsize=10 shape=box]
-	155 [label="I155:
-<comando> → • &
+	142 [label="I142:
+<comando> → • 
 <comando> → • enquanto <expressao> faca <comando>
 <comando> → • escreva ( <expressao> <rep_expressao> )
 <comando> → • id <rcomid>
@@ -726,32 +700,30 @@ digraph {
 <comando> → • repita <comando> ate <expressao>
 <comando> → • se <expressao> entao <comando> <senaoparte>
 <senaoparte> → senao • <comando>" fontsize=10 shape=box]
-	156 [label="I156:
-<senaoparte> → & •" fontsize=10 shape=box]
-	157 [label="I157:
+	143 [label="I143:
 <rep_expsimp> → <op_add> <termo> <rep_expsimp> •" fontsize=10 shape=box]
-	158 [label="I158:
+	144 [label="I144:
 <rep_termo> → <op_mult> <fator> <rep_termo> •" fontsize=10 shape=box]
-	159 [label="I159:
+	145 [label="I145:
 <rvar> → ( <expressao> <rep_expressao> • )" fontsize=10 shape=box]
-	160 [label="I160:
+	146 [label="I146:
 <rvar> → [ <expressao> ] •" fontsize=10 shape=box]
-	161 [label="I161:
+	147 [label="I147:
 <comando> → escreva ( <expressao> <rep_expressao> ) •" fontsize=10 shape=box]
-	162 [label="I162:
+	148 [label="I148:
 <comandos> → • inicio <comando> <rep_comando> fim
 <dcl_proc> → proc id <parametros> ; <declaracoes> • <comandos>" fontsize=10 shape=box]
-	163 [label="I163:
+	149 [label="I149:
 <parametros> → ( <listapar> ) •" fontsize=10 shape=box]
-	164 [label="I164:
+	150 [label="I150:
 <listapar> → ref <lid> • : <tipo_pre_def> <rep_listapar>" fontsize=10 shape=box]
-	165 [label="I165:
+	151 [label="I151:
 <listapar> → val <lid> • : <tipo_pre_def> <rep_listapar>" fontsize=10 shape=box]
-	166 [label="I166:
+	152 [label="I152:
 <dcl_proc> → funcao id <parametros> : <tipo_pre_def> • ; <declaracoes> <comandos>" fontsize=10 shape=box]
-	167 [label="I167:
+	153 [label="I153:
 <dcl_var> → var <lid> : <tipo> ; <dcl_var> •" fontsize=10 shape=box]
-	168 [label="I168:
+	154 [label="I154:
 <constante> → • <constante_explicita>
 <constante> → • id
 <constante_explicita> → • falso
@@ -760,631 +732,593 @@ digraph {
 <constante_explicita> → • num_real
 <constante_explicita> → • verdadeiro
 <tipo> → intervalo <constante> .. • <constante>" fontsize=10 shape=box]
-	169 [label="I169:
+	155 [label="I155:
 <tipo> → cadeia [ <constante> • ]" fontsize=10 shape=box]
-	170 [label="I170:
+	156 [label="I156:
 <tipo> → vetor [ <constante> • ] de <tipo_pre_def>" fontsize=10 shape=box]
-	171 [label="I171:
+	157 [label="I157:
 <dcl_const> → const <tipo_pre_def> id = <constante> ; <dcl_const> •" fontsize=10 shape=box]
-	172 [label="I172:
+	158 [label="I158:
 <rcomid> → [ <expressao> ] := <expressao> •" fontsize=10 shape=box]
-	173 [label="I173:
+	159 [label="I159:
 <rep_expressao> → , <expressao> <rep_expressao> •" fontsize=10 shape=box]
-	174 [label="I174:
+	160 [label="I160:
 <senaoparte> → senao <comando> •" fontsize=10 shape=box]
-	175 [label="I175:
+	161 [label="I161:
 <rvar> → ( <expressao> <rep_expressao> ) •" fontsize=10 shape=box]
-	176 [label="I176:
+	162 [label="I162:
 <dcl_proc> → proc id <parametros> ; <declaracoes> <comandos> •" fontsize=10 shape=box]
-	177 [label="I177:
+	163 [label="I163:
 <listapar> → ref <lid> : • <tipo_pre_def> <rep_listapar>
 <tipo_pre_def> → • booleano
 <tipo_pre_def> → • caracter
 <tipo_pre_def> → • inteiro
 <tipo_pre_def> → • real" fontsize=10 shape=box]
-	178 [label="I178:
+	164 [label="I164:
 <listapar> → val <lid> : • <tipo_pre_def> <rep_listapar>
 <tipo_pre_def> → • booleano
 <tipo_pre_def> → • caracter
 <tipo_pre_def> → • inteiro
 <tipo_pre_def> → • real" fontsize=10 shape=box]
-	179 [label="I179:
-<dcl_const> → • &
+	165 [label="I165:
+<dcl_const> → • 
 <dcl_const> → • const <tipo_pre_def> id = <constante> ; <dcl_const>
 <dcl_proc> → funcao id <parametros> : <tipo_pre_def> ; • <declaracoes> <comandos>
 <declaracoes> → • <dcl_const> <dcl_var> <dcl_procs>" fontsize=10 shape=box]
-	180 [label="I180:
+	166 [label="I166:
 <tipo> → intervalo <constante> .. <constante> •" fontsize=10 shape=box]
-	181 [label="I181:
+	167 [label="I167:
 <tipo> → cadeia [ <constante> ] •" fontsize=10 shape=box]
-	182 [label="I182:
+	168 [label="I168:
 <tipo> → vetor [ <constante> ] • de <tipo_pre_def>" fontsize=10 shape=box]
-	183 [label="I183:
+	169 [label="I169:
 <listapar> → ref <lid> : <tipo_pre_def> • <rep_listapar>
-<rep_listapar> → • &
+<rep_listapar> → • 
 <rep_listapar> → • ; <listapar>" fontsize=10 shape=box]
-	184 [label="I184:
+	170 [label="I170:
 <listapar> → val <lid> : <tipo_pre_def> • <rep_listapar>
-<rep_listapar> → • &
+<rep_listapar> → • 
 <rep_listapar> → • ; <listapar>" fontsize=10 shape=box]
-	185 [label="I185:
+	171 [label="I171:
 <comandos> → • inicio <comando> <rep_comando> fim
 <dcl_proc> → funcao id <parametros> : <tipo_pre_def> ; <declaracoes> • <comandos>" fontsize=10 shape=box]
-	186 [label="I186:
+	172 [label="I172:
 <tipo> → vetor [ <constante> ] de • <tipo_pre_def>
 <tipo_pre_def> → • booleano
 <tipo_pre_def> → • caracter
 <tipo_pre_def> → • inteiro
 <tipo_pre_def> → • real" fontsize=10 shape=box]
-	187 [label="I187:
+	173 [label="I173:
 <listapar> → ref <lid> : <tipo_pre_def> <rep_listapar> •" fontsize=10 shape=box]
-	188 [label="I188:
+	174 [label="I174:
 <listapar> → • ref <lid> : <tipo_pre_def> <rep_listapar>
 <listapar> → • val <lid> : <tipo_pre_def> <rep_listapar>
 <rep_listapar> → ; • <listapar>" fontsize=10 shape=box]
-	189 [label="I189:
-<rep_listapar> → & •" fontsize=10 shape=box]
-	190 [label="I190:
+	175 [label="I175:
 <listapar> → val <lid> : <tipo_pre_def> <rep_listapar> •" fontsize=10 shape=box]
-	191 [label="I191:
+	176 [label="I176:
 <dcl_proc> → funcao id <parametros> : <tipo_pre_def> ; <declaracoes> <comandos> •" fontsize=10 shape=box]
-	192 [label="I192:
+	177 [label="I177:
 <tipo> → vetor [ <constante> ] de <tipo_pre_def> •" fontsize=10 shape=box]
-	193 [label="I193:
+	178 [label="I178:
 <rep_listapar> → ; <listapar> •" fontsize=10 shape=box]
 	0 -> 1 [label=<programa>]
 	0 -> 2 [label=<declaracoes>]
 	0 -> 3 [label=<dcl_const>]
 	0 -> 4 [label=const]
-	0 -> 5 [label="&"]
 	accept [label=ACCEPT fillcolor=lightgreen shape=doublecircle style=filled]
 	1 -> accept [label="$"]
-	2 -> 6 [label=<comandos>]
-	2 -> 7 [label=inicio]
-	3 -> 8 [label=<dcl_var>]
-	3 -> 9 [label=var]
-	3 -> 10 [label="&"]
-	4 -> 11 [label=<tipo_pre_def>]
-	4 -> 12 [label=inteiro]
-	4 -> 13 [label=real]
-	4 -> 14 [label=booleano]
-	4 -> 15 [label=caracter]
-	6 -> 16 [label="."]
-	7 -> 17 [label=<comando>]
-	7 -> 18 [label=id]
-	7 -> 19 [label=inicio]
-	7 -> 20 [label=se]
-	7 -> 21 [label=enquanto]
-	7 -> 22 [label=repita]
-	7 -> 23 [label=leia]
-	7 -> 24 [label=escreva]
-	7 -> 25 [label="&"]
-	8 -> 26 [label=<dcl_procs>]
-	8 -> 27 [label=<dcl_proc>]
-	8 -> 28 [label="&"]
-	8 -> 29 [label=proc]
-	8 -> 30 [label=funcao]
-	9 -> 31 [label=<lid>]
-	9 -> 32 [label=id]
-	11 -> 33 [label=id]
-	17 -> 34 [label=<rep_comando>]
-	17 -> 35 [label=";"]
-	17 -> 36 [label="&"]
-	18 -> 37 [label=<rcomid>]
-	18 -> 38 [label=":="]
-	18 -> 39 [label="["]
-	18 -> 40 [label="("]
-	18 -> 41 [label="&"]
-	19 -> 18 [label=id]
-	19 -> 42 [label=<comando>]
-	19 -> 19 [label=inicio]
-	19 -> 20 [label=se]
-	19 -> 21 [label=enquanto]
-	19 -> 22 [label=repita]
-	19 -> 23 [label=leia]
-	19 -> 24 [label=escreva]
-	19 -> 25 [label="&"]
-	20 -> 43 [label=<expressao>]
-	20 -> 44 [label=<expsimp>]
-	20 -> 45 [label=<termo>]
-	20 -> 46 [label=<fator>]
-	20 -> 47 [label=nao]
-	20 -> 48 [label="-"]
-	20 -> 49 [label="("]
-	20 -> 50 [label=<variavel>]
-	20 -> 51 [label=<constante_explicita>]
-	20 -> 52 [label=id]
-	20 -> 53 [label=num_int]
-	20 -> 54 [label=num_real]
-	20 -> 55 [label=falso]
-	20 -> 56 [label=verdadeiro]
-	20 -> 57 [label=literal]
-	21 -> 58 [label=<expressao>]
-	21 -> 44 [label=<expsimp>]
-	21 -> 45 [label=<termo>]
-	21 -> 46 [label=<fator>]
-	21 -> 47 [label=nao]
-	21 -> 48 [label="-"]
-	21 -> 49 [label="("]
-	21 -> 50 [label=<variavel>]
-	21 -> 51 [label=<constante_explicita>]
-	21 -> 52 [label=id]
-	21 -> 53 [label=num_int]
-	21 -> 54 [label=num_real]
-	21 -> 55 [label=falso]
-	21 -> 56 [label=verdadeiro]
-	21 -> 57 [label=literal]
-	22 -> 18 [label=id]
-	22 -> 19 [label=inicio]
-	22 -> 20 [label=se]
-	22 -> 21 [label=enquanto]
-	22 -> 59 [label=<comando>]
-	22 -> 22 [label=repita]
-	22 -> 23 [label=leia]
-	22 -> 24 [label=escreva]
-	22 -> 25 [label="&"]
-	23 -> 60 [label="("]
-	24 -> 61 [label="("]
-	27 -> 62 [label=";"]
-	29 -> 63 [label=id]
-	30 -> 64 [label=id]
-	31 -> 65 [label=":"]
-	32 -> 66 [label=<rep_id>]
-	32 -> 67 [label=","]
-	32 -> 68 [label="&"]
-	33 -> 69 [label="="]
-	34 -> 70 [label=fim]
-	35 -> 71 [label=<comando>]
-	35 -> 18 [label=id]
-	35 -> 19 [label=inicio]
-	35 -> 20 [label=se]
-	35 -> 21 [label=enquanto]
-	35 -> 22 [label=repita]
-	35 -> 23 [label=leia]
-	35 -> 24 [label=escreva]
-	35 -> 25 [label="&"]
-	38 -> 72 [label=<expressao>]
-	38 -> 44 [label=<expsimp>]
-	38 -> 45 [label=<termo>]
-	38 -> 46 [label=<fator>]
-	38 -> 47 [label=nao]
-	38 -> 48 [label="-"]
-	38 -> 49 [label="("]
-	38 -> 50 [label=<variavel>]
-	38 -> 51 [label=<constante_explicita>]
-	38 -> 52 [label=id]
-	38 -> 53 [label=num_int]
-	38 -> 54 [label=num_real]
-	38 -> 55 [label=falso]
-	38 -> 56 [label=verdadeiro]
-	38 -> 57 [label=literal]
-	39 -> 73 [label=<expressao>]
-	39 -> 44 [label=<expsimp>]
-	39 -> 45 [label=<termo>]
-	39 -> 46 [label=<fator>]
-	39 -> 47 [label=nao]
-	39 -> 48 [label="-"]
-	39 -> 49 [label="("]
-	39 -> 50 [label=<variavel>]
-	39 -> 51 [label=<constante_explicita>]
-	39 -> 52 [label=id]
-	39 -> 53 [label=num_int]
-	39 -> 54 [label=num_real]
-	39 -> 55 [label=falso]
-	39 -> 56 [label=verdadeiro]
-	39 -> 57 [label=literal]
-	40 -> 74 [label=<expressao>]
-	40 -> 44 [label=<expsimp>]
-	40 -> 45 [label=<termo>]
-	40 -> 46 [label=<fator>]
-	40 -> 47 [label=nao]
-	40 -> 48 [label="-"]
-	40 -> 49 [label="("]
-	40 -> 50 [label=<variavel>]
-	40 -> 51 [label=<constante_explicita>]
-	40 -> 52 [label=id]
-	40 -> 53 [label=num_int]
-	40 -> 54 [label=num_real]
-	40 -> 55 [label=falso]
-	40 -> 56 [label=verdadeiro]
-	40 -> 57 [label=literal]
-	42 -> 35 [label=";"]
-	42 -> 36 [label="&"]
-	42 -> 75 [label=<rep_comando>]
-	43 -> 76 [label=entao]
-	44 -> 77 [label=<resto_expressao>]
-	44 -> 78 [label=<oprel>]
-	44 -> 79 [label="&"]
-	44 -> 80 [label="="]
-	44 -> 81 [label="<"]
-	44 -> 82 [label=">"]
-	44 -> 83 [label=">="]
-	44 -> 84 [label="<="]
-	44 -> 85 [label=<>]
-	45 -> 86 [label=<rep_expsimp>]
-	45 -> 87 [label=<op_add>]
-	45 -> 88 [label="&"]
-	45 -> 89 [label="+"]
-	45 -> 90 [label="-"]
-	45 -> 91 [label=ou]
-	46 -> 92 [label=<rep_termo>]
-	46 -> 93 [label=<op_mult>]
-	46 -> 94 [label="&"]
-	46 -> 95 [label="*"]
-	46 -> 96 [label="/"]
-	46 -> 97 [label=e]
-	47 -> 98 [label=<fator>]
-	47 -> 47 [label=nao]
-	47 -> 48 [label="-"]
-	47 -> 49 [label="("]
-	47 -> 50 [label=<variavel>]
-	47 -> 51 [label=<constante_explicita>]
-	47 -> 52 [label=id]
-	47 -> 53 [label=num_int]
-	47 -> 54 [label=num_real]
-	47 -> 55 [label=falso]
-	47 -> 56 [label=verdadeiro]
-	47 -> 57 [label=literal]
-	48 -> 47 [label=nao]
-	48 -> 99 [label=<fator>]
-	48 -> 48 [label="-"]
-	48 -> 49 [label="("]
-	48 -> 50 [label=<variavel>]
-	48 -> 51 [label=<constante_explicita>]
-	48 -> 52 [label=id]
-	48 -> 53 [label=num_int]
-	48 -> 54 [label=num_real]
-	48 -> 55 [label=falso]
-	48 -> 56 [label=verdadeiro]
-	48 -> 57 [label=literal]
-	49 -> 44 [label=<expsimp>]
-	49 -> 45 [label=<termo>]
-	49 -> 46 [label=<fator>]
-	49 -> 47 [label=nao]
-	49 -> 48 [label="-"]
-	49 -> 49 [label="("]
-	49 -> 100 [label=<expressao>]
-	49 -> 50 [label=<variavel>]
-	49 -> 51 [label=<constante_explicita>]
-	49 -> 52 [label=id]
-	49 -> 53 [label=num_int]
-	49 -> 54 [label=num_real]
-	49 -> 55 [label=falso]
-	49 -> 56 [label=verdadeiro]
-	49 -> 57 [label=literal]
-	52 -> 101 [label=<rvar>]
-	52 -> 102 [label="("]
-	52 -> 103 [label="["]
-	52 -> 104 [label="&"]
-	58 -> 105 [label=faca]
-	59 -> 106 [label=ate]
-	60 -> 32 [label=id]
-	60 -> 107 [label=<lid>]
-	61 -> 108 [label=<expressao>]
-	61 -> 44 [label=<expsimp>]
-	61 -> 45 [label=<termo>]
-	61 -> 46 [label=<fator>]
-	61 -> 47 [label=nao]
-	61 -> 48 [label="-"]
-	61 -> 49 [label="("]
-	61 -> 50 [label=<variavel>]
-	61 -> 51 [label=<constante_explicita>]
-	61 -> 52 [label=id]
-	61 -> 53 [label=num_int]
-	61 -> 54 [label=num_real]
-	61 -> 55 [label=falso]
-	61 -> 56 [label=verdadeiro]
-	61 -> 57 [label=literal]
-	62 -> 109 [label=<dcl_procs>]
-	62 -> 27 [label=<dcl_proc>]
-	62 -> 28 [label="&"]
-	62 -> 29 [label=proc]
-	62 -> 30 [label=funcao]
-	63 -> 110 [label=<parametros>]
-	63 -> 111 [label="("]
-	63 -> 112 [label="&"]
-	64 -> 113 [label=<parametros>]
-	64 -> 111 [label="("]
-	64 -> 112 [label="&"]
-	65 -> 114 [label=<tipo>]
-	65 -> 115 [label=<tipo_pre_def>]
-	65 -> 116 [label=intervalo]
-	65 -> 117 [label=cadeia]
-	65 -> 118 [label=vetor]
-	65 -> 12 [label=inteiro]
-	65 -> 13 [label=real]
-	65 -> 14 [label=booleano]
-	65 -> 15 [label=caracter]
-	67 -> 119 [label=id]
-	69 -> 120 [label=<constante>]
-	69 -> 121 [label=id]
-	69 -> 122 [label=<constante_explicita>]
-	69 -> 53 [label=num_int]
-	69 -> 54 [label=num_real]
-	69 -> 55 [label=falso]
-	69 -> 56 [label=verdadeiro]
-	69 -> 57 [label=literal]
-	71 -> 123 [label=<rep_comando>]
-	71 -> 35 [label=";"]
-	71 -> 36 [label="&"]
-	73 -> 124 [label="]"]
-	74 -> 125 [label=<rep_expressao>]
-	74 -> 126 [label=","]
-	74 -> 127 [label="&"]
-	75 -> 128 [label=fim]
-	76 -> 18 [label=id]
-	76 -> 19 [label=inicio]
-	76 -> 129 [label=<comando>]
-	76 -> 20 [label=se]
-	76 -> 21 [label=enquanto]
-	76 -> 22 [label=repita]
-	76 -> 23 [label=leia]
-	76 -> 24 [label=escreva]
-	76 -> 25 [label="&"]
-	78 -> 130 [label=<expsimp>]
-	78 -> 45 [label=<termo>]
-	78 -> 46 [label=<fator>]
-	78 -> 47 [label=nao]
-	78 -> 48 [label="-"]
-	78 -> 49 [label="("]
-	78 -> 50 [label=<variavel>]
-	78 -> 51 [label=<constante_explicita>]
-	78 -> 52 [label=id]
-	78 -> 53 [label=num_int]
-	78 -> 54 [label=num_real]
-	78 -> 55 [label=falso]
-	78 -> 56 [label=verdadeiro]
-	78 -> 57 [label=literal]
-	87 -> 131 [label=<termo>]
-	87 -> 46 [label=<fator>]
-	87 -> 47 [label=nao]
-	87 -> 48 [label="-"]
-	87 -> 49 [label="("]
-	87 -> 50 [label=<variavel>]
-	87 -> 51 [label=<constante_explicita>]
-	87 -> 52 [label=id]
-	87 -> 53 [label=num_int]
-	87 -> 54 [label=num_real]
-	87 -> 55 [label=falso]
-	87 -> 56 [label=verdadeiro]
-	87 -> 57 [label=literal]
-	93 -> 132 [label=<fator>]
-	93 -> 47 [label=nao]
-	93 -> 48 [label="-"]
-	93 -> 49 [label="("]
-	93 -> 50 [label=<variavel>]
-	93 -> 51 [label=<constante_explicita>]
-	93 -> 52 [label=id]
-	93 -> 53 [label=num_int]
-	93 -> 54 [label=num_real]
-	93 -> 55 [label=falso]
-	93 -> 56 [label=verdadeiro]
-	93 -> 57 [label=literal]
-	100 -> 133 [label=")"]
-	102 -> 44 [label=<expsimp>]
-	102 -> 45 [label=<termo>]
-	102 -> 46 [label=<fator>]
-	102 -> 47 [label=nao]
-	102 -> 48 [label="-"]
-	102 -> 49 [label="("]
-	102 -> 50 [label=<variavel>]
-	102 -> 51 [label=<constante_explicita>]
-	102 -> 52 [label=id]
-	102 -> 134 [label=<expressao>]
-	102 -> 53 [label=num_int]
-	102 -> 54 [label=num_real]
-	102 -> 55 [label=falso]
-	102 -> 56 [label=verdadeiro]
-	102 -> 57 [label=literal]
-	103 -> 44 [label=<expsimp>]
-	103 -> 45 [label=<termo>]
-	103 -> 46 [label=<fator>]
-	103 -> 47 [label=nao]
-	103 -> 48 [label="-"]
-	103 -> 49 [label="("]
-	103 -> 50 [label=<variavel>]
-	103 -> 51 [label=<constante_explicita>]
-	103 -> 52 [label=id]
-	103 -> 135 [label=<expressao>]
-	103 -> 53 [label=num_int]
-	103 -> 54 [label=num_real]
-	103 -> 55 [label=falso]
-	103 -> 56 [label=verdadeiro]
-	103 -> 57 [label=literal]
-	105 -> 18 [label=id]
-	105 -> 19 [label=inicio]
-	105 -> 20 [label=se]
-	105 -> 136 [label=<comando>]
-	105 -> 21 [label=enquanto]
-	105 -> 22 [label=repita]
-	105 -> 23 [label=leia]
-	105 -> 24 [label=escreva]
-	105 -> 25 [label="&"]
-	106 -> 137 [label=<expressao>]
-	106 -> 44 [label=<expsimp>]
-	106 -> 45 [label=<termo>]
-	106 -> 46 [label=<fator>]
-	106 -> 47 [label=nao]
-	106 -> 48 [label="-"]
-	106 -> 49 [label="("]
-	106 -> 50 [label=<variavel>]
-	106 -> 51 [label=<constante_explicita>]
-	106 -> 52 [label=id]
-	106 -> 53 [label=num_int]
-	106 -> 54 [label=num_real]
-	106 -> 55 [label=falso]
-	106 -> 56 [label=verdadeiro]
-	106 -> 57 [label=literal]
-	107 -> 138 [label=")"]
-	108 -> 139 [label=<rep_expressao>]
-	108 -> 126 [label=","]
-	108 -> 127 [label="&"]
-	110 -> 140 [label=";"]
-	111 -> 141 [label=<listapar>]
-	111 -> 142 [label=ref]
-	111 -> 143 [label=val]
-	113 -> 144 [label=":"]
-	114 -> 145 [label=";"]
-	116 -> 121 [label=id]
-	116 -> 122 [label=<constante_explicita>]
-	116 -> 146 [label=<constante>]
-	116 -> 53 [label=num_int]
-	116 -> 54 [label=num_real]
-	116 -> 55 [label=falso]
-	116 -> 56 [label=verdadeiro]
-	116 -> 57 [label=literal]
-	117 -> 147 [label="["]
-	118 -> 148 [label="["]
-	119 -> 149 [label=<rep_id>]
-	119 -> 67 [label=","]
-	119 -> 68 [label="&"]
-	120 -> 150 [label=";"]
-	124 -> 151 [label=":="]
-	125 -> 152 [label=")"]
-	126 -> 153 [label=<expressao>]
-	126 -> 44 [label=<expsimp>]
-	126 -> 45 [label=<termo>]
-	126 -> 46 [label=<fator>]
-	126 -> 47 [label=nao]
-	126 -> 48 [label="-"]
-	126 -> 49 [label="("]
-	126 -> 50 [label=<variavel>]
-	126 -> 51 [label=<constante_explicita>]
-	126 -> 52 [label=id]
-	126 -> 53 [label=num_int]
-	126 -> 54 [label=num_real]
-	126 -> 55 [label=falso]
-	126 -> 56 [label=verdadeiro]
-	126 -> 57 [label=literal]
-	129 -> 154 [label=<senaoparte>]
-	129 -> 155 [label=senao]
-	129 -> 156 [label="&"]
-	131 -> 157 [label=<rep_expsimp>]
-	131 -> 87 [label=<op_add>]
-	131 -> 88 [label="&"]
-	131 -> 89 [label="+"]
-	131 -> 90 [label="-"]
-	131 -> 91 [label=ou]
-	132 -> 158 [label=<rep_termo>]
-	132 -> 93 [label=<op_mult>]
-	132 -> 94 [label="&"]
-	132 -> 95 [label="*"]
-	132 -> 96 [label="/"]
-	132 -> 97 [label=e]
-	134 -> 126 [label=","]
-	134 -> 127 [label="&"]
-	134 -> 159 [label=<rep_expressao>]
-	135 -> 160 [label="]"]
-	139 -> 161 [label=")"]
-	140 -> 3 [label=<dcl_const>]
-	140 -> 4 [label=const]
-	140 -> 5 [label="&"]
-	140 -> 162 [label=<declaracoes>]
-	141 -> 163 [label=")"]
-	142 -> 164 [label=<lid>]
-	142 -> 32 [label=id]
-	143 -> 165 [label=<lid>]
-	143 -> 32 [label=id]
-	144 -> 166 [label=<tipo_pre_def>]
-	144 -> 12 [label=inteiro]
-	144 -> 13 [label=real]
-	144 -> 14 [label=booleano]
-	144 -> 15 [label=caracter]
-	145 -> 167 [label=<dcl_var>]
-	145 -> 9 [label=var]
-	145 -> 10 [label="&"]
-	146 -> 168 [label=".."]
-	147 -> 121 [label=id]
-	147 -> 122 [label=<constante_explicita>]
-	147 -> 169 [label=<constante>]
-	147 -> 53 [label=num_int]
-	147 -> 54 [label=num_real]
-	147 -> 55 [label=falso]
-	147 -> 56 [label=verdadeiro]
-	147 -> 57 [label=literal]
-	148 -> 121 [label=id]
-	148 -> 122 [label=<constante_explicita>]
-	148 -> 170 [label=<constante>]
-	148 -> 53 [label=num_int]
-	148 -> 54 [label=num_real]
-	148 -> 55 [label=falso]
-	148 -> 56 [label=verdadeiro]
-	148 -> 57 [label=literal]
-	150 -> 171 [label=<dcl_const>]
-	150 -> 4 [label=const]
-	150 -> 5 [label="&"]
-	151 -> 172 [label=<expressao>]
-	151 -> 44 [label=<expsimp>]
-	151 -> 45 [label=<termo>]
-	151 -> 46 [label=<fator>]
-	151 -> 47 [label=nao]
-	151 -> 48 [label="-"]
-	151 -> 49 [label="("]
-	151 -> 50 [label=<variavel>]
-	151 -> 51 [label=<constante_explicita>]
-	151 -> 52 [label=id]
-	151 -> 53 [label=num_int]
-	151 -> 54 [label=num_real]
-	151 -> 55 [label=falso]
-	151 -> 56 [label=verdadeiro]
-	151 -> 57 [label=literal]
-	153 -> 126 [label=","]
-	153 -> 173 [label=<rep_expressao>]
-	153 -> 127 [label="&"]
-	155 -> 18 [label=id]
-	155 -> 19 [label=inicio]
-	155 -> 20 [label=se]
-	155 -> 21 [label=enquanto]
-	155 -> 22 [label=repita]
-	155 -> 23 [label=leia]
-	155 -> 24 [label=escreva]
-	155 -> 25 [label="&"]
-	155 -> 174 [label=<comando>]
-	159 -> 175 [label=")"]
-	162 -> 176 [label=<comandos>]
-	162 -> 7 [label=inicio]
-	164 -> 177 [label=":"]
-	165 -> 178 [label=":"]
-	166 -> 179 [label=";"]
-	168 -> 121 [label=id]
-	168 -> 122 [label=<constante_explicita>]
-	168 -> 180 [label=<constante>]
-	168 -> 53 [label=num_int]
-	168 -> 54 [label=num_real]
-	168 -> 55 [label=falso]
-	168 -> 56 [label=verdadeiro]
-	168 -> 57 [label=literal]
-	169 -> 181 [label="]"]
-	170 -> 182 [label="]"]
-	177 -> 183 [label=<tipo_pre_def>]
-	177 -> 12 [label=inteiro]
-	177 -> 13 [label=real]
-	177 -> 14 [label=booleano]
-	177 -> 15 [label=caracter]
-	178 -> 184 [label=<tipo_pre_def>]
-	178 -> 12 [label=inteiro]
-	178 -> 13 [label=real]
-	178 -> 14 [label=booleano]
-	178 -> 15 [label=caracter]
-	179 -> 3 [label=<dcl_const>]
-	179 -> 4 [label=const]
-	179 -> 5 [label="&"]
-	179 -> 185 [label=<declaracoes>]
-	182 -> 186 [label=de]
-	183 -> 187 [label=<rep_listapar>]
-	183 -> 188 [label=";"]
-	183 -> 189 [label="&"]
-	184 -> 190 [label=<rep_listapar>]
-	184 -> 188 [label=";"]
-	184 -> 189 [label="&"]
-	185 -> 191 [label=<comandos>]
-	185 -> 7 [label=inicio]
-	186 -> 192 [label=<tipo_pre_def>]
-	186 -> 12 [label=inteiro]
-	186 -> 13 [label=real]
-	186 -> 14 [label=booleano]
-	186 -> 15 [label=caracter]
-	188 -> 142 [label=ref]
-	188 -> 143 [label=val]
-	188 -> 193 [label=<listapar>]
+	2 -> 5 [label=<comandos>]
+	2 -> 6 [label=inicio]
+	3 -> 7 [label=<dcl_var>]
+	3 -> 8 [label=var]
+	4 -> 9 [label=<tipo_pre_def>]
+	4 -> 10 [label=inteiro]
+	4 -> 11 [label=real]
+	4 -> 12 [label=booleano]
+	4 -> 13 [label=caracter]
+	5 -> 14 [label="."]
+	6 -> 15 [label=<comando>]
+	6 -> 16 [label=id]
+	6 -> 17 [label=inicio]
+	6 -> 18 [label=se]
+	6 -> 19 [label=enquanto]
+	6 -> 20 [label=repita]
+	6 -> 21 [label=leia]
+	6 -> 22 [label=escreva]
+	7 -> 23 [label=<dcl_procs>]
+	7 -> 24 [label=<dcl_proc>]
+	7 -> 25 [label=proc]
+	7 -> 26 [label=funcao]
+	8 -> 27 [label=<lid>]
+	8 -> 28 [label=id]
+	9 -> 29 [label=id]
+	15 -> 30 [label=<rep_comando>]
+	15 -> 31 [label=";"]
+	16 -> 32 [label=<rcomid>]
+	16 -> 33 [label=":="]
+	16 -> 34 [label="["]
+	16 -> 35 [label="("]
+	17 -> 16 [label=id]
+	17 -> 36 [label=<comando>]
+	17 -> 17 [label=inicio]
+	17 -> 18 [label=se]
+	17 -> 19 [label=enquanto]
+	17 -> 20 [label=repita]
+	17 -> 21 [label=leia]
+	17 -> 22 [label=escreva]
+	18 -> 37 [label=<expressao>]
+	18 -> 38 [label=<expsimp>]
+	18 -> 39 [label=<termo>]
+	18 -> 40 [label=<fator>]
+	18 -> 41 [label=nao]
+	18 -> 42 [label="-"]
+	18 -> 43 [label="("]
+	18 -> 44 [label=<variavel>]
+	18 -> 45 [label=<constante_explicita>]
+	18 -> 46 [label=id]
+	18 -> 47 [label=num_int]
+	18 -> 48 [label=num_real]
+	18 -> 49 [label=falso]
+	18 -> 50 [label=verdadeiro]
+	18 -> 51 [label=literal]
+	19 -> 52 [label=<expressao>]
+	19 -> 38 [label=<expsimp>]
+	19 -> 39 [label=<termo>]
+	19 -> 40 [label=<fator>]
+	19 -> 41 [label=nao]
+	19 -> 42 [label="-"]
+	19 -> 43 [label="("]
+	19 -> 44 [label=<variavel>]
+	19 -> 45 [label=<constante_explicita>]
+	19 -> 46 [label=id]
+	19 -> 47 [label=num_int]
+	19 -> 48 [label=num_real]
+	19 -> 49 [label=falso]
+	19 -> 50 [label=verdadeiro]
+	19 -> 51 [label=literal]
+	20 -> 16 [label=id]
+	20 -> 17 [label=inicio]
+	20 -> 18 [label=se]
+	20 -> 19 [label=enquanto]
+	20 -> 53 [label=<comando>]
+	20 -> 20 [label=repita]
+	20 -> 21 [label=leia]
+	20 -> 22 [label=escreva]
+	21 -> 54 [label="("]
+	22 -> 55 [label="("]
+	24 -> 56 [label=";"]
+	25 -> 57 [label=id]
+	26 -> 58 [label=id]
+	27 -> 59 [label=":"]
+	28 -> 60 [label=<rep_id>]
+	28 -> 61 [label=","]
+	29 -> 62 [label="="]
+	30 -> 63 [label=fim]
+	31 -> 64 [label=<comando>]
+	31 -> 16 [label=id]
+	31 -> 17 [label=inicio]
+	31 -> 18 [label=se]
+	31 -> 19 [label=enquanto]
+	31 -> 20 [label=repita]
+	31 -> 21 [label=leia]
+	31 -> 22 [label=escreva]
+	33 -> 65 [label=<expressao>]
+	33 -> 38 [label=<expsimp>]
+	33 -> 39 [label=<termo>]
+	33 -> 40 [label=<fator>]
+	33 -> 41 [label=nao]
+	33 -> 42 [label="-"]
+	33 -> 43 [label="("]
+	33 -> 44 [label=<variavel>]
+	33 -> 45 [label=<constante_explicita>]
+	33 -> 46 [label=id]
+	33 -> 47 [label=num_int]
+	33 -> 48 [label=num_real]
+	33 -> 49 [label=falso]
+	33 -> 50 [label=verdadeiro]
+	33 -> 51 [label=literal]
+	34 -> 66 [label=<expressao>]
+	34 -> 38 [label=<expsimp>]
+	34 -> 39 [label=<termo>]
+	34 -> 40 [label=<fator>]
+	34 -> 41 [label=nao]
+	34 -> 42 [label="-"]
+	34 -> 43 [label="("]
+	34 -> 44 [label=<variavel>]
+	34 -> 45 [label=<constante_explicita>]
+	34 -> 46 [label=id]
+	34 -> 47 [label=num_int]
+	34 -> 48 [label=num_real]
+	34 -> 49 [label=falso]
+	34 -> 50 [label=verdadeiro]
+	34 -> 51 [label=literal]
+	35 -> 67 [label=<expressao>]
+	35 -> 38 [label=<expsimp>]
+	35 -> 39 [label=<termo>]
+	35 -> 40 [label=<fator>]
+	35 -> 41 [label=nao]
+	35 -> 42 [label="-"]
+	35 -> 43 [label="("]
+	35 -> 44 [label=<variavel>]
+	35 -> 45 [label=<constante_explicita>]
+	35 -> 46 [label=id]
+	35 -> 47 [label=num_int]
+	35 -> 48 [label=num_real]
+	35 -> 49 [label=falso]
+	35 -> 50 [label=verdadeiro]
+	35 -> 51 [label=literal]
+	36 -> 31 [label=";"]
+	36 -> 68 [label=<rep_comando>]
+	37 -> 69 [label=entao]
+	38 -> 70 [label=<resto_expressao>]
+	38 -> 71 [label=<oprel>]
+	38 -> 72 [label="="]
+	38 -> 73 [label="<"]
+	38 -> 74 [label=">"]
+	38 -> 75 [label=">="]
+	38 -> 76 [label="<="]
+	38 -> 77 [label=<>]
+	39 -> 78 [label=<rep_expsimp>]
+	39 -> 79 [label=<op_add>]
+	39 -> 80 [label="+"]
+	39 -> 81 [label="-"]
+	39 -> 82 [label=ou]
+	40 -> 83 [label=<rep_termo>]
+	40 -> 84 [label=<op_mult>]
+	40 -> 85 [label="*"]
+	40 -> 86 [label="/"]
+	40 -> 87 [label=e]
+	41 -> 88 [label=<fator>]
+	41 -> 41 [label=nao]
+	41 -> 42 [label="-"]
+	41 -> 43 [label="("]
+	41 -> 44 [label=<variavel>]
+	41 -> 45 [label=<constante_explicita>]
+	41 -> 46 [label=id]
+	41 -> 47 [label=num_int]
+	41 -> 48 [label=num_real]
+	41 -> 49 [label=falso]
+	41 -> 50 [label=verdadeiro]
+	41 -> 51 [label=literal]
+	42 -> 41 [label=nao]
+	42 -> 89 [label=<fator>]
+	42 -> 42 [label="-"]
+	42 -> 43 [label="("]
+	42 -> 44 [label=<variavel>]
+	42 -> 45 [label=<constante_explicita>]
+	42 -> 46 [label=id]
+	42 -> 47 [label=num_int]
+	42 -> 48 [label=num_real]
+	42 -> 49 [label=falso]
+	42 -> 50 [label=verdadeiro]
+	42 -> 51 [label=literal]
+	43 -> 38 [label=<expsimp>]
+	43 -> 39 [label=<termo>]
+	43 -> 40 [label=<fator>]
+	43 -> 41 [label=nao]
+	43 -> 42 [label="-"]
+	43 -> 43 [label="("]
+	43 -> 90 [label=<expressao>]
+	43 -> 44 [label=<variavel>]
+	43 -> 45 [label=<constante_explicita>]
+	43 -> 46 [label=id]
+	43 -> 47 [label=num_int]
+	43 -> 48 [label=num_real]
+	43 -> 49 [label=falso]
+	43 -> 50 [label=verdadeiro]
+	43 -> 51 [label=literal]
+	46 -> 91 [label=<rvar>]
+	46 -> 92 [label="("]
+	46 -> 93 [label="["]
+	52 -> 94 [label=faca]
+	53 -> 95 [label=ate]
+	54 -> 28 [label=id]
+	54 -> 96 [label=<lid>]
+	55 -> 97 [label=<expressao>]
+	55 -> 38 [label=<expsimp>]
+	55 -> 39 [label=<termo>]
+	55 -> 40 [label=<fator>]
+	55 -> 41 [label=nao]
+	55 -> 42 [label="-"]
+	55 -> 43 [label="("]
+	55 -> 44 [label=<variavel>]
+	55 -> 45 [label=<constante_explicita>]
+	55 -> 46 [label=id]
+	55 -> 47 [label=num_int]
+	55 -> 48 [label=num_real]
+	55 -> 49 [label=falso]
+	55 -> 50 [label=verdadeiro]
+	55 -> 51 [label=literal]
+	56 -> 98 [label=<dcl_procs>]
+	56 -> 24 [label=<dcl_proc>]
+	56 -> 25 [label=proc]
+	56 -> 26 [label=funcao]
+	57 -> 99 [label=<parametros>]
+	57 -> 100 [label="("]
+	58 -> 101 [label=<parametros>]
+	58 -> 100 [label="("]
+	59 -> 102 [label=<tipo>]
+	59 -> 103 [label=<tipo_pre_def>]
+	59 -> 104 [label=intervalo]
+	59 -> 105 [label=cadeia]
+	59 -> 106 [label=vetor]
+	59 -> 10 [label=inteiro]
+	59 -> 11 [label=real]
+	59 -> 12 [label=booleano]
+	59 -> 13 [label=caracter]
+	61 -> 107 [label=id]
+	62 -> 108 [label=<constante>]
+	62 -> 109 [label=id]
+	62 -> 110 [label=<constante_explicita>]
+	62 -> 47 [label=num_int]
+	62 -> 48 [label=num_real]
+	62 -> 49 [label=falso]
+	62 -> 50 [label=verdadeiro]
+	62 -> 51 [label=literal]
+	64 -> 31 [label=";"]
+	64 -> 111 [label=<rep_comando>]
+	66 -> 112 [label="]"]
+	67 -> 113 [label=<rep_expressao>]
+	67 -> 114 [label=","]
+	68 -> 115 [label=fim]
+	69 -> 16 [label=id]
+	69 -> 17 [label=inicio]
+	69 -> 116 [label=<comando>]
+	69 -> 18 [label=se]
+	69 -> 19 [label=enquanto]
+	69 -> 20 [label=repita]
+	69 -> 21 [label=leia]
+	69 -> 22 [label=escreva]
+	71 -> 117 [label=<expsimp>]
+	71 -> 39 [label=<termo>]
+	71 -> 40 [label=<fator>]
+	71 -> 41 [label=nao]
+	71 -> 42 [label="-"]
+	71 -> 43 [label="("]
+	71 -> 44 [label=<variavel>]
+	71 -> 45 [label=<constante_explicita>]
+	71 -> 46 [label=id]
+	71 -> 47 [label=num_int]
+	71 -> 48 [label=num_real]
+	71 -> 49 [label=falso]
+	71 -> 50 [label=verdadeiro]
+	71 -> 51 [label=literal]
+	79 -> 118 [label=<termo>]
+	79 -> 40 [label=<fator>]
+	79 -> 41 [label=nao]
+	79 -> 42 [label="-"]
+	79 -> 43 [label="("]
+	79 -> 44 [label=<variavel>]
+	79 -> 45 [label=<constante_explicita>]
+	79 -> 46 [label=id]
+	79 -> 47 [label=num_int]
+	79 -> 48 [label=num_real]
+	79 -> 49 [label=falso]
+	79 -> 50 [label=verdadeiro]
+	79 -> 51 [label=literal]
+	84 -> 119 [label=<fator>]
+	84 -> 41 [label=nao]
+	84 -> 42 [label="-"]
+	84 -> 43 [label="("]
+	84 -> 44 [label=<variavel>]
+	84 -> 45 [label=<constante_explicita>]
+	84 -> 46 [label=id]
+	84 -> 47 [label=num_int]
+	84 -> 48 [label=num_real]
+	84 -> 49 [label=falso]
+	84 -> 50 [label=verdadeiro]
+	84 -> 51 [label=literal]
+	90 -> 120 [label=")"]
+	92 -> 38 [label=<expsimp>]
+	92 -> 39 [label=<termo>]
+	92 -> 40 [label=<fator>]
+	92 -> 41 [label=nao]
+	92 -> 42 [label="-"]
+	92 -> 43 [label="("]
+	92 -> 44 [label=<variavel>]
+	92 -> 45 [label=<constante_explicita>]
+	92 -> 46 [label=id]
+	92 -> 121 [label=<expressao>]
+	92 -> 47 [label=num_int]
+	92 -> 48 [label=num_real]
+	92 -> 49 [label=falso]
+	92 -> 50 [label=verdadeiro]
+	92 -> 51 [label=literal]
+	93 -> 38 [label=<expsimp>]
+	93 -> 39 [label=<termo>]
+	93 -> 40 [label=<fator>]
+	93 -> 41 [label=nao]
+	93 -> 42 [label="-"]
+	93 -> 43 [label="("]
+	93 -> 44 [label=<variavel>]
+	93 -> 45 [label=<constante_explicita>]
+	93 -> 46 [label=id]
+	93 -> 122 [label=<expressao>]
+	93 -> 47 [label=num_int]
+	93 -> 48 [label=num_real]
+	93 -> 49 [label=falso]
+	93 -> 50 [label=verdadeiro]
+	93 -> 51 [label=literal]
+	94 -> 16 [label=id]
+	94 -> 17 [label=inicio]
+	94 -> 18 [label=se]
+	94 -> 19 [label=enquanto]
+	94 -> 123 [label=<comando>]
+	94 -> 20 [label=repita]
+	94 -> 21 [label=leia]
+	94 -> 22 [label=escreva]
+	95 -> 124 [label=<expressao>]
+	95 -> 38 [label=<expsimp>]
+	95 -> 39 [label=<termo>]
+	95 -> 40 [label=<fator>]
+	95 -> 41 [label=nao]
+	95 -> 42 [label="-"]
+	95 -> 43 [label="("]
+	95 -> 44 [label=<variavel>]
+	95 -> 45 [label=<constante_explicita>]
+	95 -> 46 [label=id]
+	95 -> 47 [label=num_int]
+	95 -> 48 [label=num_real]
+	95 -> 49 [label=falso]
+	95 -> 50 [label=verdadeiro]
+	95 -> 51 [label=literal]
+	96 -> 125 [label=")"]
+	97 -> 126 [label=<rep_expressao>]
+	97 -> 114 [label=","]
+	99 -> 127 [label=";"]
+	100 -> 128 [label=<listapar>]
+	100 -> 129 [label=ref]
+	100 -> 130 [label=val]
+	101 -> 131 [label=":"]
+	102 -> 132 [label=";"]
+	104 -> 109 [label=id]
+	104 -> 110 [label=<constante_explicita>]
+	104 -> 133 [label=<constante>]
+	104 -> 47 [label=num_int]
+	104 -> 48 [label=num_real]
+	104 -> 49 [label=falso]
+	104 -> 50 [label=verdadeiro]
+	104 -> 51 [label=literal]
+	105 -> 134 [label="["]
+	106 -> 135 [label="["]
+	107 -> 61 [label=","]
+	107 -> 136 [label=<rep_id>]
+	108 -> 137 [label=";"]
+	112 -> 138 [label=":="]
+	113 -> 139 [label=")"]
+	114 -> 140 [label=<expressao>]
+	114 -> 38 [label=<expsimp>]
+	114 -> 39 [label=<termo>]
+	114 -> 40 [label=<fator>]
+	114 -> 41 [label=nao]
+	114 -> 42 [label="-"]
+	114 -> 43 [label="("]
+	114 -> 44 [label=<variavel>]
+	114 -> 45 [label=<constante_explicita>]
+	114 -> 46 [label=id]
+	114 -> 47 [label=num_int]
+	114 -> 48 [label=num_real]
+	114 -> 49 [label=falso]
+	114 -> 50 [label=verdadeiro]
+	114 -> 51 [label=literal]
+	116 -> 141 [label=<senaoparte>]
+	116 -> 142 [label=senao]
+	118 -> 79 [label=<op_add>]
+	118 -> 143 [label=<rep_expsimp>]
+	118 -> 80 [label="+"]
+	118 -> 81 [label="-"]
+	118 -> 82 [label=ou]
+	119 -> 144 [label=<rep_termo>]
+	119 -> 84 [label=<op_mult>]
+	119 -> 85 [label="*"]
+	119 -> 86 [label="/"]
+	119 -> 87 [label=e]
+	121 -> 114 [label=","]
+	121 -> 145 [label=<rep_expressao>]
+	122 -> 146 [label="]"]
+	126 -> 147 [label=")"]
+	127 -> 3 [label=<dcl_const>]
+	127 -> 4 [label=const]
+	127 -> 148 [label=<declaracoes>]
+	128 -> 149 [label=")"]
+	129 -> 150 [label=<lid>]
+	129 -> 28 [label=id]
+	130 -> 151 [label=<lid>]
+	130 -> 28 [label=id]
+	131 -> 152 [label=<tipo_pre_def>]
+	131 -> 10 [label=inteiro]
+	131 -> 11 [label=real]
+	131 -> 12 [label=booleano]
+	131 -> 13 [label=caracter]
+	132 -> 8 [label=var]
+	132 -> 153 [label=<dcl_var>]
+	133 -> 154 [label=".."]
+	134 -> 109 [label=id]
+	134 -> 110 [label=<constante_explicita>]
+	134 -> 155 [label=<constante>]
+	134 -> 47 [label=num_int]
+	134 -> 48 [label=num_real]
+	134 -> 49 [label=falso]
+	134 -> 50 [label=verdadeiro]
+	134 -> 51 [label=literal]
+	135 -> 109 [label=id]
+	135 -> 110 [label=<constante_explicita>]
+	135 -> 156 [label=<constante>]
+	135 -> 47 [label=num_int]
+	135 -> 48 [label=num_real]
+	135 -> 49 [label=falso]
+	135 -> 50 [label=verdadeiro]
+	135 -> 51 [label=literal]
+	137 -> 157 [label=<dcl_const>]
+	137 -> 4 [label=const]
+	138 -> 158 [label=<expressao>]
+	138 -> 38 [label=<expsimp>]
+	138 -> 39 [label=<termo>]
+	138 -> 40 [label=<fator>]
+	138 -> 41 [label=nao]
+	138 -> 42 [label="-"]
+	138 -> 43 [label="("]
+	138 -> 44 [label=<variavel>]
+	138 -> 45 [label=<constante_explicita>]
+	138 -> 46 [label=id]
+	138 -> 47 [label=num_int]
+	138 -> 48 [label=num_real]
+	138 -> 49 [label=falso]
+	138 -> 50 [label=verdadeiro]
+	138 -> 51 [label=literal]
+	140 -> 114 [label=","]
+	140 -> 159 [label=<rep_expressao>]
+	142 -> 16 [label=id]
+	142 -> 17 [label=inicio]
+	142 -> 18 [label=se]
+	142 -> 19 [label=enquanto]
+	142 -> 20 [label=repita]
+	142 -> 21 [label=leia]
+	142 -> 22 [label=escreva]
+	142 -> 160 [label=<comando>]
+	145 -> 161 [label=")"]
+	148 -> 162 [label=<comandos>]
+	148 -> 6 [label=inicio]
+	150 -> 163 [label=":"]
+	151 -> 164 [label=":"]
+	152 -> 165 [label=";"]
+	154 -> 109 [label=id]
+	154 -> 110 [label=<constante_explicita>]
+	154 -> 166 [label=<constante>]
+	154 -> 47 [label=num_int]
+	154 -> 48 [label=num_real]
+	154 -> 49 [label=falso]
+	154 -> 50 [label=verdadeiro]
+	154 -> 51 [label=literal]
+	155 -> 167 [label="]"]
+	156 -> 168 [label="]"]
+	163 -> 169 [label=<tipo_pre_def>]
+	163 -> 10 [label=inteiro]
+	163 -> 11 [label=real]
+	163 -> 12 [label=booleano]
+	163 -> 13 [label=caracter]
+	164 -> 170 [label=<tipo_pre_def>]
+	164 -> 10 [label=inteiro]
+	164 -> 11 [label=real]
+	164 -> 12 [label=booleano]
+	164 -> 13 [label=caracter]
+	165 -> 3 [label=<dcl_const>]
+	165 -> 4 [label=const]
+	165 -> 171 [label=<declaracoes>]
+	168 -> 172 [label=de]
+	169 -> 173 [label=<rep_listapar>]
+	169 -> 174 [label=";"]
+	170 -> 175 [label=<rep_listapar>]
+	170 -> 174 [label=";"]
+	171 -> 176 [label=<comandos>]
+	171 -> 6 [label=inicio]
+	172 -> 177 [label=<tipo_pre_def>]
+	172 -> 10 [label=inteiro]
+	172 -> 11 [label=real]
+	172 -> 12 [label=booleano]
+	172 -> 13 [label=caracter]
+	174 -> 129 [label=ref]
+	174 -> 130 [label=val]
+	174 -> 178 [label=<listapar>]
 }

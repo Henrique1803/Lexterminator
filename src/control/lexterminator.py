@@ -1,4 +1,4 @@
-from PyQt5.QtWidgets import QDialog, QVBoxLayout, QHBoxLayout, QLabel, QTextEdit, QPushButton, QStyle, QFileDialog
+from PyQt5.QtWidgets import QDialog, QVBoxLayout, QHBoxLayout, QLabel, QTextEdit, QPushButton, QStyle, QFileDialog,  QLabel, QCheckBox
 from PyQt5.QtCore import Qt
 from pathlib import Path
 from src.model.lexical_analyzer import LexicalAnalyzer
@@ -35,15 +35,49 @@ class LexicalAndSintaticalAnalyzerController:
         self.__sintatical_analyzer = SintaticalAnalyzer(path, set(self.lexical_analyzer.regular_definitions.tokens))
     
     # carrega o arquivo de entrada para ser reconhecido pelo AL e atualiza a view de acordo
-    def set_input_file(self, path: str):
+    def set_input_file(self, path: str, ignore_whitespaces = False):
         try:
-            self.lexical_analyzer.read_words_from_file_and_verify_pertinence(path)
+            self.lexical_analyzer.read_words_from_file_and_verify_pertinence(path, ignore_whitespaces)
             self.set_token_view()
-            self.view.setup_table_view()
-            self.sintatical_analyzer.read_tokens_from_lexical_analyzer_output(self.lexical_analyzer.output_path) # Faz a leitura da lista de tokens gerada pelo analisador léxico
+            self.view.update_handle_run_sintatical()
+            self.view.setup_tokens_table_view()
 
         except ValueError as e:
             self.show_error("Error in input file", str(e))
+
+    def select_input_file(self):
+        """
+        Abre um QFileDialog com um checkbox adicional ("Ignore whitespaces from file")
+        e envia o caminho + a opção marcada para o controller.
+        """
+        # Cria o QFileDialog como instância
+        dialog = QFileDialog(self.view)
+        dialog.setWindowTitle("Select a .txt file")
+        dialog.setNameFilter("Text Files (*.txt)")
+        dialog.setFileMode(QFileDialog.ExistingFile)
+
+        # Cria e adiciona o checkbox personalizado
+        checkbox = QCheckBox("Ignore whitespaces from file")
+        checkbox.setChecked(False)
+
+        # Espaçamento visual e adição ao layout do diálogo
+        layout = dialog.layout()
+        layout.addWidget(QLabel(" "), layout.rowCount(), 0, 1, layout.columnCount())
+        layout.addWidget(checkbox, layout.rowCount(), 0, 1, layout.columnCount())
+
+        # Executa o diálogo
+        if dialog.exec_():
+            file_path = dialog.selectedFiles()[0]
+            ignore_whitespaces = checkbox.isChecked()
+            self.set_input_file(file_path, ignore_whitespaces)
+
+    def run_sintatical_analysis(self):
+        parsing_table, passed = self.sintatical_analyzer.read_tokens_from_lexical_analyzer_output(self.lexical_analyzer.output_path) # Faz a leitura da lista de tokens gerada pelo analisador léxico
+        self.view.setup_parsing_table_view(parsing_table)
+        if passed:
+            self.show_success("Sintatical Analysis finished", "Sintatical analysis completed successfully. No errors were found.")
+        else:
+            self.show_error("Sintatical Error", "An unexpected token was found that does not match the expected grammar.")
 
     # atualiza a view como a MainView
     def set_main_view(self):
@@ -56,9 +90,10 @@ class LexicalAndSintaticalAnalyzerController:
     
     # atualiza a view como a TokenView
     def set_token_view(self):
-        self.view.deleteLater()
-        self.view = TokenView(self)
-        self.show()
+        if not isinstance(self.view, TokenView):
+            self.view.deleteLater()
+            self.view = TokenView(self)
+            self.show()
 
     # exibe modal de erro
     def show_error(self, title: str, error_message: str):
