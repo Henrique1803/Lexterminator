@@ -10,8 +10,8 @@ from src.utils import paths
 
 
 class SintaticalAnalyzer:
-    def __init__(self, grammar_file: str):
-        self.grammar: Grammar = Grammar(grammar_file)
+    def __init__(self, grammar_file: str, expected_tokens: Set = None):
+        self.grammar: Grammar = Grammar(grammar_file, expected_tokens)
 
         extended_grammar = extend_grammar(self.grammar)
         collection, transitions = canonical_collection(extended_grammar)

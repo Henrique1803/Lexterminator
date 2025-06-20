@@ -1,240 +1,418 @@
 digraph "Finite Automata Diagram" {
 	node [height=1 shape=doublecircle]
-	for
-	bool
-	rbracket
-	identifier
-	identifier_2
-	identifier_3
-	identifier_4
-	gt
-	identifier_5
-	expr
-	minus
-	identifier_6
-	identifier_7
-	geq
-	float
-	identifier_8
-	identifier_9
-	return
-	semicolon
-	lbracket
-	expr_2
-	identifier_10
-	lparen
-	identifier_11
-	dot
-	rbrace
-	identifier_12
-	int
-	identifier_13
-	string_literal
-	identifier_14
-	comma
-	eq
-	rparen
-	number
-	while
-	identifier_15
-	false
-	identifier_16
-	if
-	number_2
-	lt
-	identifier_17
-	expr_3
-	assign
-	identifier_18
-	mult
-	identifier_19
-	identifier_20
-	lbrace
-	else
-	expr_4
-	string
-	identifier_21
-	expr_5
-	identifier_22
-	or
-	identifier_23
-	plus
-	true
-	comment
-	identifier_24
-	not
-	identifier_25
-	identifier_26
-	identifier_27
-	expr_6
-	expr_7
-	identifier_28
-	identifier_29
-	neq
-	identifier_30
-	char_literal
-	identifier_31
-	identifier_32
-	identifier_33
-	leq
-	expr_8
-	identifier_34
-	div
+	id
+	id_2
+	id_3
+	")"
+	id_4
+	id_5
+	id_6
+	id_7
+	id_8
+	se
+	fim
+	id_9
+	id_10
+	id_11
+	id_12
+	e
+	vetor
+	id_13
+	id_14
+	id_15
+	id_16
+	id_17
+	id_18
+	id_19
+	real
+	id_20
+	id_21
+	faca
+	"*"
+	senao
+	"/"
+	escreva
+	ate
+	id_22
+	"("
+	id_23
+	id_24
+	booleano
+	">"
+	","
+	id_25
+	id_26
+	inteiro
+	id_27
+	id_28
+	id_29
+	id_30
+	"<"
+	id_31
+	id_32
+	verdadeiro
+	"."
+	id_33
+	id_34
+	var
+	id_35
+	id_36
+	".."
+	id_37
+	id_38
+	id_39
+	enquanto
+	id_40
+	id_41
+	caracter
+	val
+	leia
+	num_int
+	cadeia
+	id_42
+	num_real
+	id_43
+	id_44
+	id_45
+	id_46
+	intervalo
+	id_47
+	id_48
+	id_49
+	proc
+	de
+	funcao
+	id_50
+	id_51
+	id_52
+	id_53
+	<>
+	id_54
+	id_55
+	id_56
+	id_57
+	literal
+	id_58
+	id_59
+	";"
+	id_60
+	nao
+	ref
+	"]"
+	":"
+	id_61
+	"["
+	falso
+	id_62
+	id_63
+	id_64
+	">="
+	id_65
+	id_66
+	id_67
+	id_68
+	inicio
+	id_69
+	"+"
+	id_70
+	id_71
+	repita
+	"<="
+	id_72
+	id_73
+	id_74
+	id_75
+	"-"
+	id_76
+	id_77
+	id_78
+	entao
+	ou
+	id_79
+	id_80
+	id_81
+	id_82
+	const
+	id_83
+	":="
+	id_84
+	id_85
+	"="
+	id_86
+	id_87
+	id_88
+	id_89
+	id_90
 	node [height=1 shape=circle]
-	q0 -> assign [label="="]
-	q0 -> identifier_20 [label=b]
-	q0 -> q1 [label="'"]
-	q0 -> comma [label=","]
-	q0 -> div [label="/"]
-	q0 -> dot [label="."]
-	q0 -> identifier_7 [label=e]
-	q0 -> number [label="0|1|2|3|4|5|6|7|8|9"]
-	q0 -> identifier_9 [label=f]
-	q0 -> gt [label=">"]
-	q0 -> identifier_24 [label="A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z|_|a|c|d|g|h|j|k|l|m|n|o|p|q|u|v|x|y|z"]
-	q0 -> identifier_32 [label=i]
-	q0 -> identifier_6 [label=r]
-	q0 -> identifier_2 [label=s]
-	q0 -> identifier_23 [label=t]
-	q0 -> identifier_12 [label=w]
-	q0 -> lbrace [label="{"]
-	q0 -> lbracket [label="["]
-	q0 -> lt [label="<"]
-	q0 -> lparen [label="("]
-	q0 -> minus [label="-"]
-	q0 -> mult [label="*"]
-	q0 -> not [label="!"]
-	q0 -> q12 [label="|"]
-	q0 -> plus [label="+"]
-	q0 -> rbrace [label="}"]
-	q0 -> rbracket [label="]"]
-	q0 -> rparen [label=")"]
-	q0 -> semicolon [label=";"]
-	q0 -> q13 [label="\""]
-	assign -> eq [label="="]
-	identifier_20 -> identifier_27 [label=o]
-	identifier_20 -> identifier_24 [label="0|1|2|3|4|5|6|7|8|9|A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z|_|a|b|c|d|e|f|g|h|i|j|k|l|m|n|p|q|r|s|t|u|v|w|x|y|z"]
-	identifier_27 -> identifier_8 [label=o]
-	identifier_27 -> identifier_24 [label="0|1|2|3|4|5|6|7|8|9|A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z|_|a|b|c|d|e|f|g|h|i|j|k|l|m|n|p|q|r|s|t|u|v|w|x|y|z"]
-	identifier_8 -> bool [label=l]
-	identifier_8 -> identifier_24 [label="0|1|2|3|4|5|6|7|8|9|A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z|_|a|b|c|d|e|f|g|h|i|j|k|m|n|o|p|q|r|s|t|u|v|w|x|y|z"]
-	bool -> identifier_24 [label="0|1|2|3|4|5|6|7|8|9|A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z|_|a|b|c|d|e|f|g|h|i|j|k|l|m|n|o|p|q|r|s|t|u|v|w|x|y|z"]
-	q1 -> q2 [label="0|1|2|3|4|5|6|7|8|9|A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z|a|b|c|d|e|f|g|h|i|j|k|l|m|n|o|p|q|r|s|t|u|v|w|x|y|z|Ç|ç"]
-	q2 -> char_literal [label="'"]
-	div -> comment [label="/"]
-	comment -> comment [label="0|1|2|3|4|5|6|7|8|9|A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z|a|b|c|d|e|f|g|h|i|j|k|l|m|n|o|p|q|r|s|t|u|v|w|x|y|z"]
-	identifier_7 -> identifier_22 [label=l]
-	identifier_7 -> identifier_24 [label="0|1|2|3|4|5|6|7|8|9|A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z|_|a|b|c|d|e|f|g|h|i|j|k|m|n|o|p|q|r|s|t|u|v|w|x|y|z"]
-	identifier_22 -> identifier_30 [label=s]
-	identifier_22 -> identifier_24 [label="0|1|2|3|4|5|6|7|8|9|A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z|_|a|b|c|d|e|f|g|h|i|j|k|l|m|n|o|p|q|r|t|u|v|w|x|y|z"]
-	identifier_30 -> else [label=e]
-	identifier_30 -> identifier_24 [label="0|1|2|3|4|5|6|7|8|9|A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z|_|a|b|c|d|f|g|h|i|j|k|l|m|n|o|p|q|r|s|t|u|v|w|x|y|z"]
-	else -> identifier_24 [label="0|1|2|3|4|5|6|7|8|9|A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z|_|a|b|c|d|e|f|g|h|i|j|k|l|m|n|o|p|q|r|s|t|u|v|w|x|y|z"]
-	expr_7 -> expr_7 [label="0|1|2|3|4|5|6|7|8|9"]
-	expr_7 -> q5 [label="."]
-	expr_5 -> expr_5 [label="0|1|2|3|4|5|6|7|8|9"]
-	expr_5 -> q6 [label="."]
-	q3 -> expr_2 [label="0|1|2|3|4|5|6|7|8|9"]
-	q4 -> expr_8 [label="0|1|2|3|4|5|6|7|8|9"]
-	q5 -> expr_3 [label="0|1|2|3|4|5|6|7|8|9"]
-	q6 -> expr_4 [label="0|1|2|3|4|5|6|7|8|9"]
-	expr_2 -> expr_2 [label="0|1|2|3|4|5|6|7|8|9"]
-	expr_8 -> expr_8 [label="0|1|2|3|4|5|6|7|8|9"]
-	expr_3 -> expr_3 [label="0|1|2|3|4|5|6|7|8|9"]
-	expr_4 -> expr_4 [label="0|1|2|3|4|5|6|7|8|9"]
-	number -> number [label="0|1|2|3|4|5|6|7|8|9"]
-	number -> q7 [label="/"]
-	number -> q8 [label="."]
-	number -> q9 [label="+"]
-	number -> q10 [label="-"]
-	number -> q11 [label="*"]
-	q7 -> expr [label="0|1|2|3|4|5|6|7|8|9"]
-	q8 -> number_2 [label="0|1|2|3|4|5|6|7|8|9"]
-	q9 -> expr_6 [label="0|1|2|3|4|5|6|7|8|9"]
-	q10 -> expr_7 [label="0|1|2|3|4|5|6|7|8|9"]
-	q11 -> expr_5 [label="0|1|2|3|4|5|6|7|8|9"]
-	expr -> q3 [label="."]
-	expr -> expr [label="0|1|2|3|4|5|6|7|8|9"]
-	number_2 -> q7 [label="/"]
-	number_2 -> q9 [label="+"]
-	number_2 -> q10 [label="-"]
-	number_2 -> q11 [label="*"]
-	number_2 -> number_2 [label="0|1|2|3|4|5|6|7|8|9"]
-	expr_6 -> q4 [label="."]
-	expr_6 -> expr_6 [label="0|1|2|3|4|5|6|7|8|9"]
-	identifier_9 -> identifier_3 [label=a]
-	identifier_9 -> identifier_16 [label=l]
-	identifier_9 -> identifier_13 [label=o]
-	identifier_9 -> identifier_24 [label="0|1|2|3|4|5|6|7|8|9|A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z|_|b|c|d|e|f|g|h|i|j|k|m|n|p|q|r|s|t|u|v|w|x|y|z"]
-	identifier_3 -> identifier_4 [label=l]
-	identifier_3 -> identifier_24 [label="0|1|2|3|4|5|6|7|8|9|A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z|_|a|b|c|d|e|f|g|h|i|j|k|m|n|o|p|q|r|s|t|u|v|w|x|y|z"]
-	identifier_4 -> identifier [label=s]
-	identifier_4 -> identifier_24 [label="0|1|2|3|4|5|6|7|8|9|A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z|_|a|b|c|d|e|f|g|h|i|j|k|l|m|n|o|p|q|r|t|u|v|w|x|y|z"]
-	identifier -> false [label=e]
-	identifier -> identifier_24 [label="0|1|2|3|4|5|6|7|8|9|A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z|_|a|b|c|d|f|g|h|i|j|k|l|m|n|o|p|q|r|s|t|u|v|w|x|y|z"]
-	false -> identifier_24 [label="0|1|2|3|4|5|6|7|8|9|A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z|_|a|b|c|d|e|f|g|h|i|j|k|l|m|n|o|p|q|r|s|t|u|v|w|x|y|z"]
-	identifier_16 -> identifier_33 [label=o]
-	identifier_16 -> identifier_24 [label="0|1|2|3|4|5|6|7|8|9|A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z|_|a|b|c|d|e|f|g|h|i|j|k|l|m|n|p|q|r|s|t|u|v|w|x|y|z"]
-	identifier_33 -> identifier_29 [label=a]
-	identifier_33 -> identifier_24 [label="0|1|2|3|4|5|6|7|8|9|A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z|_|b|c|d|e|f|g|h|i|j|k|l|m|n|o|p|q|r|s|t|u|v|w|x|y|z"]
-	identifier_29 -> float [label=t]
-	identifier_29 -> identifier_24 [label="0|1|2|3|4|5|6|7|8|9|A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z|_|a|b|c|d|e|f|g|h|i|j|k|l|m|n|o|p|q|r|s|u|v|w|x|y|z"]
-	float -> identifier_24 [label="0|1|2|3|4|5|6|7|8|9|A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z|_|a|b|c|d|e|f|g|h|i|j|k|l|m|n|o|p|q|r|s|t|u|v|w|x|y|z"]
-	identifier_13 -> for [label=r]
-	identifier_13 -> identifier_24 [label="0|1|2|3|4|5|6|7|8|9|A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z|_|a|b|c|d|e|f|g|h|i|j|k|l|m|n|o|p|q|s|t|u|v|w|x|y|z"]
-	for -> identifier_24 [label="0|1|2|3|4|5|6|7|8|9|A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z|_|a|b|c|d|e|f|g|h|i|j|k|l|m|n|o|p|q|r|s|t|u|v|w|x|y|z"]
-	gt -> geq [label="="]
-	identifier_24 -> identifier_24 [label="0|1|2|3|4|5|6|7|8|9|A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z|_|a|b|c|d|e|f|g|h|i|j|k|l|m|n|o|p|q|r|s|t|u|v|w|x|y|z"]
-	identifier_32 -> identifier_24 [label="0|1|2|3|4|5|6|7|8|9|A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z|_|a|b|c|d|e|g|h|i|j|k|l|m|o|p|q|r|s|t|u|v|w|x|y|z"]
-	identifier_32 -> if [label=f]
-	identifier_32 -> identifier_17 [label=n]
-	if -> identifier_24 [label="0|1|2|3|4|5|6|7|8|9|A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z|_|a|b|c|d|e|f|g|h|i|j|k|l|m|n|o|p|q|r|s|t|u|v|w|x|y|z"]
-	identifier_17 -> identifier_24 [label="0|1|2|3|4|5|6|7|8|9|A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z|_|a|b|c|d|e|f|g|h|i|j|k|l|m|n|o|p|q|r|s|u|v|w|x|y|z"]
-	identifier_17 -> int [label=t]
-	int -> identifier_24 [label="0|1|2|3|4|5|6|7|8|9|A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z|_|a|b|c|d|e|f|g|h|i|j|k|l|m|n|o|p|q|r|s|t|u|v|w|x|y|z"]
-	identifier_6 -> identifier_24 [label="0|1|2|3|4|5|6|7|8|9|A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z|_|a|b|c|d|f|g|h|i|j|k|l|m|n|o|p|q|r|s|t|u|v|w|x|y|z"]
-	identifier_6 -> identifier_18 [label=e]
-	identifier_18 -> identifier_24 [label="0|1|2|3|4|5|6|7|8|9|A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z|_|a|b|c|d|e|f|g|h|i|j|k|l|m|n|o|p|q|r|s|u|v|w|x|y|z"]
-	identifier_18 -> identifier_10 [label=t]
-	identifier_10 -> identifier_24 [label="0|1|2|3|4|5|6|7|8|9|A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z|_|a|b|c|d|e|f|g|h|i|j|k|l|m|n|o|p|q|r|s|t|v|w|x|y|z"]
-	identifier_10 -> identifier_31 [label=u]
-	identifier_31 -> identifier_24 [label="0|1|2|3|4|5|6|7|8|9|A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z|_|a|b|c|d|e|f|g|h|i|j|k|l|m|n|o|p|q|s|t|u|v|w|x|y|z"]
-	identifier_31 -> identifier_19 [label=r]
-	identifier_19 -> identifier_24 [label="0|1|2|3|4|5|6|7|8|9|A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z|_|a|b|c|d|e|f|g|h|i|j|k|l|m|o|p|q|r|s|t|u|v|w|x|y|z"]
-	identifier_19 -> return [label=n]
-	return -> identifier_24 [label="0|1|2|3|4|5|6|7|8|9|A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z|_|a|b|c|d|e|f|g|h|i|j|k|l|m|n|o|p|q|r|s|t|u|v|w|x|y|z"]
-	identifier_2 -> identifier_24 [label="0|1|2|3|4|5|6|7|8|9|A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z|_|a|b|c|d|e|f|g|h|i|j|k|l|m|n|o|p|q|r|s|u|v|w|x|y|z"]
-	identifier_2 -> identifier_11 [label=t]
-	identifier_11 -> identifier_24 [label="0|1|2|3|4|5|6|7|8|9|A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z|_|a|b|c|d|e|f|g|h|i|j|k|l|m|n|o|p|q|s|t|u|v|w|x|y|z"]
-	identifier_11 -> identifier_15 [label=r]
-	identifier_15 -> identifier_24 [label="0|1|2|3|4|5|6|7|8|9|A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z|_|a|b|c|d|e|f|g|h|j|k|l|m|n|o|p|q|r|s|t|u|v|w|x|y|z"]
-	identifier_15 -> identifier_26 [label=i]
-	identifier_26 -> identifier_24 [label="0|1|2|3|4|5|6|7|8|9|A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z|_|a|b|c|d|e|f|g|h|i|j|k|l|m|o|p|q|r|s|t|u|v|w|x|y|z"]
-	identifier_26 -> identifier_28 [label=n]
-	identifier_28 -> identifier_24 [label="0|1|2|3|4|5|6|7|8|9|A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z|_|a|b|c|d|e|f|h|i|j|k|l|m|n|o|p|q|r|s|t|u|v|w|x|y|z"]
-	identifier_28 -> string [label=g]
-	string -> identifier_24 [label="0|1|2|3|4|5|6|7|8|9|A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z|_|a|b|c|d|e|f|g|h|i|j|k|l|m|n|o|p|q|r|s|t|u|v|w|x|y|z"]
-	identifier_23 -> identifier_24 [label="0|1|2|3|4|5|6|7|8|9|A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z|_|a|b|c|d|e|f|g|h|i|j|k|l|m|n|o|p|q|s|t|u|v|w|x|y|z"]
-	identifier_23 -> identifier_25 [label=r]
-	identifier_25 -> identifier_24 [label="0|1|2|3|4|5|6|7|8|9|A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z|_|a|b|c|d|e|f|g|h|i|j|k|l|m|n|o|p|q|r|s|t|v|w|x|y|z"]
-	identifier_25 -> identifier_21 [label=u]
-	identifier_21 -> identifier_24 [label="0|1|2|3|4|5|6|7|8|9|A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z|_|a|b|c|d|f|g|h|i|j|k|l|m|n|o|p|q|r|s|t|u|v|w|x|y|z"]
-	identifier_21 -> true [label=e]
-	true -> identifier_24 [label="0|1|2|3|4|5|6|7|8|9|A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z|_|a|b|c|d|e|f|g|h|i|j|k|l|m|n|o|p|q|r|s|t|u|v|w|x|y|z"]
-	identifier_12 -> identifier_24 [label="0|1|2|3|4|5|6|7|8|9|A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z|_|a|b|c|d|e|f|g|i|j|k|l|m|n|o|p|q|r|s|t|u|v|w|x|y|z"]
-	identifier_12 -> identifier_14 [label=h]
-	identifier_14 -> identifier_24 [label="0|1|2|3|4|5|6|7|8|9|A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z|_|a|b|c|d|e|f|g|h|j|k|l|m|n|o|p|q|r|s|t|u|v|w|x|y|z"]
-	identifier_14 -> identifier_5 [label=i]
-	identifier_5 -> identifier_24 [label="0|1|2|3|4|5|6|7|8|9|A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z|_|a|b|c|d|e|f|g|h|i|j|k|m|n|o|p|q|r|s|t|u|v|w|x|y|z"]
-	identifier_5 -> identifier_34 [label=l]
-	identifier_34 -> identifier_24 [label="0|1|2|3|4|5|6|7|8|9|A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z|_|a|b|c|d|f|g|h|i|j|k|l|m|n|o|p|q|r|s|t|u|v|w|x|y|z"]
-	identifier_34 -> while [label=e]
-	while -> identifier_24 [label="0|1|2|3|4|5|6|7|8|9|A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z|_|a|b|c|d|e|f|g|h|i|j|k|l|m|n|o|p|q|r|s|t|u|v|w|x|y|z"]
-	lt -> leq [label="="]
-	not -> neq [label="="]
-	q12 -> or [label="|"]
-	q13 -> q13 [label=" |0|1|2|3|4|5|6|7|8|9|A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z|_|a|b|c|d|e|f|g|h|i|j|k|l|m|n|o|p|q|r|s|t|u|v|w|x|y|z|Ç|ç"]
-	q13 -> string_literal [label="\""]
+	q0 -> "(" [label="("]
+	q0 -> ")" [label=")"]
+	q0 -> "*" [label="*"]
+	q0 -> "+" [label="+"]
+	q0 -> "," [label=","]
+	q0 -> "-" [label="-"]
+	q0 -> "." [label="."]
+	q0 -> "/" [label="/"]
+	q0 -> "" [label=":"]
+	q0 -> ";" [label=";"]
+	q0 -> "<" [label="<"]
+	q0 -> "=" [label="="]
+	q0 -> ">" [label=">"]
+	q0 -> "[" [label="["]
+	q0 -> "]" [label="]"]
+	q0 -> id_67 [label=a]
+	q0 -> id_59 [label=b]
+	q0 -> id_12 [label=c]
+	q0 -> id_22 [label=d]
+	q0 -> e [label=e]
+	q0 -> id_37 [label=f]
+	q0 -> id_17 [label="A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z|_|g|h|j|k|m|q|t|u|w|x|y|z"]
+	q0 -> id_5 [label=i]
+	q0 -> id_68 [label=l]
+	q0 -> id_31 [label=n]
+	q0 -> id_33 [label=o]
+	q0 -> id_15 [label=p]
+	q0 -> id_43 [label=r]
+	q0 -> id_25 [label=s]
+	q0 -> id_14 [label=v]
+	q0 -> q1 [label="\""]
+	q0 -> num_int [label="0|1|2|3|4|5|6|7|8|9"]
+	"-" -> num_int [label="0|1|2|3|4|5|6|7|8|9"]
+	"." -> ".." [label="."]
+	"" -> "":"=" [label="="]
+	"<" -> "<=" [label="="]
+	"<" -> <> [label=">"]
+	">" -> ">=" [label="="]
+	id_67 -> id_11 [label=t]
+	id_67 -> id_17 [label="0|1|2|3|4|5|6|7|8|9|A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z|_|a|b|c|d|e|f|g|h|i|j|k|l|m|n|o|p|q|r|s|u|v|w|x|y|z"]
+	id_11 -> ate [label=e]
+	id_11 -> id_17 [label="0|1|2|3|4|5|6|7|8|9|A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z|_|a|b|c|d|f|g|h|i|j|k|l|m|n|o|p|q|r|s|t|u|v|w|x|y|z"]
+	ate -> id_17 [label="0|1|2|3|4|5|6|7|8|9|A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z|_|a|b|c|d|e|f|g|h|i|j|k|l|m|n|o|p|q|r|s|t|u|v|w|x|y|z"]
+	id_59 -> id_90 [label=o]
+	id_59 -> id_17 [label="0|1|2|3|4|5|6|7|8|9|A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z|_|a|b|c|d|e|f|g|h|i|j|k|l|m|n|p|q|r|s|t|u|v|w|x|y|z"]
+	id_90 -> id_3 [label=o]
+	id_90 -> id_17 [label="0|1|2|3|4|5|6|7|8|9|A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z|_|a|b|c|d|e|f|g|h|i|j|k|l|m|n|p|q|r|s|t|u|v|w|x|y|z"]
+	id_3 -> id_56 [label=l]
+	id_3 -> id_17 [label="0|1|2|3|4|5|6|7|8|9|A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z|_|a|b|c|d|e|f|g|h|i|j|k|m|n|o|p|q|r|s|t|u|v|w|x|y|z"]
+	id_56 -> id_48 [label=e]
+	id_56 -> id_17 [label="0|1|2|3|4|5|6|7|8|9|A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z|_|a|b|c|d|f|g|h|i|j|k|l|m|n|o|p|q|r|s|t|u|v|w|x|y|z"]
+	id_48 -> id_13 [label=a]
+	id_48 -> id_17 [label="0|1|2|3|4|5|6|7|8|9|A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z|_|b|c|d|e|f|g|h|i|j|k|l|m|n|o|p|q|r|s|t|u|v|w|x|y|z"]
+	id_13 -> id_38 [label=n]
+	id_13 -> id_17 [label="0|1|2|3|4|5|6|7|8|9|A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z|_|a|b|c|d|e|f|g|h|i|j|k|l|m|o|p|q|r|s|t|u|v|w|x|y|z"]
+	id_38 -> booleano [label=o]
+	id_38 -> id_17 [label="0|1|2|3|4|5|6|7|8|9|A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z|_|a|b|c|d|e|f|g|h|i|j|k|l|m|n|p|q|r|s|t|u|v|w|x|y|z"]
+	booleano -> id_17 [label="0|1|2|3|4|5|6|7|8|9|A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z|_|a|b|c|d|e|f|g|h|i|j|k|l|m|n|o|p|q|r|s|t|u|v|w|x|y|z"]
+	id_12 -> id_16 [label=a]
+	id_12 -> id_24 [label=o]
+	id_12 -> id_17 [label="0|1|2|3|4|5|6|7|8|9|A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z|_|b|c|d|e|f|g|h|i|j|k|l|m|n|p|q|r|s|t|u|v|w|x|y|z"]
+	id_16 -> id_69 [label=d]
+	id_16 -> id_71 [label=r]
+	id_16 -> id_17 [label="0|1|2|3|4|5|6|7|8|9|A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z|_|a|b|c|e|f|g|h|i|j|k|l|m|n|o|p|q|s|t|u|v|w|x|y|z"]
+	id_69 -> id_65 [label=e]
+	id_69 -> id_17 [label="0|1|2|3|4|5|6|7|8|9|A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z|_|a|b|c|d|f|g|h|i|j|k|l|m|n|o|p|q|r|s|t|u|v|w|x|y|z"]
+	id_65 -> id_30 [label=i]
+	id_65 -> id_17 [label="0|1|2|3|4|5|6|7|8|9|A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z|_|a|b|c|d|e|f|g|h|j|k|l|m|n|o|p|q|r|s|t|u|v|w|x|y|z"]
+	id_30 -> cadeia [label=a]
+	id_30 -> id_17 [label="0|1|2|3|4|5|6|7|8|9|A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z|_|b|c|d|e|f|g|h|i|j|k|l|m|n|o|p|q|r|s|t|u|v|w|x|y|z"]
+	cadeia -> id_17 [label="0|1|2|3|4|5|6|7|8|9|A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z|_|a|b|c|d|e|f|g|h|i|j|k|l|m|n|o|p|q|r|s|t|u|v|w|x|y|z"]
+	id_71 -> id [label=a]
+	id_71 -> id_17 [label="0|1|2|3|4|5|6|7|8|9|A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z|_|b|c|d|e|f|g|h|i|j|k|l|m|n|o|p|q|r|s|t|u|v|w|x|y|z"]
+	id -> id_21 [label=c]
+	id -> id_17 [label="0|1|2|3|4|5|6|7|8|9|A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z|_|a|b|d|e|f|g|h|i|j|k|l|m|n|o|p|q|r|s|t|u|v|w|x|y|z"]
+	id_21 -> id_7 [label=t]
+	id_21 -> id_17 [label="0|1|2|3|4|5|6|7|8|9|A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z|_|a|b|c|d|e|f|g|h|i|j|k|l|m|n|o|p|q|r|s|u|v|w|x|y|z"]
+	id_7 -> id_40 [label=e]
+	id_7 -> id_17 [label="0|1|2|3|4|5|6|7|8|9|A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z|_|a|b|c|d|f|g|h|i|j|k|l|m|n|o|p|q|r|s|t|u|v|w|x|y|z"]
+	id_40 -> caracter [label=r]
+	id_40 -> id_17 [label="0|1|2|3|4|5|6|7|8|9|A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z|_|a|b|c|d|e|f|g|h|i|j|k|l|m|n|o|p|q|s|t|u|v|w|x|y|z"]
+	caracter -> id_17 [label="0|1|2|3|4|5|6|7|8|9|A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z|_|a|b|c|d|e|f|g|h|i|j|k|l|m|n|o|p|q|r|s|t|u|v|w|x|y|z"]
+	id_24 -> id_70 [label=n]
+	id_24 -> id_17 [label="0|1|2|3|4|5|6|7|8|9|A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z|_|a|b|c|d|e|f|g|h|i|j|k|l|m|o|p|q|r|s|t|u|v|w|x|y|z"]
+	id_70 -> id_64 [label=s]
+	id_70 -> id_17 [label="0|1|2|3|4|5|6|7|8|9|A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z|_|a|b|c|d|e|f|g|h|i|j|k|l|m|n|o|p|q|r|t|u|v|w|x|y|z"]
+	id_64 -> const [label=t]
+	id_64 -> id_17 [label="0|1|2|3|4|5|6|7|8|9|A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z|_|a|b|c|d|e|f|g|h|i|j|k|l|m|n|o|p|q|r|s|u|v|w|x|y|z"]
+	const -> id_17 [label="0|1|2|3|4|5|6|7|8|9|A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z|_|a|b|c|d|e|f|g|h|i|j|k|l|m|n|o|p|q|r|s|t|u|v|w|x|y|z"]
+	id_22 -> de [label=e]
+	id_22 -> id_17 [label="0|1|2|3|4|5|6|7|8|9|A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z|_|a|b|c|d|f|g|h|i|j|k|l|m|n|o|p|q|r|s|t|u|v|w|x|y|z"]
+	de -> id_17 [label="0|1|2|3|4|5|6|7|8|9|A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z|_|a|b|c|d|e|f|g|h|i|j|k|l|m|n|o|p|q|r|s|t|u|v|w|x|y|z"]
+	e -> id_61 [label=n]
+	e -> id_9 [label=s]
+	e -> id_17 [label="0|1|2|3|4|5|6|7|8|9|A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z|_|a|b|c|d|e|f|g|h|i|j|k|l|m|o|p|q|r|t|u|v|w|x|y|z"]
+	id_61 -> id_18 [label=q]
+	id_61 -> id_27 [label=t]
+	id_61 -> id_17 [label="0|1|2|3|4|5|6|7|8|9|A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z|_|a|b|c|d|e|f|g|h|i|j|k|l|m|n|o|p|r|s|u|v|w|x|y|z"]
+	id_18 -> id_72 [label=u]
+	id_18 -> id_17 [label="0|1|2|3|4|5|6|7|8|9|A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z|_|a|b|c|d|e|f|g|h|i|j|k|l|m|n|o|p|q|r|s|t|v|w|x|y|z"]
+	id_72 -> id_62 [label=a]
+	id_72 -> id_17 [label="0|1|2|3|4|5|6|7|8|9|A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z|_|b|c|d|e|f|g|h|i|j|k|l|m|n|o|p|q|r|s|t|u|v|w|x|y|z"]
+	id_62 -> id_88 [label=n]
+	id_62 -> id_17 [label="0|1|2|3|4|5|6|7|8|9|A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z|_|a|b|c|d|e|f|g|h|i|j|k|l|m|o|p|q|r|s|t|u|v|w|x|y|z"]
+	id_88 -> id_34 [label=t]
+	id_88 -> id_17 [label="0|1|2|3|4|5|6|7|8|9|A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z|_|a|b|c|d|e|f|g|h|i|j|k|l|m|n|o|p|q|r|s|u|v|w|x|y|z"]
+	id_34 -> enquanto [label=o]
+	id_34 -> id_17 [label="0|1|2|3|4|5|6|7|8|9|A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z|_|a|b|c|d|e|f|g|h|i|j|k|l|m|n|p|q|r|s|t|u|v|w|x|y|z"]
+	enquanto -> id_17 [label="0|1|2|3|4|5|6|7|8|9|A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z|_|a|b|c|d|e|f|g|h|i|j|k|l|m|n|o|p|q|r|s|t|u|v|w|x|y|z"]
+	id_27 -> id_8 [label=a]
+	id_27 -> id_17 [label="0|1|2|3|4|5|6|7|8|9|A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z|_|b|c|d|e|f|g|h|i|j|k|l|m|n|o|p|q|r|s|t|u|v|w|x|y|z"]
+	id_8 -> entao [label=o]
+	id_8 -> id_17 [label="0|1|2|3|4|5|6|7|8|9|A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z|_|a|b|c|d|e|f|g|h|i|j|k|l|m|n|p|q|r|s|t|u|v|w|x|y|z"]
+	entao -> id_17 [label="0|1|2|3|4|5|6|7|8|9|A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z|_|a|b|c|d|e|f|g|h|i|j|k|l|m|n|o|p|q|r|s|t|u|v|w|x|y|z"]
+	id_9 -> id_66 [label=c]
+	id_9 -> id_17 [label="0|1|2|3|4|5|6|7|8|9|A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z|_|a|b|d|e|f|g|h|i|j|k|l|m|n|o|p|q|r|s|t|u|v|w|x|y|z"]
+	id_66 -> id_52 [label=r]
+	id_66 -> id_17 [label="0|1|2|3|4|5|6|7|8|9|A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z|_|a|b|c|d|e|f|g|h|i|j|k|l|m|n|o|p|q|s|t|u|v|w|x|y|z"]
+	id_52 -> id_26 [label=e]
+	id_52 -> id_17 [label="0|1|2|3|4|5|6|7|8|9|A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z|_|a|b|c|d|f|g|h|i|j|k|l|m|n|o|p|q|r|s|t|u|v|w|x|y|z"]
+	id_26 -> id_78 [label=v]
+	id_26 -> id_17 [label="0|1|2|3|4|5|6|7|8|9|A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z|_|a|b|c|d|e|f|g|h|i|j|k|l|m|n|o|p|q|r|s|t|u|w|x|y|z"]
+	id_78 -> escreva [label=a]
+	id_78 -> id_17 [label="0|1|2|3|4|5|6|7|8|9|A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z|_|b|c|d|e|f|g|h|i|j|k|l|m|n|o|p|q|r|s|t|u|v|w|x|y|z"]
+	escreva -> id_17 [label="0|1|2|3|4|5|6|7|8|9|A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z|_|a|b|c|d|e|f|g|h|i|j|k|l|m|n|o|p|q|r|s|t|u|v|w|x|y|z"]
+	id_37 -> id_2 [label=a]
+	id_37 -> id_41 [label=i]
+	id_37 -> id_51 [label=u]
+	id_37 -> id_17 [label="0|1|2|3|4|5|6|7|8|9|A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z|_|b|c|d|e|f|g|h|j|k|l|m|n|o|p|q|r|s|t|v|w|x|y|z"]
+	id_2 -> id_55 [label=c]
+	id_2 -> id_60 [label=l]
+	id_2 -> id_17 [label="0|1|2|3|4|5|6|7|8|9|A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z|_|a|b|d|e|f|g|h|i|j|k|m|n|o|p|q|r|s|t|u|v|w|x|y|z"]
+	id_55 -> faca [label=a]
+	id_55 -> id_17 [label="0|1|2|3|4|5|6|7|8|9|A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z|_|b|c|d|e|f|g|h|i|j|k|l|m|n|o|p|q|r|s|t|u|v|w|x|y|z"]
+	faca -> id_17 [label="0|1|2|3|4|5|6|7|8|9|A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z|_|a|b|c|d|e|f|g|h|i|j|k|l|m|n|o|p|q|r|s|t|u|v|w|x|y|z"]
+	id_60 -> id_19 [label=s]
+	id_60 -> id_17 [label="0|1|2|3|4|5|6|7|8|9|A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z|_|a|b|c|d|e|f|g|h|i|j|k|l|m|n|o|p|q|r|t|u|v|w|x|y|z"]
+	id_19 -> falso [label=o]
+	id_19 -> id_17 [label="0|1|2|3|4|5|6|7|8|9|A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z|_|a|b|c|d|e|f|g|h|i|j|k|l|m|n|p|q|r|s|t|u|v|w|x|y|z"]
+	falso -> id_17 [label="0|1|2|3|4|5|6|7|8|9|A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z|_|a|b|c|d|e|f|g|h|i|j|k|l|m|n|o|p|q|r|s|t|u|v|w|x|y|z"]
+	id_41 -> fim [label=m]
+	id_41 -> id_17 [label="0|1|2|3|4|5|6|7|8|9|A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z|_|a|b|c|d|e|f|g|h|i|j|k|l|n|o|p|q|r|s|t|u|v|w|x|y|z"]
+	fim -> id_17 [label="0|1|2|3|4|5|6|7|8|9|A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z|_|a|b|c|d|e|f|g|h|i|j|k|l|m|n|o|p|q|r|s|t|u|v|w|x|y|z"]
+	id_51 -> id_47 [label=n]
+	id_51 -> id_17 [label="0|1|2|3|4|5|6|7|8|9|A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z|_|a|b|c|d|e|f|g|h|i|j|k|l|m|o|p|q|r|s|t|u|v|w|x|y|z"]
+	id_47 -> id_39 [label=c]
+	id_47 -> id_17 [label="0|1|2|3|4|5|6|7|8|9|A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z|_|a|b|d|e|f|g|h|i|j|k|l|m|n|o|p|q|r|s|t|u|v|w|x|y|z"]
+	id_39 -> id_84 [label=a]
+	id_39 -> id_17 [label="0|1|2|3|4|5|6|7|8|9|A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z|_|b|c|d|e|f|g|h|i|j|k|l|m|n|o|p|q|r|s|t|u|v|w|x|y|z"]
+	id_84 -> funcao [label=o]
+	id_84 -> id_17 [label="0|1|2|3|4|5|6|7|8|9|A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z|_|a|b|c|d|e|f|g|h|i|j|k|l|m|n|p|q|r|s|t|u|v|w|x|y|z"]
+	funcao -> id_17 [label="0|1|2|3|4|5|6|7|8|9|A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z|_|a|b|c|d|e|f|g|h|i|j|k|l|m|n|o|p|q|r|s|t|u|v|w|x|y|z"]
+	id_17 -> id_17 [label="0|1|2|3|4|5|6|7|8|9|A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z|_|a|b|c|d|e|f|g|h|i|j|k|l|m|n|o|p|q|r|s|t|u|v|w|x|y|z"]
+	id_5 -> id_17 [label="0|1|2|3|4|5|6|7|8|9|A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z|_|a|b|c|d|e|f|g|h|i|j|k|l|m|o|p|q|r|s|t|u|v|w|x|y|z"]
+	id_5 -> id_74 [label=n]
+	id_74 -> id_17 [label="0|1|2|3|4|5|6|7|8|9|A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z|_|a|b|c|d|e|f|g|h|j|k|l|m|n|o|p|q|r|s|u|v|w|x|y|z"]
+	id_74 -> id_83 [label=i]
+	id_74 -> id_89 [label=t]
+	id_83 -> id_17 [label="0|1|2|3|4|5|6|7|8|9|A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z|_|a|b|d|e|f|g|h|i|j|k|l|m|n|o|p|q|r|s|t|u|v|w|x|y|z"]
+	id_83 -> id_32 [label=c]
+	id_32 -> id_17 [label="0|1|2|3|4|5|6|7|8|9|A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z|_|a|b|c|d|e|f|g|h|j|k|l|m|n|o|p|q|r|s|t|u|v|w|x|y|z"]
+	id_32 -> id_58 [label=i]
+	id_58 -> id_17 [label="0|1|2|3|4|5|6|7|8|9|A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z|_|a|b|c|d|e|f|g|h|i|j|k|l|m|n|p|q|r|s|t|u|v|w|x|y|z"]
+	id_58 -> inicio [label=o]
+	inicio -> id_17 [label="0|1|2|3|4|5|6|7|8|9|A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z|_|a|b|c|d|e|f|g|h|i|j|k|l|m|n|o|p|q|r|s|t|u|v|w|x|y|z"]
+	id_89 -> id_17 [label="0|1|2|3|4|5|6|7|8|9|A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z|_|a|b|c|d|f|g|h|i|j|k|l|m|n|o|p|q|r|s|t|u|v|w|x|y|z"]
+	id_89 -> id_77 [label=e]
+	id_77 -> id_17 [label="0|1|2|3|4|5|6|7|8|9|A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z|_|a|b|c|d|e|f|g|h|j|k|l|m|n|o|p|q|s|t|u|v|w|x|y|z"]
+	id_77 -> id_63 [label=i]
+	id_77 -> id_82 [label=r]
+	id_63 -> id_17 [label="0|1|2|3|4|5|6|7|8|9|A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z|_|a|b|c|d|e|f|g|h|i|j|k|l|m|n|o|p|q|s|t|u|v|w|x|y|z"]
+	id_63 -> id_35 [label=r]
+	id_35 -> id_17 [label="0|1|2|3|4|5|6|7|8|9|A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z|_|a|b|c|d|e|f|g|h|i|j|k|l|m|n|p|q|r|s|t|u|v|w|x|y|z"]
+	id_35 -> inteiro [label=o]
+	inteiro -> id_17 [label="0|1|2|3|4|5|6|7|8|9|A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z|_|a|b|c|d|e|f|g|h|i|j|k|l|m|n|o|p|q|r|s|t|u|v|w|x|y|z"]
+	id_82 -> id_17 [label="0|1|2|3|4|5|6|7|8|9|A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z|_|a|b|c|d|e|f|g|h|i|j|k|l|m|n|o|p|q|r|s|t|u|w|x|y|z"]
+	id_82 -> id_44 [label=v]
+	id_44 -> id_17 [label="0|1|2|3|4|5|6|7|8|9|A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z|_|b|c|d|e|f|g|h|i|j|k|l|m|n|o|p|q|r|s|t|u|v|w|x|y|z"]
+	id_44 -> id_10 [label=a]
+	id_10 -> id_17 [label="0|1|2|3|4|5|6|7|8|9|A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z|_|a|b|c|d|e|f|g|h|i|j|k|m|n|o|p|q|r|s|t|u|v|w|x|y|z"]
+	id_10 -> id_73 [label=l]
+	id_73 -> id_17 [label="0|1|2|3|4|5|6|7|8|9|A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z|_|a|b|c|d|e|f|g|h|i|j|k|l|m|n|p|q|r|s|t|u|v|w|x|y|z"]
+	id_73 -> intervalo [label=o]
+	intervalo -> id_17 [label="0|1|2|3|4|5|6|7|8|9|A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z|_|a|b|c|d|e|f|g|h|i|j|k|l|m|n|o|p|q|r|s|t|u|v|w|x|y|z"]
+	id_68 -> id_17 [label="0|1|2|3|4|5|6|7|8|9|A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z|_|a|b|c|d|f|g|h|i|j|k|l|m|n|o|p|q|r|s|t|u|v|w|x|y|z"]
+	id_68 -> id_76 [label=e]
+	id_76 -> id_17 [label="0|1|2|3|4|5|6|7|8|9|A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z|_|a|b|c|d|e|f|g|h|j|k|l|m|n|o|p|q|r|s|t|u|v|w|x|y|z"]
+	id_76 -> id_81 [label=i]
+	id_81 -> id_17 [label="0|1|2|3|4|5|6|7|8|9|A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z|_|b|c|d|e|f|g|h|i|j|k|l|m|n|o|p|q|r|s|t|u|v|w|x|y|z"]
+	id_81 -> leia [label=a]
+	leia -> id_17 [label="0|1|2|3|4|5|6|7|8|9|A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z|_|a|b|c|d|e|f|g|h|i|j|k|l|m|n|o|p|q|r|s|t|u|v|w|x|y|z"]
+	id_31 -> id_17 [label="0|1|2|3|4|5|6|7|8|9|A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z|_|b|c|d|e|f|g|h|i|j|k|l|m|n|o|p|q|r|s|t|u|v|w|x|y|z"]
+	id_31 -> id_86 [label=a]
+	id_86 -> id_17 [label="0|1|2|3|4|5|6|7|8|9|A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z|_|a|b|c|d|e|f|g|h|i|j|k|l|m|n|p|q|r|s|t|u|v|w|x|y|z"]
+	id_86 -> nao [label=o]
+	nao -> id_17 [label="0|1|2|3|4|5|6|7|8|9|A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z|_|a|b|c|d|e|f|g|h|i|j|k|l|m|n|o|p|q|r|s|t|u|v|w|x|y|z"]
+	id_33 -> id_17 [label="0|1|2|3|4|5|6|7|8|9|A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z|_|a|b|c|d|e|f|g|h|i|j|k|l|m|n|o|p|q|r|s|t|v|w|x|y|z"]
+	id_33 -> ou [label=u]
+	ou -> id_17 [label="0|1|2|3|4|5|6|7|8|9|A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z|_|a|b|c|d|e|f|g|h|i|j|k|l|m|n|o|p|q|r|s|t|u|v|w|x|y|z"]
+	id_15 -> id_17 [label="0|1|2|3|4|5|6|7|8|9|A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z|_|a|b|c|d|e|f|g|h|i|j|k|l|m|n|o|p|q|s|t|u|v|w|x|y|z"]
+	id_15 -> id_75 [label=r]
+	id_75 -> id_17 [label="0|1|2|3|4|5|6|7|8|9|A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z|_|a|b|c|d|e|f|g|h|i|j|k|l|m|n|p|q|r|s|t|u|v|w|x|y|z"]
+	id_75 -> id_49 [label=o]
+	id_49 -> id_17 [label="0|1|2|3|4|5|6|7|8|9|A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z|_|a|b|d|e|f|g|h|i|j|k|l|m|n|o|p|q|r|s|t|u|v|w|x|y|z"]
+	id_49 -> proc [label=c]
+	proc -> id_17 [label="0|1|2|3|4|5|6|7|8|9|A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z|_|a|b|c|d|e|f|g|h|i|j|k|l|m|n|o|p|q|r|s|t|u|v|w|x|y|z"]
+	id_43 -> id_17 [label="0|1|2|3|4|5|6|7|8|9|A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z|_|a|b|c|d|f|g|h|i|j|k|l|m|n|o|p|q|r|s|t|u|v|w|x|y|z"]
+	id_43 -> id_57 [label=e]
+	id_57 -> id_17 [label="0|1|2|3|4|5|6|7|8|9|A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z|_|b|c|d|e|g|h|i|j|k|l|m|n|o|q|r|s|t|u|v|w|x|y|z"]
+	id_57 -> id_87 [label=a]
+	id_57 -> ref [label=f]
+	id_57 -> id_4 [label=p]
+	id_87 -> id_17 [label="0|1|2|3|4|5|6|7|8|9|A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z|_|a|b|c|d|e|f|g|h|i|j|k|m|n|o|p|q|r|s|t|u|v|w|x|y|z"]
+	id_87 -> real [label=l]
+	real -> id_17 [label="0|1|2|3|4|5|6|7|8|9|A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z|_|a|b|c|d|e|f|g|h|i|j|k|l|m|n|o|p|q|r|s|t|u|v|w|x|y|z"]
+	ref -> id_17 [label="0|1|2|3|4|5|6|7|8|9|A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z|_|a|b|c|d|e|f|g|h|i|j|k|l|m|n|o|p|q|r|s|t|u|v|w|x|y|z"]
+	id_4 -> id_17 [label="0|1|2|3|4|5|6|7|8|9|A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z|_|a|b|c|d|e|f|g|h|j|k|l|m|n|o|p|q|r|s|t|u|v|w|x|y|z"]
+	id_4 -> id_46 [label=i]
+	id_46 -> id_17 [label="0|1|2|3|4|5|6|7|8|9|A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z|_|a|b|c|d|e|f|g|h|i|j|k|l|m|n|o|p|q|r|s|u|v|w|x|y|z"]
+	id_46 -> id_53 [label=t]
+	id_53 -> id_17 [label="0|1|2|3|4|5|6|7|8|9|A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z|_|b|c|d|e|f|g|h|i|j|k|l|m|n|o|p|q|r|s|t|u|v|w|x|y|z"]
+	id_53 -> repita [label=a]
+	repita -> id_17 [label="0|1|2|3|4|5|6|7|8|9|A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z|_|a|b|c|d|e|f|g|h|i|j|k|l|m|n|o|p|q|r|s|t|u|v|w|x|y|z"]
+	id_25 -> id_17 [label="0|1|2|3|4|5|6|7|8|9|A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z|_|a|b|c|d|f|g|h|i|j|k|l|m|n|o|p|q|r|s|t|u|v|w|x|y|z"]
+	id_25 -> se [label=e]
+	se -> id_17 [label="0|1|2|3|4|5|6|7|8|9|A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z|_|a|b|c|d|e|f|g|h|i|j|k|l|m|o|p|q|r|s|t|u|v|w|x|y|z"]
+	se -> id_79 [label=n]
+	id_79 -> id_17 [label="0|1|2|3|4|5|6|7|8|9|A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z|_|b|c|d|e|f|g|h|i|j|k|l|m|n|o|p|q|r|s|t|u|v|w|x|y|z"]
+	id_79 -> id_36 [label=a]
+	id_36 -> id_17 [label="0|1|2|3|4|5|6|7|8|9|A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z|_|a|b|c|d|e|f|g|h|i|j|k|l|m|n|p|q|r|s|t|u|v|w|x|y|z"]
+	id_36 -> senao [label=o]
+	senao -> id_17 [label="0|1|2|3|4|5|6|7|8|9|A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z|_|a|b|c|d|e|f|g|h|i|j|k|l|m|n|o|p|q|r|s|t|u|v|w|x|y|z"]
+	id_14 -> id_17 [label="0|1|2|3|4|5|6|7|8|9|A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z|_|b|c|d|f|g|h|i|j|k|l|m|n|o|p|q|r|s|t|u|v|w|x|y|z"]
+	id_14 -> id_20 [label=a]
+	id_14 -> id_23 [label=e]
+	id_20 -> id_17 [label="0|1|2|3|4|5|6|7|8|9|A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z|_|a|b|c|d|e|f|g|h|i|j|k|m|n|o|p|q|s|t|u|v|w|x|y|z"]
+	id_20 -> val [label=l]
+	id_20 -> var [label=r]
+	val -> id_17 [label="0|1|2|3|4|5|6|7|8|9|A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z|_|a|b|c|d|e|f|g|h|i|j|k|l|m|n|o|p|q|r|s|t|u|v|w|x|y|z"]
+	var -> id_17 [label="0|1|2|3|4|5|6|7|8|9|A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z|_|a|b|c|d|e|f|g|h|i|j|k|l|m|n|o|p|q|r|s|t|u|v|w|x|y|z"]
+	verdadeiro -> id_17 [label="0|1|2|3|4|5|6|7|8|9|A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z|_|a|b|c|d|e|f|g|h|i|j|k|l|m|n|o|p|q|r|s|t|u|v|w|x|y|z"]
+	id_23 -> id_17 [label="0|1|2|3|4|5|6|7|8|9|A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z|_|a|b|c|d|e|f|g|h|i|j|k|l|m|n|o|p|q|s|u|v|w|x|y|z"]
+	id_23 -> id_54 [label=r]
+	id_23 -> id_50 [label=t]
+	id_54 -> id_17 [label="0|1|2|3|4|5|6|7|8|9|A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z|_|a|b|c|e|f|g|h|i|j|k|l|m|n|o|p|q|r|s|t|u|v|w|x|y|z"]
+	id_54 -> id_80 [label=d]
+	id_80 -> id_17 [label="0|1|2|3|4|5|6|7|8|9|A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z|_|b|c|d|e|f|g|h|i|j|k|l|m|n|o|p|q|r|s|t|u|v|w|x|y|z"]
+	id_80 -> id_28 [label=a]
+	id_28 -> id_17 [label="0|1|2|3|4|5|6|7|8|9|A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z|_|a|b|c|e|f|g|h|i|j|k|l|m|n|o|p|q|r|s|t|u|v|w|x|y|z"]
+	id_28 -> id_42 [label=d]
+	id_42 -> id_17 [label="0|1|2|3|4|5|6|7|8|9|A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z|_|a|b|c|d|f|g|h|i|j|k|l|m|n|o|p|q|r|s|t|u|v|w|x|y|z"]
+	id_42 -> id_29 [label=e]
+	id_29 -> id_17 [label="0|1|2|3|4|5|6|7|8|9|A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z|_|a|b|c|d|e|f|g|h|j|k|l|m|n|o|p|q|r|s|t|u|v|w|x|y|z"]
+	id_29 -> id_6 [label=i]
+	id_6 -> id_17 [label="0|1|2|3|4|5|6|7|8|9|A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z|_|a|b|c|d|e|f|g|h|i|j|k|l|m|n|o|p|q|s|t|u|v|w|x|y|z"]
+	id_6 -> id_45 [label=r]
+	id_45 -> id_17 [label="0|1|2|3|4|5|6|7|8|9|A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z|_|a|b|c|d|e|f|g|h|i|j|k|l|m|n|p|q|r|s|t|u|v|w|x|y|z"]
+	id_45 -> verdadeiro [label=o]
+	id_50 -> id_17 [label="0|1|2|3|4|5|6|7|8|9|A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z|_|a|b|c|d|e|f|g|h|i|j|k|l|m|n|p|q|r|s|t|u|v|w|x|y|z"]
+	id_50 -> id_85 [label=o]
+	id_85 -> id_17 [label="0|1|2|3|4|5|6|7|8|9|A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z|_|a|b|c|d|e|f|g|h|i|j|k|l|m|n|o|p|q|s|t|u|v|w|x|y|z"]
+	id_85 -> vetor [label=r]
+	vetor -> id_17 [label="0|1|2|3|4|5|6|7|8|9|A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z|_|a|b|c|d|e|f|g|h|i|j|k|l|m|n|o|p|q|r|s|t|u|v|w|x|y|z"]
+	q1 -> q1 [label="A|B|C|D|E|F|G|H|I|J|K|L|M|N|O|P|Q|R|S|T|U|V|W|X|Y|Z|a|b|c|d|e|f|g|h|i|j|k|l|m|n|o|p|q|r|s|t|u|v|w|x|y|z|À|Á|Â|Ã|Ç|É|Ê|Í|Ó|Ô|Õ|Ú|à|á|â|ã|ç|é|ê|í|ó|ô|õ|ú"]
+	q1 -> literal [label="\""]
+	num_int -> num_int [label="0|1|2|3|4|5|6|7|8|9"]
+	num_int -> q2 [label="."]
+	q2 -> num_real [label="0|1|2|3|4|5|6|7|8|9"]
+	num_real -> num_real [label="0|1|2|3|4|5|6|7|8|9"]
 	"" [shape=none]
 	"" -> q0
 }

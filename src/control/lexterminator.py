@@ -32,7 +32,7 @@ class LexicalAndSintaticalAnalyzerController:
         self.__lexical_analyzer = LexicalAnalyzer(path)
     
     def set_grammar_file(self, path: str = ""):
-        self.__sintatical_analyzer = SintaticalAnalyzer(path)
+        self.__sintatical_analyzer = SintaticalAnalyzer(path, set(self.lexical_analyzer.regular_definitions.tokens))
     
     # carrega o arquivo de entrada para ser reconhecido pelo AL e atualiza a view de acordo
     def set_input_file(self, path: str):

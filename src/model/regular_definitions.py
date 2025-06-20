@@ -31,6 +31,8 @@ class RegularDefinitions:
         
         for line in lines:
             token_index = line.find(":")
+            if token_index == 0:
+                token_index = line[1:].find(":") + 1
             token, regular_expression = (str(), str())
             if token_index != -1:
                 token = line[0:token_index]

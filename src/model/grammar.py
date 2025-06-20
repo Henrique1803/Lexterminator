@@ -6,7 +6,7 @@ from typing import Dict, List, Set, Optional
 
 
 class Grammar:
-    def __init__(self, grammar_file: str):
+    def __init__(self, grammar_file: str, expected_tokens: Set = None):
         self.productions: Dict[str, List[List[str]]] = defaultdict(list)
         self.terminals: Set[str] = set()
         self.non_terminals: Set[str] = set()
@@ -15,7 +15,7 @@ class Grammar:
         self.follow_sets: Dict[str, Set[str]] = {}
 
         self._load_grammar(grammar_file)
-        self._compute_terminals()
+        self._compute_terminals(expected_tokens)
         self._initialize_first_sets()
         self._compute_first_sets()
         self._compute_follow_sets()
@@ -45,7 +45,7 @@ class Grammar:
                     symbols = body.strip().split()
                     self.productions[head].append(symbols)
 
-    def _compute_terminals(self):
+    def _compute_terminals(self, expected_tokens: Set):
         """Identifica os símbolos terminais da gramática"""
         symbols_in_productions: Set[str] = set()
 
@@ -56,6 +56,12 @@ class Grammar:
 
         # Atualiza os terminais
         self.terminals = symbols_in_productions - self.non_terminals
+
+        if expected_tokens:
+            expected_tokens.update(["&"])
+            diff = self.terminals - expected_tokens
+            if len(diff) > 0:
+                raise ValueError(f"Há tokens considerados na gramática que não fazem parte das definições regulares: {diff}")
 
     def _initialize_first_sets(self):
         """
