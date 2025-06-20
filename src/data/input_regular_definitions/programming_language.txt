@@ -51,4 +51,4 @@ verdadeiro: verdadeiro
 id: [a-zA-Z_][a-zA-Z0-9_]*
 num_int: (\-)?[0-9]+
 num_real: <num_int>\.[0-9]+
-literal: \"[A-Za-záàâãéêíóôõúçÁÀÂÃÉÊÍÓÔÕÚÇ]*\"
+literal: \"[A-Za-z0-9áàâãéêíóôõúçÁÀÂÃÉÊÍÓÔÕÚÇ_]*\"

@@ -1,0 +1,25 @@
+<expr> ::= <iff_expr>
+
+<iff_expr> ::= <impl_expr> <iff_tail>
+<iff_tail> ::= <=> <impl_expr> <iff_tail>
+<iff_tail> ::= &
+
+<impl_expr> ::= <or_expr> <impl_tail>
+<impl_tail> ::= => <or_expr> <impl_tail>
+<impl_tail> ::= &
+
+<or_expr> ::= <and_expr> <or_tail>
+<or_tail> ::= v <and_expr> <or_tail>
+<or_tail> ::= &
+
+<and_expr> ::= <not_expr> <and_tail>
+<and_tail> ::= ^ <not_expr> <and_tail>
+<and_tail> ::= &
+
+<not_expr> ::= ~ <not_expr>
+<not_expr> ::= <atom>
+
+<atom> ::= var 
+<atom> ::= true 
+<atom> ::= false 
+<atom> ::= ( <expr> )

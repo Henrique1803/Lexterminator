@@ -1,0 +1,76 @@
+const inteiro pi = 3 ;
+const real e_const = 2.71 ;
+const caracter letraA = "A" ;
+const booleano verdade = verdadeiro ;
+const inteiro maximo = 100 ;
+
+var x , y , z : inteiro ;
+var nome : cadeia [ 20 ] ;
+var intervalo1 : intervalo 1 .. 10 ;
+var vetor1 : vetor [ 5 ] de real ;
+
+proc imprimeMensagem ( ref mensagem : caracter ) ;
+  var temp : inteiro ;
+  inicio
+    escreva ( "Iniciado" ) ;
+    escreva ( mensagem ) ;
+    temp := 10 ;
+    enquanto temp > 0 faca
+      inicio
+        escreva ( temp ) ;
+        temp := temp - 1
+      fim
+  fim
+;
+
+funcao calculaMedia ( val a , b : real ; ref resultado : real ) : real ;
+  const real dois = 2.0 ;
+  var soma : real ;
+  inicio
+    soma := a + b ;
+    resultado := soma / dois ;
+
+    se resultado > 10 entao
+      se resultado < 100 entao
+        escreva ( "resultado_entre_10_100" )
+      senao
+        escreva ( "resultado_grande_demais" )
+    senao
+      escreva ( "resultado_pequeno" ) ;
+
+    retorna ( resultado )
+  fim
+;
+
+inicio
+  leia ( x , y ) ;
+  z := x + y ;
+  escreva ( "soma" , z ) ;
+
+  se z > 10 entao
+    inicio
+      escreva ( "z_maior_10" ) ;
+      se z > 50 entao
+        escreva ( "z_grande" )
+      senao
+        inicio
+          escreva ( "z_moderadamente_grande" ) ;
+          z := z - 5
+        fim
+    fim
+  senao
+    escreva ( "Z_menor_igual_10" ) ;
+
+  repita
+    inicio
+        escreva ( "Loop" ) ;
+        z := z + 1
+    fim
+  ate z >= 15 ;
+
+  imprimeMensagem ( "Mensagem" ) ;
+
+  calculaMedia ( 5.0 , 7.0 , resultado ) ;
+
+  escreva ( "Encerrado" )
+fim .

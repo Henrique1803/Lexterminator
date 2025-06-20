@@ -1,0 +1,41 @@
+const inteiro x = 10 ;
+const real y = 3.14 ;
+const booleano flag = verdadeiro ;
+const caracter letra = "a" ;
+
+var a , b , c : inteiro ;
+var texto : cadeia [ 20 ] ;
+var vetor1 : vetor [ 5 ] de real ;
+
+proc soma ( val x , y : inteiro ) ;
+    var z : inteiro ;
+    inicio
+        z := x + y ;
+        escreva ( z )
+    fim ;
+
+funcao maior ( val x , y : inteiro ) : inteiro ;
+    var resultado : inteiro ;
+    inicio
+        se x > y entao
+            resultado := x
+        senao
+            resultado := y ;
+        retorne ( resultado )
+    fim ;
+
+inicio
+    a := 5 ;
+    b := 10 ;
+    c := maior ( a , b ) ;
+    enquanto c > 0 faca
+        inicio
+            escreva ( c ) ;
+            c := c - 1
+        fim ;
+    repita
+        leia ( a , b )
+    ate a = b
+fim .
+
+@ símbolo inválido

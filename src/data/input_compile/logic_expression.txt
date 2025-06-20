@@ -1,1 +1,1 @@
-not ( true or false or not ( false ) ) and not ( false or true )
+not ( true and false or not false and ( false or true ) ) or true and not ( false )
