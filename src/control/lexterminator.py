@@ -36,6 +36,8 @@ class LexicalAndSintaticalAnalyzerController:
     
     # carrega o arquivo de entrada para ser reconhecido pelo AL e atualiza a view de acordo
     def set_input_file(self, path: str, ignore_whitespaces = False):
+        self.__last_ignore_whitespaces = ignore_whitespaces
+        self.__last_filepath = path
         try:
             self.lexical_analyzer.read_words_from_file_and_verify_pertinence(path, ignore_whitespaces)
             self.set_token_view()
@@ -45,7 +47,7 @@ class LexicalAndSintaticalAnalyzerController:
         except ValueError as e:
             self.show_error("Error in input file", str(e))
 
-    def select_input_file(self):
+    def select_input_file(self, rerunnig = False):
         """
         Abre um QFileDialog com um checkbox adicional ("Ignore whitespaces from file")
         e envia o caminho + a opção marcada para o controller.
@@ -70,6 +72,9 @@ class LexicalAndSintaticalAnalyzerController:
             file_path = dialog.selectedFiles()[0]
             ignore_whitespaces = checkbox.isChecked()
             self.set_input_file(file_path, ignore_whitespaces)
+    
+    def rerun_lexical(self):
+        self.set_input_file(self.__last_filepath, self.__last_ignore_whitespaces)
 
     def run_sintatical_analysis(self):
         parsing_table, passed = self.sintatical_analyzer.read_tokens_from_lexical_analyzer_output(self.lexical_analyzer.output_path) # Faz a leitura da lista de tokens gerada pelo analisador léxico
@@ -203,6 +208,16 @@ class LexicalAndSintaticalAnalyzerController:
         if file_path:
             try:
                 shutil.copy(paths.SLR_TABLE_DIR/ "slr_table.csv", file_path)
+                self.show_success("File saved", f"File saved successfully in: {file_path}")
+            except:
+                self.show_error("Error saving file", "Could not save file")
+
+    def save_parsing_table(self):
+        print("save parsing table")
+        file_path = self.select_save_file_path(type=".csv")
+        if file_path:
+            try:
+                shutil.copy(paths.PARSING_TABLE_DIR/ "parsing_table.csv", file_path)
                 self.show_success("File saved", f"File saved successfully in: {file_path}")
             except:
                 self.show_error("Error saving file", "Could not save file")

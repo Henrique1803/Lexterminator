@@ -1,5 +1,5 @@
 from PyQt5 import QtWidgets, uic
-from PyQt5.QtWidgets import QTableWidgetItem, QHeaderView
+from PyQt5.QtWidgets import QTableWidgetItem, QHeaderView, QPushButton
 from PyQt5.QtGui import QColor
 from PyQt5.QtCore import Qt
 from prettytable import PrettyTable
@@ -22,15 +22,24 @@ class TokenView(QtWidgets.QMainWindow):
         """
         self.returnButton.clicked.connect(self.return_to_main)
         self.actionSave_Token_List_File.triggered.connect(self.controller.save_token_file)
+        self.actionSaveParsingTable.triggered.connect(self.controller.save_parsing_table)
         self.actionCompile_New_File.triggered.connect(self.controller.select_input_file)
-        self.runSintatical.clicked.connect(self.controller.run_sintatical_analysis)
+        self.runSintatical.clicked.connect(self.handle_button_run_click)
+
+    def handle_button_run_click(self):
+        if "Sintatical" in self.runSintatical.text():
+            self.controller.run_sintatical_analysis()
+        else:
+            self.controller.rerun_lexical()
 
     def update_handle_run_sintatical(self):
         if self.controller.lexical_analyzer.lexical_error:
             self.runSintatical.setEnabled(False)
+            self.runSintatical.setVisible(False)
             self.controller.show_error("Lexical Error", "Lexical analysis failed due to unrecognized characters.")
         else:
             self.runSintatical.setEnabled(True)
+            self.runSintatical.setVisible(True)
             self.controller.show_success("Lexical Analysis finished", "Lexical analysis completed successfully. No errors were found.")
 
     def setup_tokens_table_view(self):
@@ -38,6 +47,8 @@ class TokenView(QtWidgets.QMainWindow):
         Configura widget que exibe a lista de tokens em formato de tabela,
         de acordo com words_result do analyzer.
         """
+        self.runSintatical.setText("Run Sintatical Analysis")
+        self.actionSaveParsingTable.setEnabled(False)
         words_result = self.controller.lexical_analyzer.words_result
         headers = ["Word", "Token"]
         self.table.setColumnCount(len(headers))
@@ -66,6 +77,8 @@ class TokenView(QtWidgets.QMainWindow):
         """
         Atualiza o widget que exibe a tabela de parsing da análise sintática, de acordo com um PrettyTable.
         """
+        self.runSintatical.setText("Rerun Lexical Analysis")
+        self.actionSaveParsingTable.setEnabled(True)
         rows = pretty_table.rows
         headers = pretty_table.field_names
         self.table.setColumnCount(len(headers))
@@ -75,6 +88,10 @@ class TokenView(QtWidgets.QMainWindow):
             for j, cell in enumerate(row):
                 item = QTableWidgetItem(str(cell))
                 item.setFlags(item.flags() & ~Qt.ItemFlag.ItemIsEditable)
+                if str(cell).lower() == "erro":
+                    item.setForeground(QColor("red"))
+                elif str(cell).lower() == "accept":
+                    item.setForeground(QColor("green"))
                 self.table.setItem(i, j, item)
         self.table.resizeColumnsToContents()
 

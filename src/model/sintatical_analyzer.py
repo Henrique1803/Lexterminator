@@ -64,6 +64,7 @@ class SintaticalAnalyzer:
             # Caso a ação não esteja definida: erro de análise
             if action is None: 
                 table.add_row([step, stack_repr, input_repr, "ERRO"])
+                self.save_parsing_table(table)
                 return table, False
             # Ação de deslocamento (shift)
             elif action.startswith('s'):
@@ -93,13 +94,21 @@ class SintaticalAnalyzer:
             # Ação de aceitação
             elif action == 'accept':
                 table.add_row([step, stack_repr, input_repr, "accept"])
+                self.save_parsing_table(table)
                 return table, True
             # Ação inválida (não é shift, reduce ou accept)
             else:
                 table.add_row([step, stack_repr, input_repr, f"ERRO: ação inválida '{action}'"])
+                self.save_parsing_table(table)
                 return table, False
 
             step += 1
+
+    def save_parsing_table(self, table: PrettyTable):
+        csv_str = table.get_csv_string()
+        output_path = paths.PARSING_TABLE_DIR / "parsing_table.csv"
+        with open(output_path, "w", encoding="utf-8") as f:
+            f.write(csv_str)
 
     def generate_canonical_items_diagram(self, collection, transitions):
         dot = Digraph(comment="Canonical LR0 Items", format='png')

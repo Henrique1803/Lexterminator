@@ -13,12 +13,10 @@ LEXICAL_ANALYZER_OUTPUT_DIR = PROGRAM_DIR / "src/data/output_lexical_analyzer"
 AUTOMATA_DIAGRAM_DIR = PROGRAM_DIR / "src/data/output_automata_diagram"
 SLR_TABLE_DIR = PROGRAM_DIR / "src/data/output_slr_table"
 CANONICAL_ITEMS_DIAGRAM_DIR = PROGRAM_DIR / "src/data/output_canonical_items_diagram"
+PARSING_TABLE_DIR = PROGRAM_DIR / "src/data/output_parsing_table"
 
 """
 TODO:
-- corrigir ux: ocultar botão de análise sintática quando já estiver nela ou quando estiver desabilitada
-- colocar "ERRO" da sintática de vermelho e accept em verde
-- função de salvar tabela de parsing
 - ajustar README e about
 - ajustar comentários
 """
